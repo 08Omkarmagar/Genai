@@ -1,0 +1,314 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title[:60] }} — NewsLens{% endblock %}
+
+{% block extra_styles %}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--accent); }
+
+.article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.article-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.article-byline {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.article-byline strong { color: var(--ink); }
+
+.article-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* ── BODY SECTION ────────────────── */
+.body-section {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.body-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.body-text {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #2a2a2a;
+  white-space: pre-line;
+}
+
+.no-body {
+  text-align: center;
+  padding: 3rem;
+  color: var(--muted);
+}
+
+/* ── SIDEBAR ─────────────────────── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.info-card {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.info-card-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.85rem;
+}
+
+.info-row:last-child { border-bottom: none; }
+
+.info-key {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.info-val {
+  font-weight: 500;
+  text-align: right;
+  max-width: 160px;
+  font-size: 0.85rem;
+}
+
+.source-link {
+  display: block;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: opacity 0.2s;
+  margin-top: 0.5rem;
+}
+
+.source-link:hover { opacity: 0.8; }
+
+/* ── BIAS NOTE ───────────────────── */
+.bias-note {
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  font-size: 0.82rem;
+  color: #78350f;
+  line-height: 1.5;
+}
+
+.bias-note strong { display: block; margin-bottom: 0.25rem; }
+
+@media (max-width: 768px) {
+  .article-grid { grid-template-columns: 1fr; }
+  .article-title { font-size: 1.4rem; }
+}
+{% endblock %}
+
+{% block content %}
+
+<a href="/articles" class="back-link">← Back to Articles</a>
+
+<!-- HEADER -->
+<div class="article-header">
+  <div class="article-meta">
+    <span class="badge badge-{{ article.bias }}">{{ article.bias }}</span>
+    <span class="badge badge-{{ article.content_type }}">{{ article.content_type }}</span>
+    {% if article.has_body %}
+      <span class="badge" style="background:#dcfce7; color:#15803d;">✓ Full text</span>
+    {% else %}
+      <span class="badge" style="background:#fee2e2; color:#b91c1c;">✗ No body text</span>
+    {% endif %}
+  </div>
+
+  <h1 class="article-title">{{ article.title }}</h1>
+
+  <div class="article-byline">
+    <strong>{{ article.outlet }}</strong>
+    {% if article.published %}
+      &nbsp;·&nbsp; {{ article.published[:30] }}
+    {% endif %}
+    {% if article.has_body %}
+      &nbsp;·&nbsp; {{ "{:,}".format(article.body_length) }} characters
+    {% endif %}
+  </div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="article-grid">
+
+  <!-- BODY -->
+  <div>
+    {% if article.has_body %}
+      <div class="body-section">
+        <div class="body-label">Full Article Body</div>
+        <div class="body-text">{{ article.body }}</div>
+      </div>
+    {% else %}
+      <div class="body-section">
+        <div class="no-body">
+          <div style="font-size:2.5rem; margin-bottom:1rem;">🔒</div>
+          <p style="font-weight:600; margin-bottom:0.5rem;">Body text unavailable</p>
+          <p style="font-size:0.85rem;">This article may be behind a paywall or blocked bot extraction.</p>
+          <a href="{{ article.url }}" target="_blank" class="source-link" style="margin-top:1.5rem; display:inline-block; padding:0.6rem 1.5rem;">
+            Read on {{ article.outlet }} ↗
+          </a>
+        </div>
+      </div>
+
+      {% if article.summary %}
+        <div class="body-section" style="margin-top:1.25rem;">
+          <div class="body-label">RSS Summary (excerpt only)</div>
+          <div class="body-text">{{ article.summary }}</div>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <!-- Article Info -->
+    <div class="info-card">
+      <div class="info-card-title">Article Info</div>
+
+      <div class="info-row">
+        <span class="info-key">Outlet</span>
+        <span class="info-val">{{ article.outlet }}</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">Political Lean</span>
+        <span class="info-val">
+          <span class="badge badge-{{ article.bias }}">{{ article.bias }}</span>
+        </span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">Content Type</span>
+        <span class="info-val">
+          <span class="badge badge-{{ article.content_type }}">{{ article.content_type }}</span>
+        </span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">Published</span>
+        <span class="info-val" style="font-size:0.75rem;">{{ article.published[:25] if article.published else '—' }}</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">Body Length</span>
+        <span class="info-val" style="font-family:'DM Mono',monospace;">
+          {{ "{:,}".format(article.body_length) }} chars
+        </span>
+      </div>
+
+      <a href="{{ article.url }}" target="_blank" class="source-link">
+        Read Original Article ↗
+      </a>
+    </div>
+
+    <!-- Bias Note -->
+    <div class="bias-note">
+      <strong>⚠ Bias label is a weak prior</strong>
+      The <em>{{ article.bias }}</em> label is assigned at the outlet level ({{ article.outlet }}).
+      Article-level bias detection will be performed in Agent 6 using a RoBERTa classifier
+      on the actual article text.
+    </div>
+
+    <!-- Pipeline Status -->
+    <div class="info-card">
+      <div class="info-card-title">This Article's Pipeline Status</div>
+      <div class="info-row">
+        <span class="info-key">1. Collected</span>
+        <span style="color:#15803d; font-weight:600;">✓ Done</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">2. Body Fetched</span>
+        <span style="color:{% if article.has_body %}#15803d{% else %}#b91c1c{% endif %}; font-weight:600;">
+          {% if article.has_body %}✓ Done{% else %}✗ Failed{% endif %}
+        </span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">3. Clustered</span>
+        <span style="color:#92400e;">⏳ Pending</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">4. Summarized</span>
+        <span style="color:#92400e;">⏳ Pending</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">5. Compared</span>
+        <span style="color:#92400e;">⏳ Pending</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">6. Bias Scored</span>
+        <span style="color:#92400e;">⏳ Pending</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">7. Synthesized</span>
+        <span style="color:#92400e;">⏳ Pending</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

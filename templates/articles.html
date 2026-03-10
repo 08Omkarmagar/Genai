@@ -1,0 +1,338 @@
+{% extends "base.html" %}
+{% block title %}Articles — NewsLens{% endblock %}
+
+{% block extra_styles %}
+.page-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.result-count {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ── FILTERS ─────────────────────────── */
+.filter-bar {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.filter-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+select, input[type="text"] {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  padding: 0.45rem 0.75rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+select:focus, input[type="text"]:focus {
+  border-color: var(--accent);
+}
+
+.btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  transition: opacity 0.2s;
+}
+
+.btn:hover { opacity: 0.85; }
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--muted);
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* ── ARTICLE CARDS ───────────────────── */
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.article-card {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.article-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+.article-summary {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.article-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-width: 120px;
+}
+
+.body-indicator {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.body-yes { background: #dcfce7; color: #15803d; }
+.body-no  { background: #fee2e2; color: #b91c1c; }
+
+.char-count {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+/* ── PAGINATION ──────────────────────── */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+.page-link {
+  padding: 0.45rem 0.85rem;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  transition: all 0.2s;
+}
+
+.page-link:hover      { background: var(--ink); color: var(--paper); }
+.page-link.current    { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.page-link.disabled   { opacity: 0.35; pointer-events: none; }
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--muted);
+}
+
+.empty-state-icon { font-size: 3rem; margin-bottom: 1rem; }
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+  <h1 class="page-title">Articles</h1>
+  <span class="result-count">{{ data.total }} results</span>
+</div>
+
+<!-- FILTER BAR -->
+<form method="GET" action="/articles">
+  <div class="filter-bar">
+
+    <div class="filter-group">
+      <label class="filter-label">Search</label>
+      <input type="text" name="search" value="{{ filters.search or '' }}"
+             placeholder="Search titles..." style="width:200px;">
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Outlet</label>
+      <select name="outlet">
+        <option value="">All Outlets</option>
+        {% for o in outlets %}
+          <option value="{{ o }}" {% if filters.outlet == o %}selected{% endif %}>{{ o }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Lean</label>
+      <select name="bias">
+        <option value="">All</option>
+        <option value="left"   {% if filters.bias == 'left'   %}selected{% endif %}>Left</option>
+        <option value="center" {% if filters.bias == 'center' %}selected{% endif %}>Center</option>
+        <option value="right"  {% if filters.bias == 'right'  %}selected{% endif %}>Right</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Type</label>
+      <select name="content_type">
+        <option value="">All Types</option>
+        <option value="news"     {% if filters.content_type == 'news'     %}selected{% endif %}>News</option>
+        <option value="opinion"  {% if filters.content_type == 'opinion'  %}selected{% endif %}>Opinion</option>
+        <option value="analysis" {% if filters.content_type == 'analysis' %}selected{% endif %}>Analysis</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Body Text</label>
+      <select name="has_body">
+        <option value="">All</option>
+        <option value="yes" {% if filters.has_body == 'yes' %}selected{% endif %}>Has body</option>
+        <option value="no"  {% if filters.has_body == 'no'  %}selected{% endif %}>No body</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Filter</button>
+    <a href="/articles" class="btn btn-ghost">Clear</a>
+  </div>
+</form>
+
+<!-- ARTICLE LIST -->
+{% if data.articles %}
+  <div class="article-list">
+    {% for a in data.articles %}
+    <a class="article-card" href="/article/{{ a.id }}">
+      <div>
+        <div class="article-meta">
+          <span class="badge badge-{{ a.bias }}">{{ a.bias }}</span>
+          <span class="badge badge-{{ a.content_type }}">{{ a.content_type }}</span>
+          <span style="font-size:0.75rem; color:var(--muted); font-family:'DM Mono',monospace;">
+            {{ a.outlet }}
+          </span>
+        </div>
+        <div class="article-title">{{ a.title }}</div>
+        {% if a.body_preview %}
+          <div class="article-summary">{{ a.body_preview }}</div>
+        {% elif a.summary %}
+          <div class="article-summary">{{ a.summary[:200] }}</div>
+        {% endif %}
+      </div>
+
+      <div class="article-right">
+        {% if a.has_body %}
+          <span class="body-indicator body-yes">✓ Body</span>
+          <span class="char-count">{{ "{:,}".format(a.body_length) }} chars</span>
+        {% else %}
+          <span class="body-indicator body-no">✗ No body</span>
+        {% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+
+  <!-- PAGINATION -->
+  {% if data.pages > 1 %}
+  <div class="pagination">
+    <a class="page-link {% if data.page <= 1 %}disabled{% endif %}"
+       href="?page={{ data.page - 1 }}&outlet={{ filters.outlet or '' }}&bias={{ filters.bias or '' }}&content_type={{ filters.content_type or '' }}&has_body={{ filters.has_body or '' }}&search={{ filters.search or '' }}">
+      ← Prev
+    </a>
+
+    {% for p in range(1, data.pages + 1) %}
+      {% if p == data.page %}
+        <span class="page-link current">{{ p }}</span>
+      {% elif p == 1 or p == data.pages or (p >= data.page - 2 and p <= data.page + 2) %}
+        <a class="page-link"
+           href="?page={{ p }}&outlet={{ filters.outlet or '' }}&bias={{ filters.bias or '' }}&content_type={{ filters.content_type or '' }}&has_body={{ filters.has_body or '' }}&search={{ filters.search or '' }}">
+          {{ p }}
+        </a>
+      {% elif p == data.page - 3 or p == data.page + 3 %}
+        <span style="color:var(--muted); padding:0 0.25rem;">…</span>
+      {% endif %}
+    {% endfor %}
+
+    <a class="page-link {% if data.page >= data.pages %}disabled{% endif %}"
+       href="?page={{ data.page + 1 }}&outlet={{ filters.outlet or '' }}&bias={{ filters.bias or '' }}&content_type={{ filters.content_type or '' }}&has_body={{ filters.has_body or '' }}&search={{ filters.search or '' }}">
+      Next →
+    </a>
+  </div>
+  {% endif %}
+
+{% else %}
+  <div class="empty-state">
+    <div class="empty-state-icon">📰</div>
+    <p style="font-size:1.1rem; font-weight:600; margin-bottom:0.5rem;">No articles found</p>
+    <p>Try adjusting your filters or <a href="/articles" style="color:var(--accent);">clear all filters</a>.</p>
+  </div>
+{% endif %}
+
+{% endblock %}

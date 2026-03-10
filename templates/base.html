@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}NewsLens{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & VARIABLES ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #0f0f0f;
+      --paper:     #f5f0e8;
+      --cream:     #ede8dc;
+      --rule:      #d4cfc4;
+      --left:      #1a4971;
+      --center:    #2d6a4f;
+      --right:     #7b1a1a;
+      --accent:    #c9622a;
+      --muted:     #7a7468;
+      --white:     #ffffff;
+      --card-bg:   #faf7f2;
+      --shadow:    0 2px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ── MASTHEAD ──────────────────────────────────────── */
+    .masthead {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0 2rem;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .masthead-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    .masthead-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--paper);
+      text-decoration: none;
+    }
+
+    .masthead-logo span {
+      color: var(--accent);
+    }
+
+    .masthead-tagline {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    nav a {
+      color: var(--paper);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background: rgba(255,255,255,0.1);
+      color: var(--accent);
+    }
+
+    /* ── DATE RIBBON ───────────────────────────────────── */
+    .date-ribbon {
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      text-align: center;
+      padding: 0.4rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── MAIN CONTENT ──────────────────────────────────── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* ── BIAS BADGES ───────────────────────────────────── */
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .badge-left    { background: #dbeafe; color: var(--left); }
+    .badge-center  { background: #dcfce7; color: var(--center); }
+    .badge-right   { background: #fee2e2; color: var(--right); }
+    .badge-news    { background: #f3f4f6; color: #374151; }
+    .badge-opinion { background: #fef3c7; color: #92400e; }
+    .badge-analysis{ background: #ede9fe; color: #5b21b6; }
+    .badge-unknown { background: #f3f4f6; color: #6b7280; }
+
+    /* ── FLASH MESSAGES ────────────────────────────────── */
+    .flash {
+      padding: 1rem 1.5rem;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    /* ── FOOTER ────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      color: var(--muted);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      margin-top: 4rem;
+      letter-spacing: 0.05em;
+    }
+
+    footer strong { color: var(--paper); }
+
+    {% block extra_styles %}{% endblock %}
+  </style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div>
+        <a href="/" class="masthead-logo">News<span>Lens</span></a>
+        <div class="masthead-tagline">AI-Powered News Aggregator &amp; Bias Detector</div>
+      </div>
+      <nav>
+        <a href="/"        {% if request.path == '/'         %}class="active"{% endif %}>Dashboard</a>
+        <a href="/articles"{% if request.path == '/articles' %}class="active"{% endif %}>Articles</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="date-ribbon">
+    {{ now }} &nbsp;·&nbsp; India Edition &nbsp;·&nbsp; Pipeline Stage: Article Collection
+  </div>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <strong>NewsLens</strong> &nbsp;·&nbsp; Generative AI News Aggregator &nbsp;·&nbsp; Research Prototype
+  </footer>
+
+</body>
+</html>
