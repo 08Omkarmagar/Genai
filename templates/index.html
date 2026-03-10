@@ -1,46 +1,434 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>News Database</title>
-</head>
+{% extends "base.html" %}
+{% block title %}Dashboard — NewsLens{% endblock %}
 
-<body>
+{% block extra_styles %}
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+.page-sub {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 2.5rem;
+}
 
-<h1>News Articles</h1>
+/* ── STAT CARDS ─────────────────────── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
 
-<table border="1">
+.stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
 
-<tr>
-<th>ID</th>
-<th>outlet</th>
-<th>bias</th>
-<th>country</th>
-<th>title</th>
-<th>url</th>
-<th>summary</th>
-<th>published</th>
-<th>fetched_at</th>
-</tr>
+.stat-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
 
-{% for row in rows %}
-<tr>
-<td>{{ row[0] }}</td>
-<td>{{ row[1] }}</td>
-<td>{{ row[2] }}</td>
-<td>{{ row[3] }}</td>
-<td>{{ row[4] }}</td>
-<td>{{ row[5] }}</td>
-<td>{{ row[6] }}</td>
-<td>{{ row[7] }}</td>
-<td>{{ row[8] }}</td>
-<td>{{ row[9] }}</td>
-<td>{{ row[10] }}</td>
-<td>{{ row[11] }}</td>
-<td>{{ row[12] }}</td>
-</tr>
-{% endfor %}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+}
 
-</table>
+.stat-card.blue::before  { background: var(--left);   }
+.stat-card.green::before { background: var(--center);  }
+.stat-card.red::before   { background: var(--right);   }
+.stat-card.gold::before  { background: #c9622a;        }
 
-</body>
-</html>
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+.stat-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* ── SECTION HEADERS ────────────────── */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.section-count {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── OUTLET TABLE ───────────────────── */
+.outlet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.outlet-card {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: box-shadow 0.2s;
+}
+
+.outlet-card:hover { box-shadow: var(--shadow); }
+
+.outlet-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.outlet-count {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.outlet-bar-wrap {
+  height: 6px;
+  background: var(--rule);
+  border-radius: 3px;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.outlet-bar {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--accent);
+  transition: width 0.6s ease;
+}
+
+/* ── PROGRESS RING ──────────────────── */
+.coverage-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.coverage-card {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.coverage-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+/* Progress bar style */
+.progress-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.progress-label {
+  width: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.progress-bar-wrap {
+  flex: 1;
+  height: 8px;
+  background: var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.8s ease;
+}
+
+.bar-left    { background: var(--left);   }
+.bar-center  { background: var(--center); }
+.bar-right   { background: var(--right);  }
+.bar-news    { background: #6b7280; }
+.bar-opinion { background: #d97706; }
+.bar-analysis{ background: #7c3aed; }
+
+.progress-value {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+  width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── PIPELINE STATUS ────────────────── */
+.pipeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 3rem;
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pipeline-step {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  position: relative;
+  border-right: 1px solid var(--rule);
+}
+
+.pipeline-step:last-child { border-right: none; }
+
+.pipeline-step.done   { background: #f0fdf4; }
+.pipeline-step.active { background: #fffbeb; }
+.pipeline-step.todo   { background: var(--card-bg); opacity: 0.5; }
+
+.step-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+.step-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.step-status {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .coverage-section { grid-template-columns: 1fr; }
+  .pipeline { flex-direction: column; }
+  .pipeline-step { border-right: none; border-bottom: 1px solid var(--rule); }
+}
+{% endblock %}
+
+{% block content %}
+
+<div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:2rem; padding-bottom:1rem; border-bottom:2px solid var(--ink);">
+  <div>
+    <h1 class="page-title">Pipeline Dashboard</h1>
+    <p class="page-sub">Real-time view of your news aggregation pipeline progress</p>
+  </div>
+  <a href="/articles" style="background:var(--ink); color:var(--paper); text-decoration:none; padding:0.6rem 1.25rem; border-radius:5px; font-size:0.85rem; font-weight:500;">
+    Browse Articles →
+  </a>
+</div>
+
+<!-- PIPELINE STATUS -->
+<div class="section-header">
+  <span class="section-title">Pipeline Status</span>
+  <span class="section-count">7 agents total</span>
+</div>
+
+<div class="pipeline" style="margin-bottom:3rem;">
+  <div class="pipeline-step done">
+    <div class="step-status">✅</div>
+    <div class="step-num">AGENT 1</div>
+    <div class="step-name">Collector</div>
+  </div>
+  <div class="pipeline-step active">
+    <div class="step-status">⚙️</div>
+    <div class="step-num">AGENT 2</div>
+    <div class="step-name">Body Fetcher</div>
+  </div>
+  <div class="pipeline-step todo">
+    <div class="step-status">⏳</div>
+    <div class="step-num">AGENT 3</div>
+    <div class="step-name">Clustering</div>
+  </div>
+  <div class="pipeline-step todo">
+    <div class="step-status">⏳</div>
+    <div class="step-num">AGENT 4</div>
+    <div class="step-name">Summarizer</div>
+  </div>
+  <div class="pipeline-step todo">
+    <div class="step-status">⏳</div>
+    <div class="step-num">AGENT 5</div>
+    <div class="step-name">Comparison</div>
+  </div>
+  <div class="pipeline-step todo">
+    <div class="step-status">⏳</div>
+    <div class="step-num">AGENT 6</div>
+    <div class="step-name">Bias Detector</div>
+  </div>
+  <div class="pipeline-step todo">
+    <div class="step-status">⏳</div>
+    <div class="step-num">AGENT 7</div>
+    <div class="step-name">Synthesizer</div>
+  </div>
+</div>
+
+<!-- KEY STATS -->
+<div class="section-header">
+  <span class="section-title">Collection Stats</span>
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="stat-number">{{ stats.total }}</div>
+    <div class="stat-label">Total Articles</div>
+    <div class="stat-sub">Collected from 4 outlets</div>
+  </div>
+
+  <div class="stat-card green">
+    <div class="stat-number">{{ stats.with_body }}</div>
+    <div class="stat-label">Full Text Fetched</div>
+    <div class="stat-sub">
+      {% if stats.total > 0 %}
+        {{ ((stats.with_body / stats.total) * 100) | int }}% success rate
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="stat-card red">
+    <div class="stat-number">{{ stats.without_body }}</div>
+    <div class="stat-label">Blocked / Paywalled</div>
+    <div class="stat-sub">Could not extract</div>
+  </div>
+
+  <div class="stat-card gold">
+    <div class="stat-number">{{ stats.per_outlet | length }}</div>
+    <div class="stat-label">Active Outlets</div>
+    <div class="stat-sub">India edition</div>
+  </div>
+</div>
+
+<!-- COVERAGE BREAKDOWN -->
+<div class="coverage-section">
+
+  <!-- By Bias -->
+  <div class="coverage-card">
+    <div class="coverage-title">Coverage by Political Lean</div>
+    {% set total = stats.total or 1 %}
+
+    {% for lean, color_class in [('left','bar-left'), ('center','bar-center'), ('right','bar-right')] %}
+      {% set count = stats.per_bias.get(lean, 0) %}
+      <div class="progress-item">
+        <div class="progress-label">
+          <span class="badge badge-{{ lean }}">{{ lean }}</span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar {{ color_class }}" style="width: {{ ((count / total) * 100) | int }}%"></div>
+        </div>
+        <div class="progress-value">{{ count }}</div>
+      </div>
+    {% endfor %}
+
+    <p style="font-size:0.75rem; color:var(--muted); margin-top:1rem;">
+      Note: Lean assigned at outlet level — article-level bias detection coming in Agent 6.
+    </p>
+  </div>
+
+  <!-- By Content Type -->
+  <div class="coverage-card">
+    <div class="coverage-title">Coverage by Content Type</div>
+
+    {% for item in stats.per_type %}
+      <div class="progress-item">
+        <div class="progress-label">
+          <span class="badge badge-{{ item.type }}">{{ item.type }}</span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar bar-{{ item.type }}" style="width: {{ ((item.count / total) * 100) | int }}%"></div>
+        </div>
+        <div class="progress-value">{{ item.count }}</div>
+      </div>
+    {% endfor %}
+
+    <p style="font-size:0.75rem; color:var(--muted); margin-top:1rem;">
+      Detected from URL patterns and title keywords.
+    </p>
+  </div>
+
+</div>
+
+<!-- PER OUTLET BREAKDOWN -->
+<div class="section-header">
+  <span class="section-title">Outlet Breakdown</span>
+  <span class="section-count">{{ stats.per_outlet | length }} sources</span>
+</div>
+
+<div class="outlet-grid">
+  {% for o in stats.per_outlet %}
+  <div class="outlet-card">
+    <div>
+      <div class="outlet-name">{{ o.outlet }}</div>
+      <div style="margin-top:0.35rem;">
+        <span class="badge badge-{{ o.bias }}">{{ o.bias }}</span>
+      </div>
+      <div class="outlet-bar-wrap" style="width:120px; margin-top:0.75rem;">
+        <div class="outlet-bar" style="width:{{ ((o.count / stats.total) * 100) | int }}%"></div>
+      </div>
+    </div>
+    <div class="outlet-count">{{ o.count }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
