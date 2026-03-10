@@ -1,0 +1,310 @@
+{% extends "base.html" %}
+{% block title %}Fetch Logs — NewsLens{% endblock %}
+
+{% block extra_styles %}
+.page-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.result-count {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ── LOG TABLE ───────────────────────── */
+.log-table-wrap {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+thead {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+thead th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.15s;
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--cream);
+}
+
+tbody td {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+}
+
+.mono {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+}
+
+/* ── STATUS BADGES ───────────────────── */
+.status-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.status-success { background: #dcfce7; color: #15803d; }
+.status-failed  { background: #fee2e2; color: #b91c1c; }
+.status-empty   { background: #f3f4f6; color: #6b7280; }
+
+/* ── ERROR EXPAND ────────────────────── */
+.error-msg {
+  font-size: 0.75rem;
+  color: #b91c1c;
+  margin-top: 0.3rem;
+  font-family: 'DM Mono', monospace;
+  max-width: 320px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── NUMBERS ─────────────────────────── */
+.num-new  { color: #15803d; font-weight: 700; font-family: 'DM Mono', monospace; }
+.num-skip { color: var(--muted); font-family: 'DM Mono', monospace; }
+
+/* ── PAGINATION ──────────────────────── */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+.page-link {
+  padding: 0.45rem 0.85rem;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  transition: all 0.2s;
+}
+
+.page-link:hover    { background: var(--ink); color: var(--paper); }
+.page-link.current  { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.page-link.disabled { opacity: 0.35; pointer-events: none; }
+
+/* ── EMPTY STATE ─────────────────────── */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--muted);
+}
+
+.empty-state-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+/* ── SUMMARY CARDS ───────────────────── */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.summary-card.green::before { background: var(--center); }
+.summary-card.red::before   { background: var(--right); }
+.summary-card.blue::before  { background: var(--left); }
+.summary-card.gold::before  { background: var(--accent); }
+
+.summary-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.25rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.summary-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Fetch Logs</h1>
+  </div>
+  <span class="result-count">{{ data.total }} log entries</span>
+</div>
+
+<!-- SUMMARY CARDS -->
+{% set success_count = data.logs | selectattr("status", "equalto", "success") | list | length %}
+{% set failed_count  = data.logs | selectattr("status", "equalto", "failed")  | list | length %}
+{% set total_new     = data.logs | sum(attribute="articles_new") %}
+{% set total_skip    = data.logs | sum(attribute="articles_skip") %}
+
+<div class="summary-grid">
+  <div class="summary-card green">
+    <div class="summary-number">{{ success_count }}</div>
+    <div class="summary-label">Successful Runs</div>
+  </div>
+  <div class="summary-card red">
+    <div class="summary-number">{{ failed_count }}</div>
+    <div class="summary-label">Failed Runs</div>
+  </div>
+  <div class="summary-card blue">
+    <div class="summary-number">{{ total_new }}</div>
+    <div class="summary-label">Articles Saved</div>
+  </div>
+  <div class="summary-card gold">
+    <div class="summary-number">{{ total_skip }}</div>
+    <div class="summary-label">Duplicates Skipped</div>
+  </div>
+</div>
+
+<!-- LOG TABLE -->
+{% if data.logs %}
+<div class="log-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Run ID</th>
+        <th>Outlet</th>
+        <th>Run At</th>
+        <th>Status</th>
+        <th style="text-align:right;">New</th>
+        <th style="text-align:right;">Skipped</th>
+        <th>Error</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for log in data.logs %}
+      <tr>
+        <td class="mono" style="color:var(--muted);">{{ log.run_id[:8] if log.run_id else '—' }}</td>
+
+        <td style="font-weight:500;">{{ log.outlet or '—' }}</td>
+
+        <td class="mono" style="color:var(--muted); white-space:nowrap;">
+          {{ log.run_at or '—' }}
+        </td>
+
+        <td>
+          <span class="status-badge status-{{ log.status }}">
+            {% if log.status == 'success' %}✓ success
+            {% elif log.status == 'failed' %}✗ failed
+            {% else %}{{ log.status or 'unknown' }}
+            {% endif %}
+          </span>
+        </td>
+
+        <td style="text-align:right;">
+          <span class="num-new">+{{ log.articles_new }}</span>
+        </td>
+
+        <td style="text-align:right;">
+          <span class="num-skip">{{ log.articles_skip }}</span>
+        </td>
+
+        <td>
+          {% if log.error_message %}
+            <div class="error-msg" title="{{ log.error_message }}">
+              {{ log.error_message[:80] }}{% if log.error_message | length > 80 %}…{% endif %}
+            </div>
+          {% else %}
+            <span style="color:var(--muted); font-size:0.8rem;">—</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!-- PAGINATION -->
+{% if data.pages > 1 %}
+<div class="pagination">
+  <a class="page-link {% if data.page <= 1 %}disabled{% endif %}"
+     href="?page={{ data.page - 1 }}">← Prev</a>
+
+  {% for p in range(1, data.pages + 1) %}
+    {% if p == data.page %}
+      <span class="page-link current">{{ p }}</span>
+    {% elif p == 1 or p == data.pages or (p >= data.page - 2 and p <= data.page + 2) %}
+      <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+    {% elif p == data.page - 3 or p == data.page + 3 %}
+      <span style="color:var(--muted); padding:0 0.25rem;">…</span>
+    {% endif %}
+  {% endfor %}
+
+  <a class="page-link {% if data.page >= data.pages %}disabled{% endif %}"
+     href="?page={{ data.page + 1 }}">Next →</a>
+</div>
+{% endif %}
+
+{% else %}
+<div class="empty-state">
+  <div class="empty-state-icon">📋</div>
+  <p style="font-size:1.1rem; font-weight:600; margin-bottom:0.5rem;">No logs yet</p>
+  <p>Logs will appear here after the first feed collection run.</p>
+</div>
+{% endif %}
+
+{% endblock %}
