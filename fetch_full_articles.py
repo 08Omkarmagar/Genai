@@ -4,37 +4,83 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from dotenv import load_dotenv
 from newspaper import Article
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import Session
-
-# FIX: import shared models instead of redefining them
-from models import Base, RSSArticle
-
-import time  # add this at the top if not already there
+from sqlalchemy import create_engine, Column, String, Text, DateTime, Boolean, text
+from sqlalchemy.orm import DeclarativeBase, Session
 
 # ── LOAD ENV ──────────────────────────────────────────────────────
 load_dotenv()
 
-DB_HOST = os.getenv("DB_HOST", "localhost")   # FIX: was hardcoded; also removed the broken ?host=localhost query param
-DB_PORT = os.getenv("DB_PORT", "5432")
-DB_NAME = os.getenv("DB_NAME", "newsdb")
-DB_USER = os.getenv("DB_USER", "postgres")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
-
-# FIX: removed the malformed `?host=localhost` suffix which conflicted
-# with the host already present in the URL and could cause connection errors.
-DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+DATABASE_URL = (
+    f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}"
+    f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
+    f"?host=localhost"
+)
 
 engine = create_engine(
     DATABASE_URL,
     echo=False,
-    pool_size=20,
+    pool_size=20,        # allow enough DB connections for parallel threads
     max_overflow=10,
 )
+
+# ── MODELS ────────────────────────────────────────────────────────
+class Base(DeclarativeBase):
+    pass
+
+
+class RSSArticle(Base):
+    __tablename__ = "rss_articles"
+
+    id           = Column(String,  primary_key=True)
+    outlet       = Column(String)
+    bias         = Column(String)
+    country      = Column(String)
+    title        = Column(Text)
+    url          = Column(String,  unique=True)
+    summary      = Column(Text)
+    published    = Column(String)
+    body         = Column(Text,    nullable=True)
+    body_fetched = Column(Boolean, default=False)
+    content_type = Column(String,  nullable=True)   # "news" / "opinion" / "analysis"
+    fetched_at   = Column(DateTime)
+
+
+# ── SETUP ─────────────────────────────────────────────────────────
+def add_body_columns():
+    """
+    Adds missing columns safely.
+    """
+    with engine.connect() as conn:
+        columns_to_check = [
+            "ALTER TABLE rss_articles ADD COLUMN body TEXT",
+            "ALTER TABLE rss_articles ADD COLUMN body_fetched BOOLEAN DEFAULT FALSE",
+            "ALTER TABLE rss_articles ADD COLUMN content_type TEXT",
+            
+            # Just in case these are missing from your earlier DB schema!
+            "ALTER TABLE rss_articles ADD COLUMN bias TEXT",
+            "ALTER TABLE rss_articles ADD COLUMN country TEXT",
+            "ALTER TABLE rss_articles ADD COLUMN fetched_at TIMESTAMP",
+        ]
+        
+        for col_sql in columns_to_check:
+            try:
+                conn.execute(text(col_sql))
+                conn.commit()
+                col_name = col_sql.split("COLUMN ")[1].split(" ")[0]
+                print(f"  Added column  : {col_name}")
+            except Exception:
+                # CRITICAL: Postgres aborts the transaction if the column already exists.
+                # We MUST rollback to clear the error state before the next loop iteration.
+                conn.rollback()
 
 
 # ── CONTENT TYPE DETECTOR ─────────────────────────────────────────
 def detect_content_type(url: str, title: str) -> str:
+    """
+    Detects whether an article is news, opinion, or analysis
+    based on URL path patterns and title keywords.
+    This is a weak signal — Bias Agent refines this later.
+    """
     url_lower   = url.lower()
     title_lower = title.lower()
 
@@ -63,6 +109,13 @@ def detect_content_type(url: str, title: str) -> str:
 
 # ── FULL TEXT EXTRACTOR ───────────────────────────────────────────
 def extract_body(url: str) -> str | None:
+    """
+    Downloads a URL and extracts clean article body text.
+    Returns None if:
+      - Network error or timeout
+      - Paywalled (text too short)
+      - Bot-blocked (empty response)
+    """
     try:
         article = Article(url, request_timeout=10)
         article.download()
@@ -70,18 +123,24 @@ def extract_body(url: str) -> str | None:
 
         body = article.text.strip()
 
+        # Too short = paywall or failed extraction
         if len(body) < 200:
             return None
 
         return body
 
-    except Exception:
+    except Exception as e:
+        # Tip: Add logging here later if you want to track specific URL failures
         return None
 
 
 # ── SINGLE ARTICLE WORKER ─────────────────────────────────────────
-
 def fetch_and_save(article_id: str) -> dict:
+    """
+    Fetches and saves body text for one article.
+    Each parallel thread runs this function independently.
+    Opens its own DB session — safe for concurrent use.
+    """
     with Session(engine) as session:
         article = session.query(RSSArticle).filter_by(id=article_id).first()
 
@@ -100,8 +159,6 @@ def fetch_and_save(article_id: str) -> dict:
 
         session.commit()
 
-        time.sleep(1)  # ← ADD THIS — 1 second delay per article
-
         return {
             "id":      article_id,
             "outlet":  outlet,
@@ -114,15 +171,20 @@ def fetch_and_save(article_id: str) -> dict:
 
 # ── PARALLEL FETCHER ──────────────────────────────────────────────
 def fetch_full_articles(batch_size: int = 200, max_workers: int = 10):
+    """
+    Fetches full body text for all pending articles using parallel threads.
+
+    batch_size  : how many articles to process per run
+    max_workers : how many articles fetched simultaneously
+                  keep at 10 or below to avoid getting IP-blocked
+    """
     print("=" * 58)
     print("  Full Article Body Fetcher  (parallel mode)")
     print(f"  Started : {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')} UTC")
     print(f"  Workers : {max_workers} parallel threads")
     print("=" * 58)
 
-    # FIX: filter now correctly uses Boolean False — previously the DB stored
-    # the string "false" (from save_indian_feeds) while this queried for Boolean False,
-    # so zero articles were ever picked up. Unified to Boolean in models.py.
+    # ── Get IDs of articles not yet processed ─────────────────────
     with Session(engine) as session:
         pending_ids = [
             row.id for row in
@@ -144,6 +206,7 @@ def fetch_full_articles(batch_size: int = 200, max_workers: int = 10):
     print(f"  {'#':<8} {'STATUS':<6} {'OUTLET':<20} {'CHARS':>6}  TITLE")
     print(f"  {'─'*8} {'─'*6} {'─'*20} {'─'*6}  {'─'*30}")
 
+    # ── Run in parallel ───────────────────────────────────────────
     success = 0
     failed  = 0
     done    = 0
@@ -177,6 +240,7 @@ def fetch_full_articles(batch_size: int = 200, max_workers: int = 10):
                     f"  {result.get('title','?')}..."
                 )
 
+    # ── Print results ─────────────────────────────────────────────
     print(f"\n{'=' * 58}")
     print("  BATCH COMPLETE")
     print(f"{'=' * 58}")
@@ -190,12 +254,10 @@ def fetch_full_articles(batch_size: int = 200, max_workers: int = 10):
 
 # ── DB SUMMARY ────────────────────────────────────────────────────
 def print_db_summary():
-    with Session(engine) as session:
-        outlets = [
-            row[0] for row in
-            session.query(RSSArticle.outlet).distinct().order_by(RSSArticle.outlet).all()
-        ]
+    """Prints how many articles have body text per outlet."""
+    outlets = ["The Hindu", "Times of India", "The Quint", "BBC India"]
 
+    with Session(engine) as session:
         print(f"\n  {'─' * 52}")
         print(f"  {'OUTLET':<22} {'WITH BODY':>10} {'WITHOUT':>10} {'TOTAL':>8}")
         print(f"  {'─' * 52}")
@@ -224,7 +286,13 @@ def print_db_summary():
 
 # ── RUN ───────────────────────────────────────────────────────────
 if __name__ == "__main__":
+
+    print("\nChecking / adding columns...")
+    add_body_columns()
+    print()
+
     fetch_full_articles(
-        batch_size=3000,
-        max_workers=20,
+        batch_size=300,    # process up to 300 articles per run
+        max_workers=10,    # 10 simultaneous downloads
+                           # reduce to 5 if you see many failures
     )
