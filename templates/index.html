@@ -2,270 +2,113 @@
 {% block title %}Dashboard — NewsLens{% endblock %}
 
 {% block extra_styles %}
-.page-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.25rem;
+.page-title { font-family:'Playfair Display',serif; font-size:2rem; font-weight:900; letter-spacing:-0.02em; margin-bottom:0.25rem; }
+.page-sub   { color:var(--muted); font-size:0.9rem; margin-bottom:2.5rem; }
+
+/* ── CONTROL CARDS ────────────────── */
+.control-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:3rem; }
+
+.control-card {
+  background:var(--card-bg); border:1px solid var(--rule); border-radius:10px;
+  padding:1.5rem; transition:box-shadow 0.2s;
 }
-.page-sub {
-  color: var(--muted);
-  font-size: 0.9rem;
-  margin-bottom: 2.5rem;
+.control-card:hover { box-shadow:var(--shadow-lg); }
+.control-card.running { border-color:var(--accent); box-shadow:0 0 0 3px rgba(201,98,42,0.12); }
+
+.control-header { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; margin-bottom:1.25rem; }
+
+.control-title { font-size:1rem; font-weight:700; margin-bottom:0.2rem; }
+.control-sub   { font-size:0.8rem; color:var(--muted); }
+
+.control-badge {
+  font-size:0.62rem; font-weight:700; letter-spacing:0.12em;
+  padding:0.25rem 0.6rem; border-radius:20px; white-space:nowrap; flex-shrink:0;
+  background:#f3f4f6; color:#6b7280; border:1px solid #e5e7eb;
+  transition:all 0.3s;
 }
+.control-badge.running { background:#fef3c7; color:#92400e; border-color:#fcd34d; animation:pulse 1.5s infinite; }
+.control-badge.done    { background:#dcfce7; color:#15803d; border-color:#bbf7d0; }
+.control-badge.error   { background:#fee2e2; color:#b91c1c; border-color:#fca5a5; }
 
-/* ── STAT CARDS ─────────────────────── */
-.stat-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.25rem;
-  margin-bottom: 3rem;
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+
+.control-meta { margin-bottom:1.25rem; border:1px solid var(--rule); border-radius:6px; overflow:hidden; }
+.meta-row { display:flex; justify-content:space-between; padding:0.55rem 0.85rem; border-bottom:1px solid var(--rule); font-size:0.82rem; }
+.meta-row:last-child { border-bottom:none; }
+.meta-key { color:var(--muted); }
+.meta-val { font-weight:500; text-align:right; font-size:0.8rem; }
+
+.control-btn {
+  width:100%; padding:0.7rem; border-radius:6px; border:none; cursor:pointer;
+  font-family:inherit; font-size:0.88rem; font-weight:600; transition:all 0.2s; letter-spacing:0.02em;
 }
+.btn-rss  { background:var(--ink); color:var(--paper); }
+.btn-rss:hover:not(:disabled)  { background:#333; }
+.btn-body { background:var(--center); color:#fff; }
+.btn-body:hover:not(:disabled) { opacity:0.88; }
+.control-btn:disabled { opacity:0.45; cursor:not-allowed; }
 
-.stat-card {
-  background: var(--card-bg);
-  border: 1px solid var(--rule);
-  border-radius: 8px;
-  padding: 1.5rem;
-  position: relative;
-  overflow: hidden;
-  transition: box-shadow 0.2s, transform 0.2s;
+/* ── STAT CARDS ──────────────────── */
+.stat-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1.25rem; margin-bottom:3rem; }
+.stat-card { background:var(--card-bg); border:1px solid var(--rule); border-radius:8px; padding:1.5rem; position:relative; overflow:hidden; transition:box-shadow 0.2s, transform 0.2s; }
+.stat-card:hover { box-shadow:var(--shadow-lg); transform:translateY(-2px); }
+.stat-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--accent); }
+.stat-card.blue::before  { background:var(--left);   }
+.stat-card.green::before { background:var(--center); }
+.stat-card.red::before   { background:var(--right);  }
+.stat-number { font-family:'Playfair Display',serif; font-size:3rem; font-weight:900; line-height:1; letter-spacing:-0.03em; }
+.stat-label  { font-size:0.75rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-top:0.5rem; }
+.stat-sub    { font-size:0.8rem; color:var(--muted); margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid var(--rule); }
+
+/* ── SECTION HEADER ─────────────── */
+.section-header { display:flex; align-items:baseline; gap:1rem; margin-bottom:1.25rem; padding-bottom:0.75rem; border-bottom:2px solid var(--ink); }
+.section-title  { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; }
+.section-count  { font-size:0.8rem; color:var(--muted); font-family:'DM Mono',monospace; }
+
+/* ── PROGRESS BARS ──────────────── */
+.coverage-section { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:3rem; }
+.coverage-card { background:var(--card-bg); border:1px solid var(--rule); border-radius:8px; padding:1.5rem; }
+.coverage-title { font-size:0.75rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem; }
+.progress-item { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.85rem; }
+.progress-label { width:100px; font-size:0.85rem; font-weight:500; flex-shrink:0; }
+.progress-bar-wrap { flex:1; height:8px; background:var(--rule); border-radius:4px; overflow:hidden; }
+.progress-bar  { height:100%; border-radius:4px; transition:width 0.8s ease; }
+.bar-left      { background:var(--left);   }
+.bar-center    { background:var(--center); }
+.bar-right     { background:var(--right);  }
+.bar-news      { background:#6b7280; }
+.bar-opinion   { background:#d97706; }
+.bar-analysis  { background:#7c3aed; }
+.progress-value { font-family:'DM Mono',monospace; font-size:0.8rem; color:var(--muted); width:40px; text-align:right; flex-shrink:0; }
+
+/* ── OUTLET GRID ─────────────────── */
+.outlet-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; margin-bottom:3rem; }
+.outlet-card { background:var(--card-bg); border:1px solid var(--rule); border-radius:8px; padding:1.25rem 1.5rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; transition:box-shadow 0.2s; }
+.outlet-card:hover { box-shadow:var(--shadow); }
+.outlet-name { font-weight:600; font-size:0.95rem; }
+.outlet-count { font-family:'Playfair Display',serif; font-size:2rem; font-weight:900; line-height:1; }
+.outlet-bar-wrap { height:6px; background:var(--rule); border-radius:3px; margin-top:0.5rem; overflow:hidden; }
+.outlet-bar { height:100%; border-radius:3px; background:var(--accent); }
+
+/* ── PIPELINE ────────────────────── */
+.pipeline { display:flex; align-items:center; gap:0; margin-bottom:3rem; background:var(--card-bg); border:1px solid var(--rule); border-radius:8px; overflow:hidden; }
+.pipeline-step { flex:1; padding:1rem 1.25rem; text-align:center; position:relative; border-right:1px solid var(--rule); }
+.pipeline-step:last-child { border-right:none; }
+.pipeline-step.done   { background:#f0fdf4; }
+.pipeline-step.active { background:#fffbeb; }
+.pipeline-step.todo   { background:var(--card-bg); opacity:0.5; }
+.step-num    { font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--muted); margin-bottom:0.25rem; }
+.step-name   { font-size:0.8rem; font-weight:600; letter-spacing:0.03em; }
+.step-status { font-size:1.1rem; margin-bottom:0.25rem; }
+
+/* ── TOAST NOTIFICATION ─────────── */
+.toast {
+  position:fixed; bottom:1.5rem; right:1.5rem; background:var(--ink); color:var(--paper);
+  padding:0.85rem 1.25rem; border-radius:8px; font-size:0.85rem; font-weight:500;
+  opacity:0; transform:translateY(10px); transition:all 0.3s; pointer-events:none; z-index:999;
+  max-width:320px; border-left:4px solid var(--accent);
 }
-
-.stat-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-}
-
-.stat-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--accent);
-}
-
-.stat-card.blue::before  { background: var(--left);   }
-.stat-card.green::before { background: var(--center);  }
-.stat-card.red::before   { background: var(--right);   }
-.stat-card.gold::before  { background: #c9622a;        }
-
-.stat-number {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: var(--ink);
-}
-
-.stat-label {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 0.5rem;
-}
-
-.stat-sub {
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--rule);
-}
-
-/* ── SECTION HEADERS ────────────────── */
-.section-header {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 2px solid var(--ink);
-}
-
-.section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
-  font-weight: 700;
-}
-
-.section-count {
-  font-size: 0.8rem;
-  color: var(--muted);
-  font-family: 'DM Mono', monospace;
-}
-
-/* ── OUTLET TABLE ───────────────────── */
-.outlet-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1rem;
-  margin-bottom: 3rem;
-}
-
-.outlet-card {
-  background: var(--card-bg);
-  border: 1px solid var(--rule);
-  border-radius: 8px;
-  padding: 1.25rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  transition: box-shadow 0.2s;
-}
-
-.outlet-card:hover { box-shadow: var(--shadow); }
-
-.outlet-name {
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-.outlet-count {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.outlet-bar-wrap {
-  height: 6px;
-  background: var(--rule);
-  border-radius: 3px;
-  margin-top: 0.5rem;
-  overflow: hidden;
-}
-
-.outlet-bar {
-  height: 100%;
-  border-radius: 3px;
-  background: var(--accent);
-  transition: width 0.6s ease;
-}
-
-/* ── PROGRESS RING ──────────────────── */
-.coverage-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-.coverage-card {
-  background: var(--card-bg);
-  border: 1px solid var(--rule);
-  border-radius: 8px;
-  padding: 1.5rem;
-}
-
-.coverage-title {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 1rem;
-}
-
-/* Progress bar style */
-.progress-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.85rem;
-}
-
-.progress-label {
-  width: 100px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  flex-shrink: 0;
-}
-
-.progress-bar-wrap {
-  flex: 1;
-  height: 8px;
-  background: var(--rule);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  border-radius: 4px;
-  transition: width 0.8s ease;
-}
-
-.bar-left    { background: var(--left);   }
-.bar-center  { background: var(--center); }
-.bar-right   { background: var(--right);  }
-.bar-news    { background: #6b7280; }
-.bar-opinion { background: #d97706; }
-.bar-analysis{ background: #7c3aed; }
-
-.progress-value {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.8rem;
-  color: var(--muted);
-  width: 40px;
-  text-align: right;
-  flex-shrink: 0;
-}
-
-/* ── PIPELINE STATUS ────────────────── */
-.pipeline {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  margin-bottom: 3rem;
-  background: var(--card-bg);
-  border: 1px solid var(--rule);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.pipeline-step {
-  flex: 1;
-  padding: 1rem 1.25rem;
-  text-align: center;
-  position: relative;
-  border-right: 1px solid var(--rule);
-}
-
-.pipeline-step:last-child { border-right: none; }
-
-.pipeline-step.done   { background: #f0fdf4; }
-.pipeline-step.active { background: #fffbeb; }
-.pipeline-step.todo   { background: var(--card-bg); opacity: 0.5; }
-
-.step-num {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--muted);
-  margin-bottom: 0.25rem;
-}
-
-.step-name {
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-}
-
-.step-status {
-  font-size: 1.1rem;
-  margin-bottom: 0.25rem;
-}
-
-@media (max-width: 768px) {
-  .coverage-section { grid-template-columns: 1fr; }
-  .pipeline { flex-direction: column; }
-  .pipeline-step { border-right: none; border-bottom: 1px solid var(--rule); }
-}
+.toast.show { opacity:1; transform:translateY(0); }
 {% endblock %}
 
 {% block content %}
@@ -273,7 +116,7 @@
 <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:2rem; padding-bottom:1rem; border-bottom:2px solid var(--ink);">
   <div>
     <h1 class="page-title">Pipeline Dashboard</h1>
-    <p class="page-sub">Real-time view of your news aggregation pipeline progress</p>
+    <p class="page-sub">Monitor collection progress and trigger manual runs</p>
   </div>
   <a href="/articles" style="background:var(--ink); color:var(--paper); text-decoration:none; padding:0.6rem 1.25rem; border-radius:5px; font-size:0.85rem; font-weight:500;">
     Browse Articles →
@@ -285,75 +128,107 @@
   <span class="section-title">Pipeline Status</span>
   <span class="section-count">7 agents total</span>
 </div>
-
-<div class="pipeline" style="margin-bottom:3rem;">
-  <div class="pipeline-step done">
-    <div class="step-status">✅</div>
-    <div class="step-num">AGENT 1</div>
-    <div class="step-name">Collector</div>
-  </div>
-  <div class="pipeline-step active">
-    <div class="step-status">⚙️</div>
-    <div class="step-num">AGENT 2</div>
-    <div class="step-name">Body Fetcher</div>
-  </div>
-  <div class="pipeline-step todo">
-    <div class="step-status">⏳</div>
-    <div class="step-num">AGENT 3</div>
-    <div class="step-name">Clustering</div>
-  </div>
-  <div class="pipeline-step todo">
-    <div class="step-status">⏳</div>
-    <div class="step-num">AGENT 4</div>
-    <div class="step-name">Summarizer</div>
-  </div>
-  <div class="pipeline-step todo">
-    <div class="step-status">⏳</div>
-    <div class="step-num">AGENT 5</div>
-    <div class="step-name">Comparison</div>
-  </div>
-  <div class="pipeline-step todo">
-    <div class="step-status">⏳</div>
-    <div class="step-num">AGENT 6</div>
-    <div class="step-name">Bias Detector</div>
-  </div>
-  <div class="pipeline-step todo">
-    <div class="step-status">⏳</div>
-    <div class="step-num">AGENT 7</div>
-    <div class="step-name">Synthesizer</div>
-  </div>
+<div class="pipeline">
+  <div class="pipeline-step done">  <div class="step-status">✅</div><div class="step-num">AGENT 1</div><div class="step-name">Collector</div></div>
+  <div class="pipeline-step active"><div class="step-status">⚙️</div><div class="step-num">AGENT 2</div><div class="step-name">Body Fetcher</div></div>
+  <div class="pipeline-step todo">  <div class="step-status">⏳</div><div class="step-num">AGENT 3</div><div class="step-name">Clustering</div></div>
+  <div class="pipeline-step todo">  <div class="step-status">⏳</div><div class="step-num">AGENT 4</div><div class="step-name">Summarizer</div></div>
+  <div class="pipeline-step todo">  <div class="step-status">⏳</div><div class="step-num">AGENT 5</div><div class="step-name">Comparison</div></div>
+  <div class="pipeline-step todo">  <div class="step-status">⏳</div><div class="step-num">AGENT 6</div><div class="step-name">Bias Detector</div></div>
+  <div class="pipeline-step todo">  <div class="step-status">⏳</div><div class="step-num">AGENT 7</div><div class="step-name">Synthesizer</div></div>
 </div>
 
-<!-- KEY STATS -->
+<!-- MANUAL CONTROLS -->
+<div class="section-header">
+  <span class="section-title">Manual Controls</span>
+  <span class="section-count">auto-collects every 4h · trigger anytime</span>
+</div>
+
+<div class="control-grid">
+
+  <!-- RSS FEED CARD -->
+  <div class="control-card" id="rss-card">
+    <div class="control-header">
+      <div>
+        <div class="control-title">📡 RSS Feed Collection</div>
+        <div class="control-sub">Checks all 33 outlets for new articles</div>
+      </div>
+      <div class="control-badge" id="rss-badge">IDLE</div>
+    </div>
+    <div class="control-meta">
+      <div class="meta-row">
+        <span class="meta-key">Last run</span>
+        <span class="meta-val" id="rss-last-run">{{ stats.last_rss_run }}</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-key">Last result</span>
+        <span class="meta-val" id="rss-last-result">—</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-key">Coverage</span>
+        <span class="meta-val">{{ stats.outlet_count }} outlets · right + center + left</span>
+      </div>
+    </div>
+    <button class="control-btn btn-rss" id="rss-btn" onclick="triggerJob('rss')">
+      <span id="rss-btn-text">▶ Fetch New Articles Now</span>
+    </button>
+  </div>
+
+  <!-- BODY FETCH CARD -->
+  <div class="control-card" id="body-card">
+    <div class="control-header">
+      <div>
+        <div class="control-title">🔍 Body Text Fetcher</div>
+        <div class="control-sub">Downloads full text for articles without body</div>
+      </div>
+      <div class="control-badge" id="body-badge">IDLE</div>
+    </div>
+    <div class="control-meta">
+      <div class="meta-row">
+        <span class="meta-key">Last run</span>
+        <span class="meta-val" id="body-last-run">—</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-key">Last result</span>
+        <span class="meta-val" id="body-last-result">—</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-key">Pending</span>
+        <span class="meta-val" id="body-pending">{{ stats.pending_body }} articles need body text</span>
+      </div>
+    </div>
+    <button class="control-btn btn-body" id="body-btn" onclick="triggerJob('body')"
+      {% if stats.pending_body == 0 %}disabled{% endif %}>
+      <span id="body-btn-text">▶ Fetch Body Text Now</span>
+    </button>
+  </div>
+
+</div>
+
+<!-- STATS -->
 <div class="section-header">
   <span class="section-title">Collection Stats</span>
 </div>
-
 <div class="stat-grid">
   <div class="stat-card">
-    <div class="stat-number">{{ stats.total }}</div>
+    <div class="stat-number" id="stat-total">{{ stats.total }}</div>
     <div class="stat-label">Total Articles</div>
-    <div class="stat-sub">Collected from {{ stats.outlet_count }} outlets</div>
+    <div class="stat-sub">Across {{ stats.outlet_count }} outlets</div>
   </div>
-
   <div class="stat-card green">
-    <div class="stat-number">{{ stats.with_body }}</div>
+    <div class="stat-number" id="stat-body">{{ stats.with_body }}</div>
     <div class="stat-label">Full Text Fetched</div>
     <div class="stat-sub">
-      {% if stats.total > 0 %}
-        {{ ((stats.with_body / stats.total) * 100) | int }}% success rate
-      {% endif %}
+      {% if stats.total > 0 %}{{ ((stats.with_body / stats.total) * 100) | int }}% success rate{% endif %}
     </div>
   </div>
-
   <div class="stat-card red">
     <div class="stat-number">{{ stats.without_body }}</div>
     <div class="stat-label">Blocked / Paywalled</div>
     <div class="stat-sub">Could not extract</div>
   </div>
-
-  <div class="stat-card gold">
-    <div class="stat-number">{{ stats.per_outlet | length }}</div>
+  <div class="stat-card blue">
+    <div class="stat-number">{{ stats.outlet_count }}</div>
     <div class="stat-label">Active Outlets</div>
     <div class="stat-sub">India edition</div>
   </div>
@@ -361,67 +236,43 @@
 
 <!-- COVERAGE BREAKDOWN -->
 <div class="coverage-section">
-
-  <!-- By Bias -->
   <div class="coverage-card">
     <div class="coverage-title">Coverage by Political Lean</div>
     {% set total = stats.total or 1 %}
-
-    {% for lean, color_class in [('left','bar-left'), ('center','bar-center'), ('right','bar-right')] %}
+    {% for lean, color_class in [('left','bar-left'),('center','bar-center'),('right','bar-right')] %}
       {% set count = stats.per_bias.get(lean, 0) %}
       <div class="progress-item">
-        <div class="progress-label">
-          <span class="badge badge-{{ lean }}">{{ lean }}</span>
-        </div>
-        <div class="progress-bar-wrap">
-          <div class="progress-bar {{ color_class }}" style="width: {{ ((count / total) * 100) | int }}%"></div>
-        </div>
+        <div class="progress-label"><span class="badge badge-{{ lean }}">{{ lean }}</span></div>
+        <div class="progress-bar-wrap"><div class="progress-bar {{ color_class }}" style="width:{{ ((count / total) * 100) | int }}%"></div></div>
         <div class="progress-value">{{ count }}</div>
       </div>
     {% endfor %}
-
-    <p style="font-size:0.75rem; color:var(--muted); margin-top:1rem;">
-      Note: Lean assigned at outlet level — article-level bias detection coming in Agent 6.
-    </p>
+    <p style="font-size:0.75rem; color:var(--muted); margin-top:1rem;">Outlet-level label — article-level bias detection in Agent 6.</p>
   </div>
-
-  <!-- By Content Type -->
   <div class="coverage-card">
     <div class="coverage-title">Coverage by Content Type</div>
-
     {% for item in stats.per_type %}
       <div class="progress-item">
-        <div class="progress-label">
-          <span class="badge badge-{{ item.type }}">{{ item.type }}</span>
-        </div>
-        <div class="progress-bar-wrap">
-          <div class="progress-bar bar-{{ item.type }}" style="width: {{ ((item.count / total) * 100) | int }}%"></div>
-        </div>
+        <div class="progress-label"><span class="badge badge-{{ item.type }}">{{ item.type }}</span></div>
+        <div class="progress-bar-wrap"><div class="progress-bar bar-{{ item.type }}" style="width:{{ ((item.count / total) * 100) | int }}%"></div></div>
         <div class="progress-value">{{ item.count }}</div>
       </div>
     {% endfor %}
-
-    <p style="font-size:0.75rem; color:var(--muted); margin-top:1rem;">
-      Detected from URL patterns and title keywords.
-    </p>
+    <p style="font-size:0.75rem; color:var(--muted); margin-top:1rem;">Detected from URL patterns and title keywords.</p>
   </div>
-
 </div>
 
-<!-- PER OUTLET BREAKDOWN -->
+<!-- OUTLET BREAKDOWN -->
 <div class="section-header">
   <span class="section-title">Outlet Breakdown</span>
   <span class="section-count">{{ stats.per_outlet | length }} sources</span>
 </div>
-
 <div class="outlet-grid">
   {% for o in stats.per_outlet %}
   <div class="outlet-card">
     <div>
       <div class="outlet-name">{{ o.outlet }}</div>
-      <div style="margin-top:0.35rem;">
-        <span class="badge badge-{{ o.bias }}">{{ o.bias }}</span>
-      </div>
+      <div style="margin-top:0.35rem;"><span class="badge badge-{{ o.bias }}">{{ o.bias }}</span></div>
       <div class="outlet-bar-wrap" style="width:120px; margin-top:0.75rem;">
         <div class="outlet-bar" style="width:{{ ((o.count / stats.total) * 100) | int }}%"></div>
       </div>
@@ -430,5 +281,126 @@
   </div>
   {% endfor %}
 </div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── JOB MANAGEMENT ─────────────────────────────
+const jobState = { rss: null, body: null };
+
+function showToast(msg, isError=false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.borderLeftColor = isError ? '#ef4444' : 'var(--accent)';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+async function triggerJob(type) {
+  const btn = document.getElementById(`${type}-btn`);
+  btn.disabled = true;
+
+  try {
+    const res  = await fetch(`/api/trigger-${type}`, { method: 'POST' });
+    const data = await res.json();
+
+    if (data.status === 'already_running') {
+      showToast(`${type === 'rss' ? 'RSS fetch' : 'Body fetch'} is already running…`);
+      btn.disabled = false;
+      return;
+    }
+
+    showToast(`${type === 'rss' ? '📡 RSS collection' : '🔍 Body fetch'} started — this may take a few minutes.`);
+    updateJobUI(type, { running: true });
+    startPolling();
+  } catch(e) {
+    showToast('Failed to start job. Check the terminal.', true);
+    btn.disabled = false;
+  }
+}
+
+function updateJobUI(type, job) {
+  const badge    = document.getElementById(`${type}-badge`);
+  const btn      = document.getElementById(`${type}-btn`);
+  const btnText  = document.getElementById(`${type}-btn-text`);
+  const lastRun  = document.getElementById(`${type}-last-run`);
+  const lastRes  = document.getElementById(`${type}-last-result`);
+  const card     = document.getElementById(`${type}-card`);
+
+  if (job.running) {
+    badge.textContent = '⚙ RUNNING';
+    badge.className   = 'control-badge running';
+    btnText.textContent = '⏳ Running…';
+    btn.disabled = true;
+    card.classList.add('running');
+  } else {
+    badge.textContent = job.last_error ? '✗ ERROR' : (job.last_run ? '✓ DONE' : 'IDLE');
+    badge.className   = `control-badge ${job.last_error ? 'error' : (job.last_run ? 'done' : '')}`;
+    card.classList.remove('running');
+
+    const labels = { rss: '▶ Fetch New Articles Now', body: '▶ Fetch Body Text Now' };
+    btnText.textContent = labels[type];
+    btn.disabled = false;
+
+    if (job.last_run)    lastRun.textContent = job.last_run;
+    if (job.last_result) lastRes.textContent = job.last_result;
+    if (job.last_error)  {
+      lastRes.textContent = '⚠ ' + job.last_error.slice(0, 60);
+      lastRes.style.color = '#b91c1c';
+    }
+  }
+}
+
+// ── POLLING ────────────────────────────────────
+let pollInterval = null;
+
+async function pollStatus() {
+  try {
+    const res  = await fetch('/api/job-status');
+    const data = await res.json();
+
+    const rssWasRunning  = jobState.rss?.running;
+    const bodyWasRunning = jobState.body?.running;
+
+    jobState.rss  = data.rss;
+    jobState.body = data.body;
+
+    updateJobUI('rss',  data.rss);
+    updateJobUI('body', data.body);
+
+    // Show toast when job completes
+    if (rssWasRunning && !data.rss.running) {
+      showToast(`✓ RSS done — ${data.rss.last_result || 'complete'}`);
+    }
+    if (bodyWasRunning && !data.body.running) {
+      showToast(`✓ Body fetch done — ${data.body.last_result || 'complete'}`);
+      // Refresh pending count
+      fetch('/api/stats').then(r=>r.json()).then(s => {
+        const el = document.getElementById('body-pending');
+        if (el) el.textContent = `${s.pending_body} articles need body text`;
+        const btn = document.getElementById('body-btn');
+        if (btn) btn.disabled = s.pending_body === 0;
+      });
+    }
+
+    // Stop polling if nothing is running
+    if (!data.rss.running && !data.body.running) {
+      clearInterval(pollInterval);
+      pollInterval = null;
+    }
+  } catch(e) {
+    // silently ignore network errors during polling
+  }
+}
+
+function startPolling() {
+  if (pollInterval) return;
+  pollInterval = setInterval(pollStatus, 3000);
+}
+
+// Initial status load
+pollStatus();
+</script>
 
 {% endblock %}

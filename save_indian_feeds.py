@@ -12,10 +12,10 @@ from sqlalchemy.orm import DeclarativeBase, Session
 # ── LOAD ENV VARIABLES ────────────────────────────────────────────
 load_dotenv()
 
-DB_HOST     = os.getenv("DB_HOST", "localhost")
-DB_PORT     = os.getenv("DB_PORT", "5432")
-DB_NAME     = os.getenv("DB_NAME", "newsdb")
-DB_USER     = os.getenv("DB_USER", "postgres")
+DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_PORT = os.getenv("DB_PORT", "5432")
+DB_NAME = os.getenv("DB_NAME", "newsdb")
+DB_USER = os.getenv("DB_USER", "postgres")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 
 DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
@@ -37,15 +37,19 @@ class RSSArticle(Base):
     """
     __tablename__ = "rss_articles"
 
-    id          = Column(String,   primary_key=True, default=lambda: str(uuid.uuid4()))
-    outlet      = Column(String,   nullable=False)        # e.g. "The Hindu"
-    bias        = Column(String,   nullable=False)        # "left" / "center" / "right"
-    country     = Column(String,   default="IN")          # India-focused feeds
-    title       = Column(Text,     nullable=False)
-    url         = Column(String,   unique=True)           # unique prevents duplicate saves
-    summary     = Column(Text)                            # RSS snippet (not full article)
-    published   = Column(String)                          # raw date string from feed
-    fetched_at  = Column(DateTime, default=datetime.utcnow)
+    id = Column(String,   primary_key=True, default=lambda: str(uuid.uuid4()))
+    outlet = Column(String,   nullable=False)        # e.g. "The Hindu"
+    # "left" / "center" / "right"
+    bias = Column(String,   nullable=False)
+    country = Column(String,   default="IN")          # India-focused feeds
+    title = Column(Text,     nullable=False)
+    # unique prevents duplicate saves
+    url = Column(String,   unique=True)
+    # RSS snippet (not full article)
+    summary = Column(Text)
+    # raw date string from feed
+    published = Column(String)
+    fetched_at = Column(DateTime, default=datetime.utcnow)
 
 
 class FetchLog(Base):
@@ -56,13 +60,14 @@ class FetchLog(Base):
     """
     __tablename__ = "fetch_logs"
 
-    id            = Column(String,  primary_key=True, default=lambda: str(uuid.uuid4()))
-    outlet        = Column(String)
-    run_at        = Column(DateTime, default=datetime.utcnow)
-    articles_new  = Column(Integer,  default=0)    # newly inserted
+    id = Column(String,  primary_key=True, default=lambda: str(uuid.uuid4()))
+    outlet = Column(String)
+    run_at = Column(DateTime, default=datetime.utcnow)
+    articles_new = Column(Integer,  default=0)    # newly inserted
     articles_skip = Column(Integer,  default=0)    # skipped (already in DB)
-    status        = Column(String)                 # "success" or "failed"
-    error_message = Column(Text)                   # filled if status = "failed"
+    status = Column(String)                 # "success" or "failed"
+    # filled if status = "failed"
+    error_message = Column(Text)
 
 
 def init_db():
@@ -130,13 +135,13 @@ def save_article(session: Session, data: dict) -> bool:
         return False  # already in database, skip
 
     article = RSSArticle(
-        outlet    = data["outlet"],
-        bias      = data["bias"],
-        country   = data["country"],
-        title     = data["title"],
-        url       = data["url"],
-        summary   = data["summary"],
-        published = data["published"],
+        outlet=data["outlet"],
+        bias=data["bias"],
+        country=data["country"],
+        title=data["title"],
+        url=data["url"],
+        summary=data["summary"],
+        published=data["published"],
     )
     session.add(article)
     return True
@@ -151,10 +156,10 @@ def fetch_outlet(outlet_name: str, outlet_info: dict) -> None:
     print(f"Outlet : {outlet_name}  [{outlet_info['bias']}]")
     print(f"Feeds  : {len(outlet_info['feeds'])} feed(s)")
 
-    total_new  = 0
+    total_new = 0
     total_skip = 0
-    error_msg  = None
-    status     = "success"
+    error_msg = None
+    status = "success"
 
     try:
         with Session(engine) as session:
@@ -164,7 +169,8 @@ def fetch_outlet(outlet_name: str, outlet_info: dict) -> None:
                 feed = feedparser.parse(feed_url)
 
                 if not feed.entries:
-                    print(f"  [!] No entries found — feed may be unavailable or empty")
+                    print(
+                        f"  [!] No entries found — feed may be unavailable or empty")
                     continue
 
                 print(f"  Found {len(feed.entries)} entries in feed")
@@ -197,23 +203,24 @@ def fetch_outlet(outlet_name: str, outlet_info: dict) -> None:
             session.commit()
 
     except Exception as e:
-        status    = "failed"
+        status = "failed"
         error_msg = str(e)
         print(f"\n  [ERROR] {outlet_name} failed: {e}")
 
     # ── Write to fetch log ─────────────────────────────────────────
     with Session(engine) as log_session:
         log = FetchLog(
-            outlet        = outlet_name,
-            articles_new  = total_new,
-            articles_skip = total_skip,
-            status        = status,
-            error_message = error_msg,
+            outlet=outlet_name,
+            articles_new=total_new,
+            articles_skip=total_skip,
+            status=status,
+            error_message=error_msg,
         )
         log_session.add(log)
         log_session.commit()
 
-    print(f"\n  Result → Saved: {total_new}  |  Skipped (duplicates): {total_skip}  |  Status: {status}")
+    print(
+        f"\n  Result → Saved: {total_new}  |  Skipped (duplicates): {total_skip}  |  Status: {status}")
 
 
 def print_summary():
@@ -224,7 +231,8 @@ def print_summary():
         print(f"{'═' * 50}")
 
         for outlet_name in INDIAN_OUTLETS:
-            count = session.query(RSSArticle).filter_by(outlet=outlet_name).count()
+            count = session.query(RSSArticle).filter_by(
+                outlet=outlet_name).count()
             print(f"  {outlet_name:<22} {count:>4} articles")
 
         total = session.query(RSSArticle).count()
@@ -238,7 +246,8 @@ def print_summary():
 def main():
     print("=" * 50)
     print("  Indian News RSS Feed Collector")
-    print(f"  Started at: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC")
+    print(
+        f"  Started at: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC")
     print("=" * 50)
 
     # Step 1: Make sure tables exist
@@ -253,5 +262,6 @@ def main():
     print_summary()
 
 
+run_collection = main
 if __name__ == "__main__":
     main()
