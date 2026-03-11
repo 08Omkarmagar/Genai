@@ -3454,3 +3454,1638 @@ Traceback (most recent call last):
     ^^^^^^^^^^^^^^^^^
 jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'widthratio'. Jinja was looking for the following tags: 'endfor' or 'else'. The innermost block that needs to be closed is 'for'.
 2026-03-10 22:18:03  INFO      127.0.0.1 - - [10/Mar/2026 22:18:03] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-03-11 19:11:43  INFO      [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-03-11 19:11:43  INFO      [33mPress CTRL+C to quit[0m
+2026-03-11 19:11:47  INFO      127.0.0.1 - - [11/Mar/2026 19:11:47] "GET / HTTP/1.1" 200 -
+2026-03-11 19:11:47  INFO      127.0.0.1 - - [11/Mar/2026 19:11:47] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:11:48  INFO      =======================================================
+2026-03-11 19:11:48  INFO      127.0.0.1 - - [11/Mar/2026 19:11:48] "POST /api/trigger-rss HTTP/1.1" 200 -
+2026-03-11 19:11:48  INFO        Indian News RSS Feed Collector
+2026-03-11 19:11:48  INFO        Run ID  : 67cc4889
+2026-03-11 19:11:48  INFO        Started : 2026-03-11 13:41:48 UTC
+2026-03-11 19:11:48  INFO        Outlets : 33
+2026-03-11 19:11:48  INFO      =======================================================
+2026-03-11 19:11:48  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:11:48  INFO        Outlet : OpIndia  [RIGHT]
+2026-03-11 19:11:48  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:11:48  INFO      
+    Parsing: https://www.opindia.com/feed/
+2026-03-11 19:11:49  INFO          Found 10 entries
+2026-03-11 19:11:49  INFO          [+] From Harrow Holi celebrations to Indian restaurants in Wembley, Hindus
+2026-03-11 19:11:49  INFO          [+] Strait of Hormuz crisis: How Saudi and UAE pipelines are keeping globa
+2026-03-11 19:11:49  INFO          [+] Shortage of LPG? Refill delays in several cities affect restaurants in
+2026-03-11 19:11:49  INFO          [+] CNN deletes tweet after online backlash: How an ISIS-inspired terror a
+2026-03-11 19:11:49  INFO          [+] Ummah over India? Islamists are targeting Adani-Elbit plant in Hyderab
+2026-03-11 19:11:49  INFO          [+] India’s Sheshnag-150 and Project KAL: Readying for drone warfare throu
+2026-03-11 19:11:49  INFO          [+] Ignored warnings, now pleading for evacuation: The self-inflicted cris
+2026-03-11 19:11:49  INFO          [+] Global oil crisis? India has seen it before, and has found ways to pro
+2026-03-11 19:11:49  INFO          [+] Molester, old enmity, brittle social relations and more: How Swara Bha
+2026-03-11 19:11:49  INFO          [+] As Centre is set to table Electricity Amendment Bill 2025, power engin
+2026-03-11 19:11:50  INFO      
+  Result → Saved: 10  |  Skipped: 0  |  Status: success
+2026-03-11 19:11:51  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:11:51  INFO        Outlet : Swarajya  [RIGHT]
+2026-03-11 19:11:51  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:11:51  INFO      
+    Parsing: https://swarajyamag.com/feed
+2026-03-11 19:11:51  INFO      127.0.0.1 - - [11/Mar/2026 19:11:51] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:11:52  INFO          Found 1 entries
+2026-03-11 19:11:52  INFO          [+] Centre Moves To Create Rs 1 Lakh Crore Economic Stabilisation Fund Ami
+2026-03-11 19:11:52  INFO      
+  Result → Saved: 1  |  Skipped: 0  |  Status: success
+2026-03-11 19:11:53  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:11:53  INFO        Outlet : Organiser  [RIGHT]
+2026-03-11 19:11:53  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:11:53  INFO      
+    Parsing: https://organiser.org/feed/
+2026-03-11 19:11:53  INFO          Found 10 entries
+2026-03-11 19:11:53  INFO          [+] Hyderabad police seize vehicles without papers; AIMIM intervene and fr
+2026-03-11 19:11:53  INFO          [+] Kerala: “Give NDA 5 years, end LDF-UDF unholy alliance, wipe out corru
+2026-03-11 19:11:53  INFO          [+] ‘Secular Syndicate’: How media narratives target Hindu traditions whil
+2026-03-11 19:11:53  INFO          [+] Karnataka Govt ‘Bankrupt’? BJP’s Vijayendra slams Siddaramaiah over de
+2026-03-11 19:11:53  INFO          [+] Keralam police warn private temple against singing ‘Gangeet’ during fe
+2026-03-11 19:11:53  INFO          [+] Major Blow to Maoists in Bastar: 108 cadres surrender, Rs 3.61 crore c
+2026-03-11 19:11:53  INFO          [+] Ghaziabad: Islamists attack Hindu family in Nandgram for playing Hanum
+2026-03-11 19:11:53  INFO          [+] Assam Elections: Battle in Jalukbari constituency; CM Sarma’s developm
+2026-03-11 19:11:53  INFO          [+] India’s LPG Story! From Congress-Era Cooking Gas Shortages to Stable S
+2026-03-11 19:11:53  INFO          [+] J&K: Nearly 90 per cent rainfall deficit raises concerns over dip in w
+2026-03-11 19:11:54  INFO      
+  Result → Saved: 10  |  Skipped: 0  |  Status: success
+2026-03-11 19:11:54  INFO      127.0.0.1 - - [11/Mar/2026 19:11:54] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:11:55  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:11:55  INFO        Outlet : Republic World  [RIGHT]
+2026-03-11 19:11:55  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:11:55  INFO      
+    Parsing: https://www.republicworld.com/rss.xml
+2026-03-11 19:11:55  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:11:55  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-11 19:11:56  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:11:56  INFO        Outlet : DNA India  [RIGHT]
+2026-03-11 19:11:56  INFO        Feeds  : 2 feed(s)
+2026-03-11 19:11:56  INFO      
+    Parsing: https://www.dnaindia.com/feeds/india.xml
+2026-03-11 19:11:56  INFO          Found 20 entries
+2026-03-11 19:11:56  INFO          [+] Government claims 'enough' LPG stocks, urges consumers not to panic
+2026-03-11 19:11:56  INFO          [+] CM Rekha Gupta-led Delhi govt set to add 200 electric buses this month
+2026-03-11 19:11:56  INFO          [+] Air India Express' hard landing caught on camera; Watch how it lost no
+2026-03-11 19:11:56  INFO          [+] LPG Crisis: Induction cooktops are going 'out of stock' in Mumbai, Del
+2026-03-11 19:11:56  INFO          [+] LPG Crisis amid US-Iran War: Rumours of supply disruption trigger pani
+2026-03-11 19:11:56  INFO          [+] CM Rekha Gupta's Delhi government considers 'Green Budget': Why is it 
+2026-03-11 19:11:56  INFO          [+] PM Kisan Yojana: Narendra Modi to credit Rs 2,000 to farmers' accounts
+2026-03-11 19:11:56  INFO          [+] What is passive euthanasia? Supreme Court permits withdrawal of life s
+2026-03-11 19:11:56  INFO          [+] Faridabad to Noida Jewar Airport in minutes: Cabinet approves 7.8 km l
+2026-03-11 19:11:56  INFO          [+] Pune Horror: 18-year-old girl killed after truck hits two-wheeler from
+2026-03-11 19:11:56  INFO          [+] LPG Shortage due to Middle east crisis? India set to secure alternativ
+2026-03-11 19:11:56  INFO          [+] Delhi LPG shortage: Why are Delhites panic buying after government's 2
+2026-03-11 19:11:56  INFO          [+] US-Iran war: Air India flights to cost more as it imposes fuel surchar
+2026-03-11 19:11:56  INFO          [+] Hottest March in 50 years: North India scorches, Delhi records its hig
+2026-03-11 19:11:57  INFO      127.0.0.1 - - [11/Mar/2026 19:11:57] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:11:57  INFO      
+    Parsing: https://www.dnaindia.com/feeds/politics.xml
+2026-03-11 19:11:57  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:11:57  INFO      
+  Result → Saved: 14  |  Skipped: 6  |  Status: success
+2026-03-11 19:11:58  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:11:58  INFO        Outlet : The Sunday Guardian  [RIGHT]
+2026-03-11 19:11:58  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:11:58  INFO      
+    Parsing: https://www.sundayguardianlive.com/feed
+2026-03-11 19:11:59  INFO          Found 10 entries
+2026-03-11 19:11:59  INFO          [+] Balen Shah’s Victory and Modi’s Outreach: A New Chapter in India–Nepal
+2026-03-11 19:11:59  INFO          [+] The Night That Changed Tibet Forever: Revisiting the 1959 Lhasa Uprisi
+2026-03-11 19:11:59  INFO          [+] Iran-Israel War Latest News: India-Bound Cargo Ship Mayuree Naree Atta
+2026-03-11 19:11:59  INFO          [+] BREAKING: IPL 2026 Schedule Out — RCB vs SRH on March 28; MI Meet KKR,
+2026-03-11 19:11:59  INFO          [+] PM Modi to inaugurate NXT Summit, CJI Surya Kant among speakers; 120+ 
+2026-03-11 19:11:59  INFO          [+] Is It Good to Have Hot Coffee at Night for Fatty Liver? Here’s What Fa
+2026-03-11 19:11:59  INFO          [+] Sri Lanka orders repatriation of 84 Iranian sailors killed in US subma
+2026-03-11 19:11:59  INFO          [+] SC allows withdrawal of life support in India’s first passive euthanas
+2026-03-11 19:11:59  INFO          [+] Where To Watch Bodo/Glimt vs Sporting C.P: UEFA Champions League Live 
+2026-03-11 19:11:59  INFO          [+] Baba Vanga Prediction 2026: Will US-Israel-Iran War Affect Indian Curr
+2026-03-11 19:12:00  INFO      127.0.0.1 - - [11/Mar/2026 19:12:00] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:00  INFO      
+  Result → Saved: 10  |  Skipped: 0  |  Status: success
+2026-03-11 19:12:01  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:01  INFO        Outlet : Zee News  [RIGHT]
+2026-03-11 19:12:01  INFO        Feeds  : 2 feed(s)
+2026-03-11 19:12:01  INFO      
+    Parsing: https://zeenews.india.com/rss/india-national-news.xml
+2026-03-11 19:12:02  INFO      127.0.0.1 - - [11/Mar/2026 19:12:02] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:03  INFO          Found 20 entries
+2026-03-11 19:12:03  INFO          [+] Two Indians killed, one missing after merchant ships attacked in Middl
+2026-03-11 19:12:03  INFO          [+] NITI Aayog launches second annual edition of ‘Fiscal Health Index’
+2026-03-11 19:12:03  INFO          [+] What will happen to Harish Rana next in AIIMS after SC approves passiv
+2026-03-11 19:12:03  INFO          [+] Who is Rohit Tilak? Why Congress is staring at yet another exodus in M
+2026-03-11 19:12:03  INFO          [+] Severe LPG crisis gripping country, over 1 cr people face risk of losi
+2026-03-11 19:12:03  INFO          [+] Who is Harish Rana? Man granted euthanasia by SC for first time in Ind
+2026-03-11 19:12:03  INFO          [+] Legal pursuit and extradition triumphs after the 1993 Mumbai serial bl
+2026-03-11 19:12:03  INFO          [+] Delhi Free LPG Cylinder Scheme 2026: How To Apply, Eligibility & DBT D
+2026-03-11 19:12:03  INFO          [+] LPG gas price today: 25-day rule triggers black market fears; domestic
+2026-03-11 19:12:03  INFO          [+] Kerala CM flags cooking gas shortage; seeks central intervention for p
+2026-03-11 19:12:03  INFO          [+] What is the meaning of A, B, C, D codes on LPG cylinders? Hidden reaso
+2026-03-11 19:12:03  INFO          [+] Harish Rana case: Supreme Court allows passive euthanasia for man in c
+2026-03-11 19:12:03  INFO          [+] MMS Viral Video: Why the `Pinay Gold Medalist` Zyan Cabrera leak is a 
+2026-03-11 19:12:03  INFO          [+] ChiChi viral video: Is Vera Hill`s leaked MMS real or phishing scam?
+2026-03-11 19:12:03  INFO          [+] Sarah Baloch MMS Viral Video: Fact check on the Assam incident link sc
+2026-03-11 19:12:03  INFO          [+] `AI vs infrastructure`: Himanta Sarma hits back after Assam highway vi
+2026-03-11 19:12:03  INFO          [+] LPG prices rising: Discover 5 smart cooking alternatives that can save
+2026-03-11 19:12:03  INFO          [+] Jammu & Kashmir weather alert: Rain and snow to bring respite from unu
+2026-03-11 19:12:03  INFO          [+] Air India, IndiGo special flights to UAE & Jeddah: Full list of routes
+2026-03-11 19:12:04  INFO      
+    Parsing: https://zeenews.india.com/rss/politics-news.xml
+2026-03-11 19:12:07  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:07  INFO      
+  Result → Saved: 19  |  Skipped: 1  |  Status: success
+2026-03-11 19:12:07  INFO      127.0.0.1 - - [11/Mar/2026 19:12:07] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:08  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:08  INFO        Outlet : India Today  [RIGHT]
+2026-03-11 19:12:08  INFO        Feeds  : 2 feed(s)
+2026-03-11 19:12:08  INFO      
+    Parsing: https://www.indiatoday.in/rss/1206578
+2026-03-11 19:12:08  INFO          Found 20 entries
+2026-03-11 19:12:08  INFO          [+] Opposition's no-trust motion against Speaker defeated in Lok Sabha ami
+2026-03-11 19:12:08  INFO          [+] Why Supreme Court allowed passive euthanasia for Ghaziabad man
+2026-03-11 19:12:08  INFO          [+] Two Indians killed, one missing: Government lists casualties in Middle
+2026-03-11 19:12:08  INFO          [+] Induction cooktops going out of stock across India amid LPG crisis
+2026-03-11 19:12:08  INFO          [+] Winks, kisses, low attendance in Parliament: Amit Shah shreds Rahul Ga
+2026-03-11 19:12:08  INFO          [+] Sold home, 12 years of care: Family's fight for Harish Rana's right to
+2026-03-11 19:12:08  INFO          [+] What Harish Rana judgment means for euthanasia in India
+2026-03-11 19:12:08  INFO          [+] BJP got best returns on Bihar poll investments. Cong lost 30% of its s
+2026-03-11 19:12:08  INFO          [+] Himanta Sarma compares Assam highway to F1 track, internet calls it AI
+2026-03-11 19:12:08  INFO          [+] SC sees Uniform Civil Code as solution to Sharia law's bias against Mu
+2026-03-11 19:12:08  INFO          [+] Govt ensuring safety of stranded Indians but Congress politicising Gul
+2026-03-11 19:12:08  INFO          [+] Menus cut, restaurants shut, long queues for cylinders as LPG crisis d
+2026-03-11 19:12:08  INFO          [+] Arvind Kejriwal hits out at PM Modi amid LPG crisis, calls him 'slave 
+2026-03-11 19:12:08  INFO          [+] UP woman declared brain-dead comes back to life after ambulance hits p
+2026-03-11 19:12:08  INFO          [+] Air India Express jet stuck on Phuket runway after losing nose wheel d
+2026-03-11 19:12:08  INFO          [+] Silence diminishes value of your voice: Ex-diplomat slams India's stan
+2026-03-11 19:12:08  INFO          [+] Best interest of patient is paramount: Key takeaways from SC's euthana
+2026-03-11 19:12:08  INFO          [+] Justice Pardiwala tears up while delivering Harish Rana euthanasia ver
+2026-03-11 19:12:08  INFO          [+] Supreme Court allows passive euthanasia for Harish Rana in historic ve
+2026-03-11 19:12:08  INFO          [+] Highlights: Opposition demands apology after Amit Shah's attendance ja
+2026-03-11 19:12:08  INFO      
+    Parsing: https://www.indiatoday.in/rss/home
+2026-03-11 19:12:09  INFO          Found 128 entries
+2026-03-11 19:12:09  INFO          [+] Thai cargo ship bound for Gujarat attacked in Strait of Hormuz, 20 cre
+2026-03-11 19:12:09  INFO          [+] US strikes Iran, South Korea learns a tough lesson on THAAD gamble
+2026-03-11 19:12:09  INFO          [+] Live: Centre working day and night for Tamil Nadu's progress, says PM 
+2026-03-11 19:12:09  INFO          [+] God is great. So is the other God. Also, the other one
+2026-03-11 19:12:09  INFO          [+] IPL 2026 schedule live: RCB to open campaign vs SRH at Chinnaswamy on 
+2026-03-11 19:12:09  INFO          [+] Live: Iran warns of relentless attacks, says oil will reach $200 per b
+2026-03-11 19:12:09  INFO          [+] India's high-protein 'designer rice' could help fight diabetes
+2026-03-11 19:12:09  INFO          [+] Live: Delivery Code System being implemented amid 25-day LPG cylinder 
+2026-03-11 19:12:09  INFO          [+] Trump announces historic $300 billion oil refinery in Texas, thanks Re
+2026-03-11 19:12:09  INFO          [+] Actor Hansika Motwani, businessman husband Sohael Khaturiya granted di
+2026-03-11 19:12:09  INFO          [+] 2 meals a day, no dosa-poori: Bengaluru PG body's guidelines amid LPG 
+2026-03-11 19:12:09  INFO          [+] Iran's readout of Jaishankar call reveals more about India ties than i
+2026-03-11 19:12:09  INFO          [+] Centre procures more LPG, blames misinformation for panic-buying
+2026-03-11 19:12:09  INFO          [+] Vijay Deverakonda may be the best-dressed celebrity groom India has se
+2026-03-11 19:12:09  INFO          [+] 'Stop with this brain rot': Sona Mohapatra slams Badshah's song Tateer
+2026-03-11 19:12:09  INFO          [+] Japan first G7 nation to announce release of oil reserves amid Gulf co
+2026-03-11 19:12:09  INFO          [+] This IIT Delhi wind tunnel turns Bernoulli's Principle into a breeze
+2026-03-11 19:12:09  INFO          [+] India's cheese story is changing and mozzarella isn't the star anymore
+2026-03-11 19:12:09  INFO          [+] India now has over 50 Cheetahs
+2026-03-11 19:12:09  INFO          [+] New Supreme Leader injured in war but safe, says Iran President's son
+2026-03-11 19:12:09  INFO          [+] Hidden toxins in 'natural' remedies linked to severe liver failure: St
+2026-03-11 19:12:09  INFO          [+] Du-bye: How the US-Iran war has disrupted a major air travel hub
+2026-03-11 19:12:09  INFO          [+] US visas for Indian students fell 69% last summer. Why it matters now
+2026-03-11 19:12:09  INFO          [+] US-Iran War: Just how much is America's military bill?
+2026-03-11 19:12:09  INFO          [+] NEP broadens education beyond elites, model for global south: Oxford s
+2026-03-11 19:12:09  INFO          [+] Ex-selector says Gautam Gambhir ignores him completely, recalls Dhoni-
+2026-03-11 19:12:09  INFO          [+] Maamla Legal Hai Season 2 trailer: Ravi Kishan's VD Tyagi takes the ju
+2026-03-11 19:12:09  INFO          [+] Van drives through barricade outside White House, driver detained: Loc
+2026-03-11 19:12:09  INFO          [+] Ravi Mohan reacts to criticism amid divorce case: Men are the biggest 
+2026-03-11 19:12:09  INFO          [+] Mona Singh says she was 'mindblown' by Gaurav Gera's transformation in
+2026-03-11 19:12:09  INFO          [+] Google Pixel 10 available under Rs 55,000: Details here
+2026-03-11 19:12:09  INFO          [+] iPhone 15 gets massive price cut
+2026-03-11 19:12:09  INFO          [+] Samsung Galaxy S25 Edge price drops by Rs 24,000
+2026-03-11 19:12:09  INFO          [+] iPhone 16 Plus price drop alert
+2026-03-11 19:12:09  INFO          [+] Portuguese woman moved to 2AC after uncomfortable encounter with men i
+2026-03-11 19:12:09  INFO          [+] Israel promotes bomb shelter dating app amid war, trolled
+2026-03-11 19:12:09  INFO          [+] Butter chicken ice cream exists and the internet is absolutely not rea
+2026-03-11 19:12:09  INFO          [+] Bengaluru Uber driver finds wallet, tracks man to return it. People sh
+2026-03-11 19:12:09  INFO          [+] Woman removed from flight for playing video aloud, meltdown caught on 
+2026-03-11 19:12:09  INFO          [+] Poco X8 Pro series launching in India on March 17, Max model gets 9,00
+2026-03-11 19:12:09  INFO          [+] Anthropic opens AI institute after Pentagon ban, says next 2 years wil
+2026-03-11 19:12:09  INFO          [+] T20 World Cup: Abhishek Sharma, Ishan Kishan top ICC rankings, Samson 
+2026-03-11 19:12:09  INFO          [+] MS Dhoni will play full IPL 2026 season, can't talk about his role: CS
+2026-03-11 19:12:09  INFO          [+] The Harish Rana Verdict: India's Fight Over The Right To Die
+2026-03-11 19:12:09  INFO          [+] Man Stabs Twin Sister 84 Times Over Online Love
+2026-03-11 19:12:09  INFO          [+] Heatwave grips parts of India, temperatures to cross 40°C on Thursday
+2026-03-11 19:12:09  INFO          [+] Why has Nasa delayed Artemis moon landing? Delay in Musk's Starship
+2026-03-11 19:12:09  INFO          [+] Second batch of Mahindra's Batmobile sold out in seven minutes
+2026-03-11 19:12:09  INFO          [+] Ather announces limited-time benefits up to Rs 20,000 on Rizta, 450 Se
+2026-03-11 19:12:09  INFO          [+] Stock market crash: Why you should not stop your mutual fund SIPs in p
+2026-03-11 19:12:09  INFO          [+] How Delhi became the Lord of the Rings
+2026-03-11 19:12:09  INFO          [+] What is the moving sofa problem? The 60-year maths puzzle may finally 
+2026-03-11 19:12:09  INFO          [+] Rajasthan Board Class 10 results to be declared by March 20, confirms 
+2026-03-11 19:12:09  INFO          [+] Is UPSC Civil Services now dominated by science students?
+2026-03-11 19:12:09  INFO          [+] Toxic people around you may speed up ageing, study warns
+2026-03-11 19:12:09  INFO          [+] LPG shortage could encourage healthier eating habits, says nutritionis
+2026-03-11 19:12:09  INFO          [+] Fact Check: Indian spying for Israel arrested in Bahrain? No, this ima
+2026-03-11 19:12:09  INFO          [+] झांसी: 524 गैस सिलेंडरों की चोरी का खुलासा, पुलिस ने मुठभेड़ के बाद एज
+2026-03-11 19:12:09  INFO          [+] गुजरात आ रहे थाई कार्गो शिप पर होर्मुज स्ट्रेट में हमला, आग लगने के बा
+2026-03-11 19:12:09  INFO          [+] गैस की कमी और 'इंडक्शन' की एंट्री, सोशल मीडिया पर छाए ये मजेदार मीम्स
+2026-03-11 19:12:09  INFO          [+] Robert Kiyosaki Warning: 'भले ही खाना छोड़ें, लेकिन चांदी खरीदें', रॉब
+2026-03-11 19:12:09  INFO          [+] क्या आप भी फेंक देते हैं आधा एवोकाडो? कुणाल कपूर ने बताया काटने का सही
+2026-03-11 19:12:09  INFO          [+] पेट्रोल की नो-टेंशन! BaaS सर्विस वाली फैमिली इलेक्ट्रिक कारें
+2026-03-11 19:12:10  INFO      
+  Result → Saved: 83  |  Skipped: 65  |  Status: success
+2026-03-11 19:12:10  INFO      127.0.0.1 - - [11/Mar/2026 19:12:10] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:11  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:11  INFO        Outlet : Firstpost  [RIGHT]
+2026-03-11 19:12:11  INFO        Feeds  : 2 feed(s)
+2026-03-11 19:12:11  INFO      
+    Parsing: https://www.firstpost.com/rss/india.xml
+2026-03-11 19:12:11  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:11  INFO      
+    Parsing: https://www.firstpost.com/rss/politics.xml
+2026-03-11 19:12:11  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:11  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-11 19:12:12  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:12  INFO        Outlet : News18  [RIGHT]
+2026-03-11 19:12:12  INFO        Feeds  : 2 feed(s)
+2026-03-11 19:12:12  INFO      
+    Parsing: https://www.news18.com/rss/india.xml
+2026-03-11 19:12:13  INFO          Found 200 entries
+2026-03-11 19:12:13  INFO          [+] 'Shared Assessments On West Asia Conflict': Jaishankar On Phone Call W
+2026-03-11 19:12:13  INFO          [+] 'Don't Panic, Don't Hoard': Centre To Ensure 100% Domestic LPG Supply 
+2026-03-11 19:12:13  INFO          [+] Two Indians Killed In West Asia Conflict, 28 Indian-Flagged Vessels Cu
+2026-03-11 19:12:13  INFO          [+] Delhi Plans Inter-State Bus Terminal On Reclaimed Bhalswa Landfill Sit
+2026-03-11 19:12:13  INFO          [+] Hid Impotence, Took Dowry: Andhra Pradesh Woman Files Case Against Hus
+2026-03-11 19:12:13  INFO          [+] A Balancing Act Amid Geopolitical Uncertainties: What Easing FDI Rules
+2026-03-11 19:12:13  INFO          [+] LPG Shortage Hits Delhi High Court Lawyers’ Canteen; Main Course Items
+2026-03-11 19:12:13  INFO          [+] After 6 Months Of Planning, 19-Year-Old Labourer Steals Rs 3 Crore In 
+2026-03-11 19:12:13  INFO          [+] 'Won't Leave Them Stranded': Modi's Message To Indians Stuck In Gulf N
+2026-03-11 19:12:13  INFO          [+] As Gen-Z Fuels India’s Plant-Based Food Boom, Doctors Urge Balance
+2026-03-11 19:12:13  INFO          [+] 'Households Doubly Exposed': Why Global Oil Shocks Are Squeezing India
+2026-03-11 19:12:13  INFO      127.0.0.1 - - [11/Mar/2026 19:12:13] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:13  INFO          [+] Harish Rana Gets SC Nod For Passive Euthanasia: What Is Living Will? W
+2026-03-11 19:12:13  INFO          [+] How Govt Plans To Tackle Energy Shortage As Coal Stocks Reach Record H
+2026-03-11 19:12:13  INFO          [+] India Moves To Broaden Legal Definition Of Transgender Persons. What D
+2026-03-11 19:12:13  INFO          [+] War-Torn Tehran Is Breathing Better Air Than New Delhi Despite Bombing
+2026-03-11 19:12:13  INFO          [+] Bangladesh To Nepal: How India’s Fuels Power South Asian Neighbours’ E
+2026-03-11 19:12:13  INFO          [+] People Wanted State's Name To Be Changed To 'Keralam', Centre Approved
+2026-03-11 19:12:13  INFO          [+] 'He Can Never Be Compromised': BJP Hits Back At Rahul Gandhi Over Rema
+2026-03-11 19:12:13  INFO          [+] IRCTC May Halt Train Meals Amid Nationwide LPG Shortage, Advises Conti
+2026-03-11 19:12:13  INFO          [+] 'We Believe In Catching Bull By Its Horns': SC Orders Centre To Consti
+2026-03-11 19:12:13  INFO          [+] Everyone's Talking About LPG Shortages, But Do You Know How The Fuel I
+2026-03-11 19:12:13  INFO          [+] Uttarakhand Temple Authority Bars Non-Hindus From 47 Temples Ahead Of 
+2026-03-11 19:12:13  INFO          [+] CAPF Administration Bill In The Pipeline After Supreme Court Ruling On
+2026-03-11 19:12:13  INFO          [+] SC Allows Passive Euthanasia For 32-Year-Old: How Aruna Shanbaug Case 
+2026-03-11 19:12:13  INFO          [+] Pothole Jolts 'Brain-Dead' Woman Back To Life In UP: 'Nothing Short Of
+2026-03-11 19:12:13  INFO          [+] In A First, Supreme Court Allows Passive Euthanasia For 32-Year-Old Ma
+2026-03-11 19:12:13  INFO          [+] ‘Maa-Behen Gaali’ Banned! You Won’t Believe THIS Indian Village’s Puni
+2026-03-11 19:12:13  INFO          [+] West Asia Conflict: Air India, IndiGo To Run Over 90 Flights Today To 
+2026-03-11 19:12:13  INFO          [+] India Emerges As World's Second-Largest Arms Importer, Russia Remains 
+2026-03-11 19:12:13  INFO          [+] Great Nicobar Airport Project Near Malacca Shipping Route Moves Ahead 
+2026-03-11 19:12:13  INFO          [+] Parcel With Nude Photos, Rotten Items Triggers Black Magic Fears At Be
+2026-03-11 19:12:13  INFO          [+] Rain Warning For Bengaluru: IMD Forecasts Heavy Showers This Week
+2026-03-11 19:12:13  INFO          [+] UP Man Battling For Life In Saudi After Strike Hits Residential Area, 
+2026-03-11 19:12:13  INFO          [+] Indian Medical Students In Iran Allowed To Exit Via Armenia Border Aft
+2026-03-11 19:12:13  INFO          [+] Foreign National Killed After Speeding Audi Hits Her While Crossing Ro
+2026-03-11 19:12:13  INFO          [+] Postgraduate Dental Student Dies By Suicide In Mumbai, Names Boyfriend
+2026-03-11 19:12:13  INFO          [+] Assam Cabinet To Rename Fakhruddin Ali Ahmed Medical College In Barpet
+2026-03-11 19:12:13  INFO          [+] March 11, 2020: WHO Declares COVID-19 Pandemic – India’s Cases And Loc
+2026-03-11 19:12:13  INFO          [+] Trump Announces First US Oil Refinery In 50 Years, Says Reliance To Ba
+2026-03-11 19:12:13  INFO          [+] Iran War Pushes Up Prices Of Raw Material In Pharma Industries: Will V
+2026-03-11 19:12:13  INFO          [+] ‘Go Sell Some Sweaters’: Supreme Court Rebukes 12th Pass Trader Over A
+2026-03-11 19:12:13  INFO          [+] S Jaishankar, Iran FM Araghchi Hold Third Call Amid West Asia Crisis
+2026-03-11 19:12:13  INFO          [+] Reliance Industries Limited Prioritises Domestic LPG And Gas Supplies 
+2026-03-11 19:12:13  INFO          [+] Air India Imposes Surcharge As Gulf Crisis Drives Jet Fuel Prices High
+2026-03-11 19:12:13  INFO          [+] Worried About LPG Shortage? Here's How To Make Gas At Home And Get Pai
+2026-03-11 19:12:13  INFO          [+] Centre Says Energy Imports Flowing From Multiple Sources: Where Does I
+2026-03-11 19:12:13  INFO          [+] ‘People Rely On Us For...’: Hoteliers Warn LPG Supply Issues Could Hit
+2026-03-11 19:12:13  INFO          [+] ‘Indians Are Family’: UAE Envoy On President Mohamed Bin Zayed's Viral
+2026-03-11 19:12:13  INFO          [+] Who Is IndiGo’s Pieter Elbers And What Was December Turbulence That Co
+2026-03-11 19:12:13  INFO          [+] Kerala Lottery Result Today Live: Dhanalekshmi DL-43 Ticket DD 543799 
+2026-03-11 19:12:14  INFO      
+    Parsing: https://www.news18.com/rss/politics.xml
+2026-03-11 19:12:14  INFO          Found 200 entries
+2026-03-11 19:12:14  INFO          [+] PM Modi Says DMK Running ‘Scientific Corruption Model’, Turning Tamil 
+2026-03-11 19:12:14  INFO          [+] 'NDA Vs Tamil Nadu': Poster War Emerges In Tamil Nadu Ahead Of PM Modi
+2026-03-11 19:12:14  INFO          [+] Rahul Gandhi Is Betting Big On Gen-Z To Revive Congress. Will The Gamb
+2026-03-11 19:12:14  INFO          [+] Land Row In Karnataka Council: BJP Alleges ‘Rs 250 Crore Giveaway’ For
+2026-03-11 19:12:15  INFO      
+  Result → Saved: 54  |  Skipped: 346  |  Status: success
+2026-03-11 19:12:16  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:16  INFO        Outlet : The Wire  [LEFT]
+2026-03-11 19:12:16  INFO        Feeds  : 3 feed(s)
+2026-03-11 19:12:16  INFO      
+    Parsing: https://thewire.in/rss/politics/feed
+2026-03-11 19:12:16  INFO      127.0.0.1 - - [11/Mar/2026 19:12:16] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:16  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:16  INFO      
+    Parsing: https://thewire.in/rss/law/feed
+2026-03-11 19:12:16  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:16  INFO      
+    Parsing: https://thewire.in/rss/media/feed
+2026-03-11 19:12:16  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:16  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-11 19:12:17  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:17  INFO        Outlet : Scroll.in  [LEFT]
+2026-03-11 19:12:17  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:12:17  INFO      
+    Parsing: https://scroll.in/feed
+2026-03-11 19:12:18  INFO      127.0.0.1 - - [11/Mar/2026 19:12:18] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:19  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:19  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-11 19:12:20  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:20  INFO        Outlet : The Caravan  [LEFT]
+2026-03-11 19:12:20  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:12:20  INFO      
+    Parsing: https://caravanmagazine.in/feed
+2026-03-11 19:12:21  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:21  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-11 19:12:21  INFO      127.0.0.1 - - [11/Mar/2026 19:12:21] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:22  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:22  INFO        Outlet : Newslaundry  [LEFT]
+2026-03-11 19:12:22  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:12:22  INFO      
+    Parsing: https://www.newslaundry.com/feed
+2026-03-11 19:12:23  INFO          Found 1 entries
+2026-03-11 19:12:23  INFO          [+] March 11, 2026: New AQI station, same old ‘poor’ quality air
+2026-03-11 19:12:24  INFO      
+  Result → Saved: 1  |  Skipped: 0  |  Status: success
+2026-03-11 19:12:24  INFO      127.0.0.1 - - [11/Mar/2026 19:12:24] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:25  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:25  INFO        Outlet : The News Minute  [LEFT]
+2026-03-11 19:12:25  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:12:25  INFO      
+    Parsing: https://www.thenewsminute.com/rss.xml
+2026-03-11 19:12:26  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:26  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-11 19:12:27  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:27  INFO        Outlet : Article 14  [LEFT]
+2026-03-11 19:12:27  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:12:27  INFO      
+    Parsing: https://article-14.com/feed
+2026-03-11 19:12:27  INFO      127.0.0.1 - - [11/Mar/2026 19:12:27] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:27  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:27  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-11 19:12:28  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:28  INFO        Outlet : Alt News  [LEFT]
+2026-03-11 19:12:28  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:12:28  INFO      
+    Parsing: https://www.altnews.in/feed/
+2026-03-11 19:12:29  INFO          Found 10 entries
+2026-03-11 19:12:29  INFO          [+] ‘If we’re not here, it will take a second…’: Mamata Banerjee fuels com
+2026-03-11 19:12:29  INFO          [+] Times Now, ABP, Zee, Republic misreport 2020 Beirut video as Iranian m
+2026-03-11 19:12:29  INFO          [+] No, Bahrain has not arrested an Indian national for espionage
+2026-03-11 19:12:30  INFO      
+  Result → Saved: 3  |  Skipped: 7  |  Status: success
+2026-03-11 19:12:30  INFO      127.0.0.1 - - [11/Mar/2026 19:12:30] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:31  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:31  INFO        Outlet : Maktoob Media  [LEFT]
+2026-03-11 19:12:31  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:12:31  INFO      
+    Parsing: https://maktoobmedia.com/feed/
+2026-03-11 19:12:32  INFO          Found 8 entries
+2026-03-11 19:12:32  INFO          [+] “Country standing in lines again”: Congress attacks Modi government ov
+2026-03-11 19:12:32  INFO          [+] “Don’t want another political prisoner murdered by state”: 37 rights g
+2026-03-11 19:12:32  INFO          [+] Delhi High Court halts demolition of houses of Muslim families in Utta
+2026-03-11 19:12:32  INFO          [+] CPI slams Puducherry govt over non-Muslim members in Waqf Board
+2026-03-11 19:12:32  INFO          [+] Series of hate crimes across states raise concerns over targeted viole
+2026-03-11 19:12:32  INFO          [+] Elderly Muslim man shot dead in UP’s Ghazipur after Holi dispute; accu
+2026-03-11 19:12:33  INFO      127.0.0.1 - - [11/Mar/2026 19:12:33] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:33  INFO      
+  Result → Saved: 6  |  Skipped: 2  |  Status: success
+2026-03-11 19:12:34  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:34  INFO        Outlet : The Leaflet  [LEFT]
+2026-03-11 19:12:34  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:12:34  INFO      
+    Parsing: https://theleaflet.in/feed/
+2026-03-11 19:12:34  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:34  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-11 19:12:35  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:35  INFO        Outlet : The Citizen  [LEFT]
+2026-03-11 19:12:35  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:12:35  INFO      
+    Parsing: https://www.thecitizen.in/rss/feed/all
+2026-03-11 19:12:36  INFO      127.0.0.1 - - [11/Mar/2026 19:12:36] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:36  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:36  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-11 19:12:37  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:37  INFO        Outlet : The Hindu  [CENTER]
+2026-03-11 19:12:37  INFO        Feeds  : 3 feed(s)
+2026-03-11 19:12:37  INFO      
+    Parsing: https://www.thehindu.com/news/national/?service=rss
+2026-03-11 19:12:37  INFO          Found 100 entries
+2026-03-11 19:12:37  INFO          [+] Govt hopeful of completing 7,110 km rural roads in next 1.5 years
+2026-03-11 19:12:37  INFO          [+] A.P. CM Naidu proposes Indian School of Agriculture to render AI-based
+2026-03-11 19:12:37  INFO          [+] Red Fort blast case: Delhi Court extends police custody of two accused
+2026-03-11 19:12:37  INFO          [+] 208 arrested in crackdown against mule bank account networks
+2026-03-11 19:12:37  INFO          [+] Resolution seeking removal of Om Birla as Speaker defeated by voice vo
+2026-03-11 19:12:37  INFO          [+] Online applications for admissions in KGBVs available from March 12
+2026-03-11 19:12:37  INFO          [+] Lakhs gather for Suguturu Gangamma jatara in Punganur
+2026-03-11 19:12:37  INFO          [+] CAG reports expose NDA government’s ‘financial indiscipline’, says Jag
+2026-03-11 19:12:37  INFO          [+] Hyderabad cyber crime police arrest four in online betting fraud linke
+2026-03-11 19:12:37  INFO          [+] DC presents Best Service Awards to government employees
+2026-03-11 19:12:37  INFO          [+] Here are the big stories from Karnataka today
+2026-03-11 19:12:37  INFO          [+] Animal Husbandry department launches digital platform for livestock an
+2026-03-11 19:12:37  INFO          [+] District administration gears up for Gooty Fort festival on March 14 a
+2026-03-11 19:12:37  INFO          [+] Governor Ravi bids farewell to Tamil Nadu; State Cabinet stays away
+2026-03-11 19:12:37  INFO          [+] Watch: Supreme Court allows passive euthanasia for man in coma for ove
+2026-03-11 19:12:37  INFO          [+] Class 10 public exams begin in Tamil Nadu with language paper
+2026-03-11 19:12:37  INFO          [+] Karnataka police tackle Kerala lottery sales in Mysuru-Chamarajanagar 
+2026-03-11 19:12:38  INFO      
+    Parsing: https://www.thehindu.com/news/politics-and-government/?service=rss
+2026-03-11 19:12:38  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:38  INFO      
+    Parsing: https://www.thehindu.com/opinion/?service=rss
+2026-03-11 19:12:38  INFO          Found 100 entries
+2026-03-11 19:12:39  INFO      
+  Result → Saved: 17  |  Skipped: 183  |  Status: success
+2026-03-11 19:12:39  INFO      127.0.0.1 - - [11/Mar/2026 19:12:39] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:41  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:41  INFO        Outlet : Indian Express  [CENTER]
+2026-03-11 19:12:41  INFO        Feeds  : 2 feed(s)
+2026-03-11 19:12:41  INFO      
+    Parsing: https://indianexpress.com/feed/
+2026-03-11 19:12:42  INFO          Found 200 entries
+2026-03-11 19:12:42  INFO          [+] A Rs 9 cr Tamil film made with no ‘big hero’ returns 6x its cost: Radh
+2026-03-11 19:12:42  INFO          [+] Ande ka Halwa, Chapli Kebab, Mohabbat-e-Sharbat: ‘Iftar’ special with 
+2026-03-11 19:12:42  INFO          [+] Rajasthan Board Class 10th results to be declared by March 20; RBSE pr
+2026-03-11 19:12:42  INFO          [+] UPSC Key: Impeaching the CEC, Essential Commodities Act invoked, and P
+2026-03-11 19:12:42  INFO          [+] Why sovereign AI for India is a strategic hedge against a ‘compute div
+2026-03-11 19:12:42  INFO          [+] ‘Pakistan batsmen were trembling’: Shahid Afridi reveals pressure of f
+2026-03-11 19:12:42  INFO          [+] I was silenced: Rahul; Opposition motion against Speaker unfounded, pr
+2026-03-11 19:12:42  INFO          [+] White House area shut down after van drives through barricade, driver 
+2026-03-11 19:12:42  INFO          [+] IDFC First Bank fraud case: ED conducts searches across 19 locations i
+2026-03-11 19:12:42  INFO          [+] Man finds ‘Subhash Nagar vibes’ in Canada mall after seeing desi crowd
+2026-03-11 19:12:42  INFO          [+] Two HSSLC Meghalaya board exams postponed in violence-hit West Garo Hi
+2026-03-11 19:12:42  INFO          [+] ‘5 questions on ChatGPT will use up half a litre of water’: Karnataka 
+2026-03-11 19:12:42  INFO          [+] Don’t Steal This Book: Thousands of authors fight AI with empty anthol
+2026-03-11 19:12:42  INFO          [+] How Haryana has turned a page in Class 2-3 foundational literacy level
+2026-03-11 19:12:42  INFO          [+] Trump casts a shadow over one of Mexico’s deadliest states
+2026-03-11 19:12:42  INFO          [+] Climate think tank Council on Energy, Environment and Water study: ‘Ve
+2026-03-11 19:12:42  INFO          [+] Over 93,000 posts vacant in CAPFs and Assam Rifles, govt tells Rajya S
+2026-03-11 19:12:42  INFO          [+] Oil well explosion impact: What the 1991 Gulf War can teach us about t
+2026-03-11 19:12:42  INFO          [+] Renowned Tamil director-music composer Thakkali Srinivasan passes away
+2026-03-11 19:12:42  INFO          [+] After many delays, Sanjay Leela Bhansali confirms Love and War to wrap
+2026-03-11 19:12:42  INFO          [+] Zendaya stuns at Louis Vuitton’s Paris Fashion Week in a bridal-inspir
+2026-03-11 19:12:42  INFO          [+] Drunken boast at roadside dhaba exposes eight-month-old murder in Nagp
+2026-03-11 19:12:42  INFO          [+] Google’s NotebookLM can now turn your favorite novels into AI-hosted p
+2026-03-11 19:12:42  INFO          [+] Two Indians killed, one missing in merchant vessels attack amid Israel
+2026-03-11 19:12:42  INFO          [+] Thai-flagged cargo ship Mayuree Naree heading to India attacked in Str
+2026-03-11 19:12:42  INFO          [+] Consider Maharashtra’s economic growth when discussing its debt: CM De
+2026-03-11 19:12:42  INFO          [+] 108 Maoists, Rs 3.6 crore cash, 1 kg gold – surrenders mark days leadi
+2026-03-11 19:12:42  INFO          [+] Chandigarh hotels to serve liquor round the clock under new excise pol
+2026-03-11 19:12:42  INFO          [+] ‘Modi a yes man, weak in the face of US and President Trump’: Kejriwal
+2026-03-11 19:12:42  INFO          [+] Richer than Shah Rukh Khan, this Shark Tank India judge is youngest bi
+2026-03-11 19:12:42  INFO          [+] Hurun Global Rich List 2026: Once a minibus driver, now Indonesia’s ri
+2026-03-11 19:12:42  INFO          [+] PBKS IPL 2026 Schedule: Punjab Kings fixtures list, match dates, timin
+2026-03-11 19:12:42  INFO          [+] ‘You are not giving up on your son’: Supreme Court’s emotional note to
+2026-03-11 19:12:42  INFO          [+] Development of Delhi is our duty, have to turn challenges into opportu
+2026-03-11 19:12:42  INFO          [+] Amid student’s mental health struggles, Madras High Court tells colleg
+2026-03-11 19:12:42  INFO          [+] LSG IPL 2026 Schedule: Lucknow Super Giants fixtures list, match dates
+2026-03-11 19:12:42  INFO          [+] Today News Headlines for School Assembly, March 12, 2026: IPL schedule
+2026-03-11 19:12:42  INFO          [+] A farmer father, mother who read his books aloud: How visually impaire
+2026-03-11 19:12:42  INFO          [+] RR IPL 2026 Schedule: Rajasthan Royals fixtures list, match dates, tim
+2026-03-11 19:12:42  INFO          [+] What is the Essential Commodities Act, invoked by the Centre amidst th
+2026-03-11 19:12:42  INFO          [+] Noida International Airport nears takeoff: Phase 1 to handle 1.20 cror
+2026-03-11 19:12:42  INFO          [+] DC IPL 2026 Schedule: Delhi Capitals fixtures list, match dates, timin
+2026-03-11 19:12:42  INFO          [+] How protests over Panjab University lecture on Sikh gurus highlight th
+2026-03-11 19:12:42  INFO          [+] For CEC Gyanesh Kumar’s impeachment motion, what are Opposition’s key 
+2026-03-11 19:12:42  INFO          [+] Manish Tewari says trains sway excessively on Delhi-Chandigarh route, 
+2026-03-11 19:12:42  INFO          [+] GT IPL 2026 Schedule: Gujarat Titans fixtures list, match dates, timin
+2026-03-11 19:12:42  INFO          [+] KKR IPL 2026 Schedule: Kolkata Knight Riders fixtures list, match date
+2026-03-11 19:12:42  INFO          [+] Allu Sirish recalls Allu Arjun’s advice before he got married, opens u
+2026-03-11 19:12:42  INFO          [+] Hansika Motwani and Sohael Khaturiya officially divorce after four yea
+2026-03-11 19:12:42  INFO          [+] Shah Rukh Khan is Bollywood’s richest actor as he features on Hurun Gl
+2026-03-11 19:12:42  INFO          [+] CSK IPL 2026 Schedule: Chennai Super Kings fixtures list, match dates,
+2026-03-11 19:12:42  INFO          [+] BJP MP demands action against Bengal government for President’s ‘proto
+2026-03-11 19:12:42  INFO          [+] SRH IPL 2026 Schedule: Sunrisers Hyderabad fixtures list, match dates,
+2026-03-11 19:12:42  INFO          [+] India LPG Gas Shortage Live Updates: Indore chowpatty vendors turn ele
+2026-03-11 19:12:42  INFO          [+] Amid Strait of Hormuz closure, India’s Russian oil imports surge by 50
+2026-03-11 19:12:42  INFO          [+] MI IPL 2026 Schedule: Mumbai Indians fixtures list, match dates, timin
+2026-03-11 19:12:42  INFO          [+] ‘27 absences, no bail’: Punjab and Haryana High Court slams accused fo
+2026-03-11 19:12:42  INFO          [+] Reasons your cat’s litter box requires military-grade hygiene
+2026-03-11 19:12:42  INFO          [+] Faridabad to Jewar Airport in 20 minutes: How upcoming corridor is set
+2026-03-11 19:12:42  INFO          [+] Amazon looks to add stricter checks after outages linked to AI coding 
+2026-03-11 19:12:42  INFO          [+] Mangaluru duo arrested for routing global cyberfraud millions through 
+2026-03-11 19:12:42  INFO          [+] BREAKING | IPL 2026 Schedule: RCB take on SRH on March 28 in season op
+2026-03-11 19:12:42  INFO          [+] RCB IPL 2026 Schedule: Royal Challengers Bengaluru fixtures list, matc
+2026-03-11 19:12:42  INFO          [+] An art festival at Travancore Palace celebrates tribal art
+2026-03-11 19:12:42  INFO          [+] Landmark ruling by Karnataka HC: No criminal liability for cheque boun
+2026-03-11 19:12:42  INFO          [+] New Delhi Deploys India’s First Microalgae Air Tower Along Aerocity Co
+2026-03-11 19:12:42  INFO          [+] Himanta Sarma govt to strike ex-President’s name off a medical college
+2026-03-11 19:12:42  INFO          [+] Shark Tank India pitcher, who failed to compete in Olympics as family 
+2026-03-11 19:12:42  INFO          [+] First RAM and storage, now CPUs: Why AI is making laptops 40% more exp
+2026-03-11 19:12:42  INFO          [+] ‘Absolute freak’: Former Australian bowler heaps praise on Jasprit Bum
+2026-03-11 19:12:42  INFO          [+] Maharashtra Congress to hold statewide protest against LPG price hike,
+2026-03-11 19:12:42  INFO          [+] Archana Puran Singh recalls feeling proud when her son scored 4 goals 
+2026-03-11 19:12:42  INFO          [+] Why the butterfly couldn’t fly
+2026-03-11 19:12:42  INFO          [+] Traffic signals go dark in Bengaluru’s Electronics City as UPS batteri
+2026-03-11 19:12:42  INFO          [+] CBI books its own inspector for attempting Rs 2-crore extortion in Sou
+2026-03-11 19:12:42  INFO          [+] Control blood sugar with 7-hour and 18 minutes of sleep daily, says ne
+2026-03-11 19:12:42  INFO          [+] What caused the haze over Delhi on Tuesday? It wasn’t the fire raging 
+2026-03-11 19:12:42  INFO          [+] UGC row and UP elections see RSS eye Dalit connect through Sant Ravida
+2026-03-11 19:12:42  INFO          [+] Karan Aujla pulled the crowds. India’s concert culture couldn’t keep u
+2026-03-11 19:12:42  INFO          [+] Anurag Kashyap dismisses Epstein files mention, says he never went to 
+2026-03-11 19:12:42  INFO          [+] As Panaji votes for municipal polls today, what do voters most care ab
+2026-03-11 19:12:42  INFO          [+] Fact Check: Did Aditya Dhar really say he ‘doesn’t care’ if Dhurandhar
+2026-03-11 19:12:42  INFO          [+] From dad’s garage to Rs 9204 crore net worth: Ramayana producer Namit 
+2026-03-11 19:12:42  INFO          [+] ‘Echoed the ancient Indian idea of union, like Shiv and Parvati’: Desi
+2026-03-11 19:12:42  INFO          [+] Fields of opium landed Chhattisgarh BJP leader in police net, he now b
+2026-03-11 19:12:42  INFO          [+] Ustaad Bhagat Singh director opens up on clash with Dhurandhar 2, says
+2026-03-11 19:12:42  INFO          [+] Iran war: Why Flipkart and Amazon are seeing a spike in induction cook
+2026-03-11 19:12:42  INFO          [+] A midnight escape and a 4 am breakthrough: How Vadodara police traced 
+2026-03-11 19:12:42  INFO          [+] Kushboo Sundar reacts to controversy over Vijay-Trisha’s affair rumour
+2026-03-11 19:12:42  INFO          [+] Who’s my neighbour: In our shared home, my friend and I built ourselve
+2026-03-11 19:12:42  INFO          [+] 2026 poll race heats up: Madras High Court orders TN Bar Council to ur
+2026-03-11 19:12:42  INFO          [+] The ‘endurance of the enemy’: Why Mojtaba Khamenei could be Trump and 
+2026-03-11 19:12:42  INFO          [+] ‘Bhaago jaldi’: Aman Gupta asks loss-making Shark Tank India 5 pitcher
+2026-03-11 19:12:42  INFO          [+] As SC allows passive euthanasia, what will doctors do next? Former AII
+2026-03-11 19:12:42  INFO          [+] Maharashtra board Class 10 maths paper leaked on Telegram days before 
+2026-03-11 19:12:42  INFO          [+] West Bengal Police summon AJUP chief Humayun Kabir’s wife ‘for buildin
+2026-03-11 19:12:42  INFO          [+] Hypermasculinity is making a comeback, and social media is to blame
+2026-03-11 19:12:42  INFO          [+] China warns state agencies, banks against installing apps running Open
+2026-03-11 19:12:42  INFO          [+] Iran says ‘most intense operation’ launched as Middle East war enters 
+2026-03-11 19:12:42  INFO          [+] UPSC Essentials | Mains Answer Practice GS 2 : geopolitical instabilit
+2026-03-11 19:12:42  INFO          [+] Black rain in Tehran explained: How Israeli strikes triggered a toxic 
+2026-03-11 19:12:42  INFO          [+] A hunger strike, a protest rally, and a bandh: Fight to save Vaman Ava
+2026-03-11 19:12:42  INFO          [+] Darwin Labs co-founder intercepted at Mumbai airport, arrested by CBI 
+2026-03-11 19:12:42  INFO          [+] Microsoft backs Anthropic in amicus brief to halt US DOD’s ‘supply-cha
+2026-03-11 19:12:42  INFO          [+] Gold Rate Today, March 11: Check 18, 22 and 24 carat gold prices in Ch
+2026-03-11 19:12:42  INFO          [+] Stubborn lower belly pooch that won’t go away may be due to posture, n
+2026-03-11 19:12:42  INFO          [+] ‘Dhoni never said drop Yuvraj. Sachin was shocked. Gambhir won’t even 
+2026-03-11 19:12:42  INFO          [+] Sambhal imam slapped with Rs 6.94 crore penalty for building mosque, d
+2026-03-11 19:12:42  INFO          [+] On one liver, two lives: rare split transplant saves man, toddler in M
+2026-03-11 19:12:42  INFO          [+] UP DGP reviews public complaints, links its disposal to postings
+2026-03-11 19:12:42  INFO          [+] Donald Trump-Jeffrey Epstein ‘King of the World’ statue recreating ‘Ti
+2026-03-11 19:12:42  INFO          [+] In Delhi, murder accused shot dead by bike-borne assailants; police su
+2026-03-11 19:12:42  INFO          [+] Tribal vs non-tribal faultlines deepen in Meghalaya, Garo Hills polls 
+2026-03-11 19:12:42  INFO          [+] South Africa, West Indies teams leave India after T20 World Cup travel
+2026-03-11 19:12:42  INFO          [+] Surat civic body office Mughal Sarai, built during Shah Jahan’s reign,
+2026-03-11 19:12:42  INFO          [+] OpenAI launches interactive visual explanations in ChatGPT to simplify
+2026-03-11 19:12:42  INFO          [+] Harvey Weinstein claims he never sexually assaulted anyone; admits he 
+2026-03-11 19:12:42  INFO          [+] BJP worker shot at in West Bengal’s Gangasagar, condition critical
+2026-03-11 19:12:42  INFO          [+] Know Your City: From hosting Queen Elizabeth to reviving lost saris, h
+2026-03-11 19:12:42  INFO          [+] Anurag Kashyap says Netflix shelving Maximum City led to heart attack,
+2026-03-11 19:12:42  INFO          [+] ‘Disturbed’: SC orders blacklisting of NCERT experts over ‘corruption 
+2026-03-11 19:12:42  INFO          [+] ‘Let us go home’: Armed robbers beg for mercy after Hoshiarpur shopkee
+2026-03-11 19:12:42  INFO          [+] ‘Shubman Gill can’t be T20I captain anymore’: Former opener rules out 
+2026-03-11 19:12:42  INFO          [+] Kolkata’s commute paralysed, fuel shortage wrings autorickshaw drivers
+2026-03-11 19:12:42  INFO          [+] Karnataka government doctors call off planned stir after state agrees 
+2026-03-11 19:12:42  INFO          [+] Harish Shankar apologises to Mahesh Babu fans after ‘Bob’ tweet backla
+2026-03-11 19:12:42  INFO          [+] Author Daneesh Majid on Hyderabad, the Gulf dream, and an identity und
+2026-03-11 19:12:42  INFO          [+] After 14 Years, NASA says a 600 kg satellite will crash back into Eart
+2026-03-11 19:12:42  INFO          [+] ‘Bring my son back to India’: A mother’s plea as UP worker lies in ICU
+2026-03-11 19:12:42  INFO          [+] Supreme Court passive euthanasia ruling: Hopefully families won’t be c
+2026-03-11 19:12:42  INFO          [+] ‘You could literally pick three teams’: Gary Kirsten amazed by India’s
+2026-03-11 19:12:42  INFO          [+] Air India Express flight to Thailand suffers nose wheel issue, hard la
+2026-03-11 19:12:42  INFO          [+] Xiaomi launches Xiaomi 17 series in India with Leica cameras, LOFIC se
+2026-03-11 19:12:42  INFO          [+] Bengaluru Uber driver returns passenger’s wallet without being asked; 
+2026-03-11 19:12:42  INFO          [+] Supreme Court applies passive euthanasia framework for first time: Her
+2026-03-11 19:12:42  INFO          [+] James Dyson Award 2026: Applications open, register by July 15
+2026-03-11 19:12:42  INFO          [+] After airport drama, last-minute asylum offer, most of Iranian women’s
+2026-03-11 19:12:42  INFO          [+] Wife and her lover arrested for killing Mandya priest; body and bike t
+2026-03-11 19:12:42  INFO          [+] Ek Din trailer: Sai Pallavi makes Bollywood debut before Rs 4,000 cr R
+2026-03-11 19:12:42  INFO          [+] UP Cabinet approves 90% fee concession for UP T-20 League matches at G
+2026-03-11 19:12:42  INFO          [+] ‘I don’t like staying in sh**’: Priyanka Chopra on why she left Bollyw
+2026-03-11 19:12:42  INFO          [+] Shockwaves as ENHYPEN’s Heeseung quits group for solo career, petition
+2026-03-11 19:12:42  INFO          [+] Google brings Gemini AI assistant in Chrome to India with support for 
+2026-03-11 19:12:42  INFO          [+] ‘Men are the biggest victim’: Ravi Mohan hits back after posing with K
+2026-03-11 19:12:42  INFO          [+] FIFA World Cup: Infantino says Donald Trump assured him that Iran foot
+2026-03-11 19:12:42  INFO          [+] ‘Can’t blame victim’: Gujarat High Court slams power utility over ‘loo
+2026-03-11 19:12:42  INFO          [+] ‘Jaya Bachchan said Amitabh Bachchan had a near fatal accident’: Sande
+2026-03-11 19:12:42  INFO          [+] BJP’s Parivartan Yatra concludes, Haryana CM says ‘Bengal now a haven 
+2026-03-11 19:12:42  INFO          [+] ‘Surya bhai, are you kidding me?’: Suryakumar Yadav reveals emotional 
+2026-03-11 19:12:42  INFO          [+] ‘Stop crying over these things’: 25 years since Harbhajan Singh’s hat-
+2026-03-11 19:12:42  INFO          [+] Commercial LPG shortage in Bengaluru: Siddaramaiah urges Petroleum Min
+2026-03-11 19:12:42  INFO          [+] ‘Journey in West Bengal far from over’: former governor CV Ananda Bose
+2026-03-11 19:12:42  INFO          [+] Permanent homes for all slum dwellers in focus in Delhi’s new rehabili
+2026-03-11 19:12:42  INFO          [+] Splitsvilla 16 fame Sorab Bedi reacts to dating rumours with Malaika A
+2026-03-11 19:12:42  INFO          [+] WATCH: Virat Kohli begins preparations for RCB’s IPL 2026 title defenc
+2026-03-11 19:12:42  INFO          [+] Priyadarshan defends his ‘poor education’ remark against Rajpal Yadav:
+2026-03-11 19:12:42  INFO          [+] PM ‘weak’, ‘yes man’ to Trump: Kejriwal’s targets Modi as India faces 
+2026-03-11 19:12:42  INFO          [+] Jitish Kallat appointed as President of Kochi-Muziris Biennale
+2026-03-11 19:12:42  INFO          [+] Thunderstorms likely in parts of Bengal as rain brings relief
+2026-03-11 19:12:42  INFO          [+] Dhurandhar 2 movie advance booking box office collection report: Ranve
+2026-03-11 19:12:42  INFO          [+] Google Summer 2026 Public Policy Fellowship: Application process ends 
+2026-03-11 19:12:42  INFO          [+] Top 10 richest person in India in 2026: Mukesh Ambani, Gautam Adani le
+2026-03-11 19:12:42  INFO          [+] IPL 2026 Schedule LIVE Updates: RCB vs SRH clash in Bengaluru to kicks
+2026-03-11 19:12:42  INFO          [+] Balika Vadhu’s Neha Marda on secretly going on a trip during her court
+2026-03-11 19:12:42  INFO          [+] ‘Feeling so proud of him’: Shashi Tharoor celebrates 70th birthday wit
+2026-03-11 19:12:42  INFO          [+] Restaurants in Delhi-NCR fear shutdown as commercial LPG cylinder supp
+2026-03-11 19:12:42  INFO          [+] Ceramic exporters’ woes continue: 1,500 containers stuck at ports or i
+2026-03-11 19:12:42  INFO          [+] India at Oscars 2026: Priyanka Chopra to present; winning chances ride
+2026-03-11 19:12:42  INFO          [+] War in the Middle East echoes in Delhi’s trial courts: With flights st
+2026-03-11 19:12:42  INFO          [+] MMRDA turns to ads, fibre leasing to boost MTHL revenue
+2026-03-11 19:12:42  INFO          [+] Instagram down: Thousands of users report facing issues with DMs, soci
+2026-03-11 19:12:42  INFO          [+] BJP MLA laments not getting World Cup tickets in Assembly; Congress le
+2026-03-11 19:12:42  INFO          [+] Breadwinner lost to bus crash: Orissa High Court upholds Rs 61.44 lakh
+2026-03-11 19:12:42  INFO          [+] Protocol war in Kerala: Why CM Pinarayi Vijayan is boycotting PM Modi’
+2026-03-11 19:12:42  INFO          [+] ‘Process must be humane’: In a first, Supreme Court allows passive eut
+2026-03-11 19:12:42  INFO          [+] Antilia bomb scare case: HC rejects former police officer  Pradeep Sha
+2026-03-11 19:12:42  INFO          [+] When Ranveer Singh left Deepika Padukone emotional at Screen Awards, t
+2026-03-11 19:12:42  INFO          [+] Pakistan vs Bangladesh 1st ODI Live Cricket Score: BAN beat PAK by 8-w
+2026-03-11 19:12:42  INFO          [+] CID to probe Anekal realtor’s abduction and murder: Karnataka Home Min
+2026-03-11 19:12:42  INFO          [+] JEE Main Topper Tips | ‘Choosing consistency over cramming helped me c
+2026-03-11 19:12:42  INFO          [+] Defence Ministry to shift soon, clearing the way for South Block’s ret
+2026-03-11 19:12:42  INFO          [+] Saffron and sorrow: What I learnt about grief in Iran
+2026-03-11 19:12:42  INFO          [+] Gujarat to install air quality monitoring systems in 152 municipal are
+2026-03-11 19:12:42  INFO          [+] ‘I chose a public life… Malti Marie didn’t’: Why Priyanka Chopra hired
+2026-03-11 19:12:42  INFO          [+] All residents of 3 slum clusters near PM’s residence will be rehabilit
+2026-03-11 19:12:42  INFO          [+] Karnataka wants to ban children from social media. Here’s why this mig
+2026-03-11 19:12:42  INFO          [+] Parliament Budget Session 2026 Live Updates:  Motion against Speaker O
+2026-03-11 19:12:42  INFO          [+] Gaganjeet Bhullar to spearhead challenge in IGPL event at Chandigarh G
+2026-03-11 19:12:42  INFO          [+] Indian Navy opens Agniveer recruitment 2026 for SSR, MR & medical post
+2026-03-11 19:12:42  INFO          [+] US forces destroy 16 Iranian minelayers near Strait of Hormuz, says CE
+2026-03-11 19:12:42  INFO          [+] Your device’s look now a protectable asset: Calcutta High Court overru
+2026-03-11 19:12:42  INFO          [+] Gujarat cuts industrial gas use by 50 per cent; Hotel association warn
+2026-03-11 19:12:42  INFO          [+] Reliance-backed refinery project in Texas: All about the ‘$300-billion
+2026-03-11 19:12:42  INFO          [+] Health ministry proposes doing away with double testing of blood plasm
+2026-03-11 19:12:42  INFO          [+] ‘Fear disruption like Covid’: Delhi-NCR ceramic tile industry reels as
+2026-03-11 19:12:42  INFO          [+] Dipika Kakar breaks down as Shoaib Ibrahim mentions her upcoming blood
+2026-03-11 19:12:42  INFO          [+] Zoom unveils real-time voice translation, deepfake detection features 
+2026-03-11 19:12:42  INFO          [+] Nick Jonas mourns death of ‘sister’ Maya Kibbel after battle with Wils
+2026-03-11 19:12:42  INFO          [+] ‘Sanju’s 97 against West Indies was the turning point’: Gautam Gambhir
+2026-03-11 19:12:42  INFO          [+] For India, war in West Asia and extreme summer temperatures could trig
+2026-03-11 19:12:43  INFO      
+    Parsing: https://indianexpress.com/section/political-pulse/feed/
+2026-03-11 19:12:43  INFO          Found 200 entries
+2026-03-11 19:12:43  INFO          [+] 1.3 lakh WhatsApp groups to 20-second clips: How BJP has shaped its pl
+2026-03-11 19:12:43  INFO          [+] In the line of Congress fire over ‘infidelity’, Kerala Minister no str
+2026-03-11 19:12:43  INFO          [+] Why Bengal’s Opposition parties are pushing for fewer phases in coming
+2026-03-11 19:12:43  INFO          [+] As Nitish Kumar gives up the Patna gaddi he prized most, what the futu
+2026-03-11 19:12:43  INFO      127.0.0.1 - - [11/Mar/2026 19:12:43] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:44  INFO      
+  Result → Saved: 204  |  Skipped: 196  |  Status: success
+2026-03-11 19:12:45  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:45  INFO        Outlet : Hindustan Times  [CENTER]
+2026-03-11 19:12:45  INFO        Feeds  : 2 feed(s)
+2026-03-11 19:12:45  INFO      
+    Parsing: https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml
+2026-03-11 19:12:45  INFO          Found 100 entries
+2026-03-11 19:12:45  INFO          [+] 'Questioned democracy's foundation': Amit Shah blasts Opposition in Lo
+2026-03-11 19:12:45  INFO          [+] ‘When chance to speak, he’s in Germany': Amit Shah tears into LoP Rahu
+2026-03-11 19:12:45  INFO          [+] Viral ‘Kumbhmela Girl’ Monalisa Bhonsle seeks police protection in Ker
+2026-03-11 19:12:45  INFO          [+] CAG report highlights lapses in Dehradun Smart City projects
+2026-03-11 19:12:45  INFO          [+] Opposition's no-confidence motion against Lok Sabha Speaker Om Birla d
+2026-03-11 19:12:45  INFO          [+] 10 Maoist cadres, including leader with  ₹55 lakh bounty, surrender in
+2026-03-11 19:12:45  INFO          [+] Meghalaya board postpones two Class 12 exams in violence-hit West Garo
+2026-03-11 19:12:45  INFO          [+] 'Don't panic, please': Govt urges consumers not to panic book LPG cyli
+2026-03-11 19:12:45  INFO          [+] 90% of India's LPG imports travels through Hormuz Strait, but things i
+2026-03-11 19:12:45  INFO          [+] Mamata Banerjee targets PM Modi over LPG price rise, announces rally i
+2026-03-11 19:12:45  INFO          [+] India's crude oil supply secure: Centre amid shortage fears due to Str
+2026-03-11 19:12:45  INFO          [+] Rajasthan shocker: Class 11 student hit with iron rods, stabbed to dea
+2026-03-11 19:12:45  INFO          [+] No proposal for Front-of-Pack Labelling awareness campaign: Govt tells
+2026-03-11 19:12:45  INFO          [+] Manipur: Six injured in protest against census without NRC
+2026-03-11 19:12:45  INFO          [+] Only words Birla ji has for us, 'No, No, No': Opposition MPs
+2026-03-11 19:12:45  INFO          [+] LPG shortage fears grow amid Strait of Hormuz closure: How cylinders r
+2026-03-11 19:12:45  INFO          [+] Arunachal governor asks tour operators to focus on sustainable tourism
+2026-03-11 19:12:45  INFO          [+] Census 2027 to also include transgender-headed households, Rajya Sabha
+2026-03-11 19:12:45  INFO          [+] Video shows moment Air India Express plane made hard landing on Phuket
+2026-03-11 19:12:45  INFO          [+] New Green Express highway from Surat will reduce Delhi-Chennai distanc
+2026-03-11 19:12:45  INFO          [+] After ‘judiciary’ chapter row, Supreme Court orders removal of 3 NCERT
+2026-03-11 19:12:45  INFO          [+] CBSE rickrolled: Class 12 math paper QR code links to 1987 Rick Astley
+2026-03-11 19:12:45  INFO          [+] ‘To be or not to be…’: What Supreme Court said in Harish Rana euthanas
+2026-03-11 19:12:45  INFO          [+] 'Indians won't be left stranded': PM Modi on nationals stuck in US-Ira
+2026-03-11 19:12:45  INFO          [+] Meghalaya postpones GHADC elections amid clashes, curfew, protests in 
+2026-03-11 19:12:45  INFO          [+] Rural tap water connections rose from 17 to 82 per cent since launch o
+2026-03-11 19:12:45  INFO          [+] Delhi HC canteen stops serving main course, cites ‘unavailability’ of 
+2026-03-11 19:12:45  INFO          [+] Explained: The Kirti Azad controversy after India’s T20 World Cup triu
+2026-03-11 19:12:45  INFO          [+] Who is Harish Rana? In coma for 12 years, man gets passive euthanasia 
+2026-03-11 19:12:45  INFO          [+] Census exercise, house listing to begin from May 1 in Andhra Pradesh
+2026-03-11 19:12:45  INFO          [+] Indian among 4 injured as drones fall near Dubai airport amid Iran-US 
+2026-03-11 19:12:45  INFO          [+] Iran holds US accountable for disruptions in energy routes
+2026-03-11 19:12:45  INFO          [+] SC bars three from curriculum work over Class 8 judiciary chapter
+2026-03-11 19:12:45  INFO          [+] 12 months, 13 recharges: Raghav Chadha flags prepaid mobile ‘scam’ in 
+2026-03-11 19:12:45  INFO          [+] Andhra CM proposes 'Indian School of Agriculture', sets governance tar
+2026-03-11 19:12:45  INFO          [+] IRCTC asks catering licensees to adopt contingency plans over possible
+2026-03-11 19:12:45  INFO          [+] Kerala CM, ministers likely to skip PM’s event in Kochi over non-inclu
+2026-03-11 19:12:45  INFO          [+] Delhi Airport advises international passengers to check updates amid w
+2026-03-11 19:12:45  INFO          [+] 18-year-old battles leopard with bare hands, kills it using stones in 
+2026-03-11 19:12:45  INFO          [+] Largest Maoist weapons dump found as 108 insurgents surrender in Chhat
+2026-03-11 19:12:45  INFO          [+] India buys 30 million barrels of Russian oil after US waiver amid oil 
+2026-03-11 19:12:45  INFO          [+] Paramilitaries likely to be withdrawn from Bastar by Mar 2027: Chhatti
+2026-03-11 19:12:45  INFO          [+] Supreme Court allows passive euthanasia for man in coma for over a dec
+2026-03-11 19:12:45  INFO          [+] LPG gas cylinder price today: Check city-wise prices of domestic, comm
+2026-03-11 19:12:45  INFO          [+] CAG highlights Namami Gange Programme’s poor implementation in Uttarak
+2026-03-11 19:12:45  INFO          [+] Iran-US war: Govt announces relief measures for stranded West Asia-bou
+2026-03-11 19:12:45  INFO          [+] Nepal's Balen Shah says will work with India to strengthen bilateral t
+2026-03-11 19:12:45  INFO          [+] Shockwaves from West Asia war clouds hiring, bonus at firms with Gulf 
+2026-03-11 19:12:45  INFO          [+] UP woman declared brain-dead comes back to life as ambulance hits a po
+2026-03-11 19:12:45  INFO          [+] Eateries shut, Bengaluru dosas bear brunt: Fears of LPG crisis hits re
+2026-03-11 19:12:45  INFO          [+] ‘I will ask you to take an exam in English’: CJI rebukes amateur with 
+2026-03-11 19:12:45  INFO          [+] Himanta Sarma's post comparing Assam highway to F1 track under fire ov
+2026-03-11 19:12:45  INFO          [+] ₹one lakh crore investment proposals turned into projects in five year
+2026-03-11 19:12:45  INFO          [+] Sahil Dhaneshra accident: Accused minor in Dwarka crash gets bail, JJB
+2026-03-11 19:12:45  INFO          [+] Bill to safeguard manuscripts among 4 tabled in K’taka assembly
+2026-03-11 19:12:45  INFO          [+] Shiv Sena MP seeks ban on social media for kids, Centre hints no such 
+2026-03-11 19:12:45  INFO          [+] SIR heats up House: Kharge calls it ‘fraud’, Nadda defends
+2026-03-11 19:12:45  INFO          [+] LPG panic booking in Delhi starts as govt's 25-day gap rule sets in
+2026-03-11 19:12:45  INFO          [+] Uniform Civil Code may solve gender bias in personal laws: Supreme Cou
+2026-03-11 19:12:45  INFO          [+] Bengaluru PG owners body hold meeting to deal with LPG crisis
+2026-03-11 19:12:45  INFO          [+] Cabinet approves  ₹4k-cr railway projects; international status for Ma
+2026-03-11 19:12:45  INFO          [+] Govt diverting SC/ST funds to guarantees: BJP
+2026-03-11 19:12:45  INFO          [+] Air India, Indigo to run special flights to and from Middle East today
+2026-03-11 19:12:45  INFO          [+] Restaurants across B’luru cut operations over LPG shortage
+2026-03-11 19:12:45  INFO          [+] HPV vaccination drive: Delhi sees only 285 jabs in first 10 days, offi
+2026-03-11 19:12:45  INFO          [+] Pentecosts in Kerala granted Christian denomination status
+2026-03-11 19:12:45  INFO          [+] Restaurants tweak menus as LPG crisis worsens
+2026-03-11 19:12:45  INFO          [+] Cabinet approval to 11km-long stretch linking Noida's Jewar airport to
+2026-03-11 19:12:45  INFO          [+] EC meet today to finalise poll schedule for Kerala, Bengal, Tamil Nadu
+2026-03-11 19:12:45  INFO          [+] Air India to hike fuel surcharges amid West Asia conflict
+2026-03-11 19:12:45  INFO          [+] India unveils roadmap to revamp military by 2047
+2026-03-11 19:12:45  INFO          [+] Cabinet eases investment rules for China and neighbours sharing land b
+2026-03-11 19:12:45  INFO          [+] 13.8% soil loss across Aravallis: Study
+2026-03-11 19:12:45  INFO          [+] SC raps govt over delay in benefits to cadets
+2026-03-11 19:12:45  INFO          [+] Guarantee for speedy trials also ensures timely justice: SC
+2026-03-11 19:12:45  INFO          [+] Cabinet clears  ₹8.69 lakh crore outlay for revamped Jal Jeevan Missio
+2026-03-11 19:12:45  INFO          [+] NCERT trims Class 9 English syllabus, features texts by Sudha Murty, T
+2026-03-11 19:12:45  INFO          [+] Essential Commodities Act invoked to prioritise LPG production for dom
+2026-03-11 19:12:45  INFO          [+] Assam cabinet to rename medical college named after former president F
+2026-03-11 19:12:45  INFO          [+] Relief measures for stranded Indian shippers bound for West Asia
+2026-03-11 19:12:45  INFO          [+] 'Good actors': Why US ‘allowed’ India to purchase Russian oil despite 
+2026-03-11 19:12:45  INFO          [+] EAM Jaishankar speaks with Iran foreign minister Araghchi amid West As
+2026-03-11 19:12:45  INFO          [+] Air India flight fares set to go up as airline announces hike in fuel 
+2026-03-11 19:12:45  INFO          [+] India to consider Bangladesh’s request for additional diesel supplies
+2026-03-11 19:12:45  INFO          [+] Nepal's Balen Shah thanks PM Modi for ‘good wishes’, congratulates Ind
+2026-03-11 19:12:45  INFO          [+] ‘Useless question’: WC winner Ishan Kishan on row as Azad objected to 
+2026-03-11 19:12:45  INFO          [+] Mumbai traffic police introduce odd-even parking rule in Dahisar for 3
+2026-03-11 19:12:45  INFO          [+] Pakistan PM Shehbaz congratulates Iran's new supreme leader
+2026-03-11 19:12:45  INFO          [+] Air India launches probe after video shows former cabin crew member in
+2026-03-11 19:12:45  INFO          [+] 'What happened in Dec': IndiGo CEO Pieter Elbers quits 18 months ahead
+2026-03-11 19:12:45  INFO          [+] IndiGo CEO Pieter Elbers seeks notice period waiver | See resignation 
+2026-03-11 19:12:45  INFO          [+] Govt eases FDI norms for those from India's bordering countries: No sp
+2026-03-11 19:12:45  INFO          [+] 'Steps taken to enhance production': Hindustan Petroleum after LPG sup
+2026-03-11 19:12:45  INFO          [+] 'Catastrophic closure': Restaurants in fear, govt prioritises home LPG
+2026-03-11 19:12:45  INFO          [+] No violation of privacy in state govt’s bulk messaging campaign: Keral
+2026-03-11 19:12:46  INFO      
+    Parsing: https://www.hindustantimes.com/feeds/rss/politics/rssfeed.xml
+2026-03-11 19:12:46  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:46  INFO      
+  Result → Saved: 95  |  Skipped: 5  |  Status: success
+2026-03-11 19:12:46  INFO      127.0.0.1 - - [11/Mar/2026 19:12:46] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:47  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:47  INFO        Outlet : NDTV  [CENTER]
+2026-03-11 19:12:47  INFO        Feeds  : 2 feed(s)
+2026-03-11 19:12:47  INFO      
+    Parsing: https://feeds.feedburner.com/ndtvnews-india-news
+2026-03-11 19:12:49  INFO          Found 20 entries
+2026-03-11 19:12:49  INFO          [+] "You Wink, Blow Kisses": Amit Shah Counters Rahul Gandhi On Speaker's 
+2026-03-11 19:12:49  INFO          [+] Opposition's No-Confidence Motion Against Speaker Defeated In Lok Sabh
+2026-03-11 19:12:49  INFO          [+] "Won't Desert Citizens During Trouble": PM Modi On Indians Stranded In
+2026-03-11 19:12:49  INFO          [+] Parliament Budget Session LIVE Updates: Amit Shah Replies To Debate On
+2026-03-11 19:12:49  INFO          [+] Opinion: Opinion | Nitish Kumar, And The Great Bihar Promise That Neve
+2026-03-11 19:12:49  INFO          [+] 43 New Medical Colleges Added; 11,682 MBBS, 8,967 PG Seats Approved Fo
+2026-03-11 19:12:49  INFO          [+] 100 Indian Students To Return From Iran Via Armenia Route
+2026-03-11 19:12:49  INFO          [+] "Questioning Speaker's Integrity Means Questioning Our Democracy": Ami
+2026-03-11 19:12:49  INFO          [+] LPG Black Market Exposed In Bhopal As Iran War Triggers Supply Shortag
+2026-03-11 19:12:49  INFO          [+] When Supreme Court First Recognised Concept Of Passive Euthanasia
+2026-03-11 19:12:49  INFO          [+] NMC Asks States To Allocate Internship Slots For Foreign Medical Gradu
+2026-03-11 19:12:49  INFO          [+] Telangana Couple Sell Infant For Rs 1.5 Lakh Due To Financial Crisis
+2026-03-11 19:12:49  INFO          [+] In Landmark Supreme Court Judgment, Ghaziabad Man Gets Right To Die
+2026-03-11 19:12:49  INFO          [+] "Which Parent Wants This?" Harish Rana's Father After 'Right To Die' O
+2026-03-11 19:12:49  INFO          [+] No Biryani, Shahi Paneer For Lawyers As LPG Shortage Hits Delhi High C
+2026-03-11 19:12:49  INFO          [+] Harish Rana Can Die Because Aruna Shanbaug Lived: India's Euthanasia J
+2026-03-11 19:12:49  INFO          [+] After Oil, Gas, Iran's Hormuz Chokehold Raises Fertiliser Red Flag For
+2026-03-11 19:12:49  INFO          [+] Stock Market Highlights: Investors Lose Rs 6 Lakh Crore As Sensex Fall
+2026-03-11 19:12:49  INFO          [+] Is It Safe To Travel or Study In Iran Right Now? Key Things To Know
+2026-03-11 19:12:49  INFO          [+] 5 Instances When Supreme Court Cracked Down on "Frivolous" Petitions
+2026-03-11 19:12:49  INFO      127.0.0.1 - - [11/Mar/2026 19:12:49] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:49  INFO      
+    Parsing: https://feeds.feedburner.com/ndtvnews-top-stories
+2026-03-11 19:12:51  INFO          Found 20 entries
+2026-03-11 19:12:51  INFO          [+] "Mobiles Not Luxury": Raghav Chadha Questions 28-Day "Monthly" Recharg
+2026-03-11 19:12:51  INFO          [+] Van Smashes Into Security Barricade Near White House
+2026-03-11 19:12:51  INFO          [+] Mumbai's Iconic Hotels Forced to Dim Their Lights As LPG Dry Spell Con
+2026-03-11 19:12:51  INFO          [+] 2 Indians Dead, 1 Missing In Middle East War, Confirms Foreign Ministr
+2026-03-11 19:12:51  INFO          [+] Black Smoke, Fire On Thai Cargo Ship Sailing To India After Hormuz Att
+2026-03-11 19:12:51  INFO          [+] Missiles Marked "In Memory Of Epstein Island Victims" Fired By Iran Am
+2026-03-11 19:12:51  INFO          [+] Wheel Damaged In Hard Landing, Air India Express Plane Stuck On Phuket
+2026-03-11 19:12:51  INFO          [+] How Middle East War Has Become A Combat Lab For India's Military Plann
+2026-03-11 19:12:51  INFO          [+] Meta Acquires AI Agent Network Moltbook That Sam Altman Once Mocked
+2026-03-11 19:12:51  INFO          [+] JD Vance Mostly Silent On Iran War, Trump Says He's "Philosophically D
+2026-03-11 19:12:52  INFO      
+  Result → Saved: 30  |  Skipped: 10  |  Status: success
+2026-03-11 19:12:52  INFO      127.0.0.1 - - [11/Mar/2026 19:12:52] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:53  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:53  INFO        Outlet : Times of India  [CENTER]
+2026-03-11 19:12:53  INFO        Feeds  : 2 feed(s)
+2026-03-11 19:12:53  INFO      
+    Parsing: https://timesofindia.indiatimes.com/rssfeedstopstories.cms
+2026-03-11 19:12:53  INFO          Found 41 entries
+2026-03-11 19:12:53  INFO          [+] Day after Anthropic sued the Trump admin, Google makes an announcement
+2026-03-11 19:12:53  INFO          [+] White House forced shut after van ploughs into security gate
+2026-03-11 19:12:53  INFO          [+] Khushboo Sundar on World Cup trophy being taken to temple: 'The trophy
+2026-03-11 19:12:53  INFO          [+] 1st ODI: Pakistan humbled in Bangladesh; hosts chase target in 15.1 ov
+2026-03-11 19:12:53  INFO          [+] Big revelation! 'MS Dhoni never said drop Yuvraj Singh': Former select
+2026-03-11 19:12:53  INFO          [+] Amazon orders 90-day reset, what new policy means for engineers and ot
+2026-03-11 19:12:53  INFO          [+] Gaurav Kapur-Kritika Kamra wedding: Farhan Akhtar, Zaheer Khan, Virend
+2026-03-11 19:12:53  INFO      
+    Parsing: https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms
+2026-03-11 19:12:54  INFO          Found 20 entries
+2026-03-11 19:12:54  INFO          [+] Delhi prepares for a citywide celebration of running and fitness with 
+2026-03-11 19:12:54  INFO      
+  Result → Saved: 8  |  Skipped: 53  |  Status: success
+2026-03-11 19:12:55  INFO      127.0.0.1 - - [11/Mar/2026 19:12:55] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:55  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:55  INFO        Outlet : Business Standard  [CENTER]
+2026-03-11 19:12:55  INFO        Feeds  : 2 feed(s)
+2026-03-11 19:12:55  INFO      
+    Parsing: https://www.business-standard.com/rss/politics-current-affairs-10601.rss
+2026-03-11 19:12:55  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:55  INFO      
+    Parsing: https://www.business-standard.com/rss/current-affairs-10605.rss
+2026-03-11 19:12:55  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:55  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-11 19:12:56  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:56  INFO        Outlet : Economic Times  [CENTER]
+2026-03-11 19:12:56  INFO        Feeds  : 2 feed(s)
+2026-03-11 19:12:56  INFO      
+    Parsing: https://economictimes.indiatimes.com/rssfeedsdefault.cms
+2026-03-11 19:12:57  INFO          Found 76 entries
+2026-03-11 19:12:57  INFO          [+] Jefferies raises Coal India target price, says valuation reasonable
+2026-03-11 19:12:57  INFO          [+] IT stocks in focus after Oracle’s strong results; Nuvama says valuatio
+2026-03-11 19:12:57  INFO          [+] Valuations moderate after market fall, but India’s premium limits FII 
+2026-03-11 19:12:57  INFO          [+] D-St bulls, rupee regain ground amid global oil price rollercoaster
+2026-03-11 19:12:57  INFO          [+] Equity fund flows pick up in Feb even as SIPs get less
+2026-03-11 19:12:57  INFO          [+] Power sector remains a safe bet for investors amid volatility: Gautam 
+2026-03-11 19:12:57  INFO      
+    Parsing: https://economictimes.indiatimes.com/news/politics-and-nation/rssfeeds/28311565.cms
+2026-03-11 19:12:57  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:57  INFO      
+  Result → Saved: 6  |  Skipped: 70  |  Status: success
+2026-03-11 19:12:57  INFO      127.0.0.1 - - [11/Mar/2026 19:12:57] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:12:58  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:12:58  INFO        Outlet : Deccan Herald  [CENTER]
+2026-03-11 19:12:58  INFO        Feeds  : 2 feed(s)
+2026-03-11 19:12:58  INFO      
+    Parsing: https://www.deccanherald.com/rss-feed/national.rss
+2026-03-11 19:12:59  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:59  INFO      
+    Parsing: https://www.deccanherald.com/rss-feed/politics.rss
+2026-03-11 19:12:59  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:12:59  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-11 19:13:00  INFO      127.0.0.1 - - [11/Mar/2026 19:13:00] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:00  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:13:00  INFO        Outlet : The Print  [CENTER]
+2026-03-11 19:13:00  INFO        Feeds  : 2 feed(s)
+2026-03-11 19:13:00  INFO      
+    Parsing: https://theprint.in/feed/
+2026-03-11 19:13:01  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:13:01  INFO      
+    Parsing: https://theprint.in/category/politics/feed/
+2026-03-11 19:13:01  INFO          Found 20 entries
+2026-03-11 19:13:01  INFO          [+] PM ‘compromise’ & parliamentary history: Rahul & Ravi Shankar lock hor
+2026-03-11 19:13:01  INFO          [+] Fulfilling a promise made to a farmer in a paddy field, Rahul attends 
+2026-03-11 19:13:01  INFO          [+] DMK cries ‘political agenda’ as Senthil Balaji summoned by CBI in Karu
+2026-03-11 19:13:01  INFO          [+] Kerala minister Ganesh Kumar’s wife who ‘caught him cheating’ says iss
+2026-03-11 19:13:01  INFO          [+] ‘In the name of God, go’: Tables turn for Mahua Moitra as TMC MP unlea
+2026-03-11 19:13:02  INFO      
+  Result → Saved: 5  |  Skipped: 15  |  Status: success
+2026-03-11 19:13:03  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:13:03  INFO        Outlet : The Quint  [CENTER]
+2026-03-11 19:13:03  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:13:03  INFO      
+    Parsing: https://www.thequint.com/feed
+2026-03-11 19:13:03  INFO      127.0.0.1 - - [11/Mar/2026 19:13:03] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:03  INFO          Found 11 entries
+2026-03-11 19:13:03  INFO          [+] Om Birla's Lok Sabha: Suspensions at 20-Year High, Entirely from Oppos
+2026-03-11 19:13:04  INFO      
+  Result → Saved: 1  |  Skipped: 10  |  Status: success
+2026-03-11 19:13:05  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:13:05  INFO        Outlet : BBC India  [CENTER]
+2026-03-11 19:13:05  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:13:05  INFO      
+    Parsing: https://feeds.bbci.co.uk/news/world/asia/india/rss.xml
+2026-03-11 19:13:05  INFO          Found 22 entries
+2026-03-11 19:13:06  INFO      
+  Result → Saved: 0  |  Skipped: 22  |  Status: success
+2026-03-11 19:13:06  INFO      127.0.0.1 - - [11/Mar/2026 19:13:06] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:07  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:13:07  INFO        Outlet : Reuters India  [CENTER]
+2026-03-11 19:13:07  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:13:07  INFO      
+    Parsing: https://feeds.reuters.com/reuters/INtopNews
+2026-03-11 19:13:09  INFO      127.0.0.1 - - [11/Mar/2026 19:13:09] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:12  INFO      127.0.0.1 - - [11/Mar/2026 19:13:12] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:16  INFO      127.0.0.1 - - [11/Mar/2026 19:13:16] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:19  INFO      127.0.0.1 - - [11/Mar/2026 19:13:19] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:22  INFO      127.0.0.1 - - [11/Mar/2026 19:13:22] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:25  INFO      127.0.0.1 - - [11/Mar/2026 19:13:25] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:28  INFO      127.0.0.1 - - [11/Mar/2026 19:13:28] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:29  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:13:29  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-11 19:13:30  INFO      
+───────────────────────────────────────────────────────
+2026-03-11 19:13:30  INFO        Outlet : AP India  [CENTER]
+2026-03-11 19:13:30  INFO        Feeds  : 1 feed(s)
+2026-03-11 19:13:30  INFO      
+    Parsing: https://rsshub.app/apnews/topics/apf-india
+2026-03-11 19:13:30  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-11 19:13:30  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-11 19:13:31  INFO      127.0.0.1 - - [11/Mar/2026 19:13:31] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:31  INFO      
+2026-03-11 19:13:31  INFO      =======================================================
+2026-03-11 19:13:31  INFO        RUN COMPLETE — 102s elapsed
+2026-03-11 19:13:31  INFO        New articles saved : 577
+2026-03-11 19:13:31  INFO        Duplicates skipped : 991
+2026-03-11 19:13:31  INFO      =======================================================
+2026-03-11 19:13:31  INFO      
+═══════════════════════════════════════════════════════
+2026-03-11 19:13:31  INFO        DATABASE SUMMARY
+2026-03-11 19:13:31  INFO      ═══════════════════════════════════════════════════════
+2026-03-11 19:13:31  INFO        OUTLET                       BIAS   ARTICLES
+2026-03-11 19:13:31  INFO        ────────────────────────── ──────── ────────
+2026-03-11 19:13:31  INFO        OpIndia                     right         10
+2026-03-11 19:13:31  INFO        Swarajya                    right          1
+2026-03-11 19:13:31  INFO        Organiser                   right         21
+2026-03-11 19:13:31  INFO        DNA India                   right         36
+2026-03-11 19:13:31  INFO        The Sunday Guardian         right         22
+2026-03-11 19:13:31  INFO        Zee News                    right         40
+2026-03-11 19:13:31  INFO        India Today                 right        226
+2026-03-11 19:13:31  INFO        News18                      right        452
+2026-03-11 19:13:31  INFO        The Hindu                   center       444
+2026-03-11 19:13:31  INFO        Indian Express              center       618
+2026-03-11 19:13:31  INFO        Hindustan Times             center       202
+2026-03-11 19:13:31  INFO        NDTV                        center        56
+2026-03-11 19:13:31  INFO        Times of India              center       218
+2026-03-11 19:13:31  INFO        Economic Times              center        82
+2026-03-11 19:13:31  INFO        The Print                   center        25
+2026-03-11 19:13:31  INFO        The Quint                   center        34
+2026-03-11 19:13:31  INFO        BBC India                   center        27
+2026-03-11 19:13:31  INFO        Newslaundry                  left          4
+2026-03-11 19:13:31  INFO        Alt News                     left         13
+2026-03-11 19:13:31  INFO        Maktoob Media                left         15
+2026-03-11 19:13:31  INFO        ────────────────────────── ──────── ────────
+2026-03-11 19:13:31  INFO        TOTAL                                   2546
+2026-03-11 19:13:31  INFO      ═══════════════════════════════════════════════════════
+
+2026-03-11 19:13:33  INFO      127.0.0.1 - - [11/Mar/2026 19:13:33] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:38  INFO      127.0.0.1 - - [11/Mar/2026 19:13:38] "POST /api/trigger-body HTTP/1.1" 200 -
+2026-03-11 19:13:39  INFO      Using requests library for http requests (alternative cloudscraper library is recommended for bypassing Cloudflare protection)
+2026-03-11 19:13:41  INFO      127.0.0.1 - - [11/Mar/2026 19:13:41] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:44  INFO      127.0.0.1 - - [11/Mar/2026 19:13:44] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:46  INFO      127.0.0.1 - - [11/Mar/2026 19:13:46] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:51  INFO      127.0.0.1 - - [11/Mar/2026 19:13:51] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:54  INFO      127.0.0.1 - - [11/Mar/2026 19:13:54] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:13:57  INFO      127.0.0.1 - - [11/Mar/2026 19:13:57] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:00  INFO      127.0.0.1 - - [11/Mar/2026 19:14:00] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:02  INFO      127.0.0.1 - - [11/Mar/2026 19:14:02] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:06  INFO      127.0.0.1 - - [11/Mar/2026 19:14:06] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:08  INFO      127.0.0.1 - - [11/Mar/2026 19:14:08] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:11  INFO      127.0.0.1 - - [11/Mar/2026 19:14:11] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:14  INFO      127.0.0.1 - - [11/Mar/2026 19:14:14] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:17  INFO      127.0.0.1 - - [11/Mar/2026 19:14:17] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:20  INFO      127.0.0.1 - - [11/Mar/2026 19:14:20] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:24  INFO      127.0.0.1 - - [11/Mar/2026 19:14:24] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:27  INFO      127.0.0.1 - - [11/Mar/2026 19:14:27] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:30  INFO      127.0.0.1 - - [11/Mar/2026 19:14:30] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:33  INFO      127.0.0.1 - - [11/Mar/2026 19:14:33] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:36  INFO      127.0.0.1 - - [11/Mar/2026 19:14:36] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:38  WARNING   fromstring() returned an invalid string: ...
+2026-03-11 19:14:39  WARNING   fromstring() returned an invalid string: ...
+2026-03-11 19:14:39  INFO      127.0.0.1 - - [11/Mar/2026 19:14:39] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:41  INFO      127.0.0.1 - - [11/Mar/2026 19:14:41] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:44  INFO      127.0.0.1 - - [11/Mar/2026 19:14:44] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:47  INFO      127.0.0.1 - - [11/Mar/2026 19:14:47] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:50  INFO      127.0.0.1 - - [11/Mar/2026 19:14:50] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:14:50  INFO      127.0.0.1 - - [11/Mar/2026 19:14:50] "GET /api/stats HTTP/1.1" 200 -
+2026-03-11 19:15:08  INFO      127.0.0.1 - - [11/Mar/2026 19:15:08] "POST /api/trigger-body HTTP/1.1" 200 -
+2026-03-11 19:15:12  INFO      127.0.0.1 - - [11/Mar/2026 19:15:12] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:15:21  INFO      [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-03-11 19:15:21  INFO      [33mPress CTRL+C to quit[0m
+2026-03-11 19:15:23  INFO      127.0.0.1 - - [11/Mar/2026 19:15:23] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:15:23  INFO      127.0.0.1 - - [11/Mar/2026 19:15:23] "GET /api/stats HTTP/1.1" 200 -
+2026-03-11 19:15:26  INFO      127.0.0.1 - - [11/Mar/2026 19:15:26] "GET / HTTP/1.1" 200 -
+2026-03-11 19:15:26  INFO      127.0.0.1 - - [11/Mar/2026 19:15:26] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:15:28  INFO      127.0.0.1 - - [11/Mar/2026 19:15:28] "POST /api/trigger-body HTTP/1.1" 200 -
+2026-03-11 19:15:29  INFO      Using requests library for http requests (alternative cloudscraper library is recommended for bypassing Cloudflare protection)
+2026-03-11 19:15:33  INFO      127.0.0.1 - - [11/Mar/2026 19:15:33] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:15:36  INFO      127.0.0.1 - - [11/Mar/2026 19:15:36] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:15:39  INFO      127.0.0.1 - - [11/Mar/2026 19:15:39] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:15:42  INFO      127.0.0.1 - - [11/Mar/2026 19:15:42] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:15:45  INFO      127.0.0.1 - - [11/Mar/2026 19:15:45] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:15:46  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/questioned-democracys-foundation-amit-shah-blasts-opposition-in-lok-sabha-during-no-confidence-debate-101773232425066.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;questione
+2026-03-11 19:15:46  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/cag-report-highlights-lapses-in-dehradun-smart-city-projects-101773234190627.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;cag&#45;r
+2026-03-11 19:15:46  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/viral-kumbhmela-girl-monalisa-bhonsle-seeks-police-protection-in-kerala-to-marry-boyfriend-101773233132189.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;viral&#45
+2026-03-11 19:15:46  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/when-chance-to-speak-hes-in-germany-amit-shah-tears-into-lop-rahul-gandhi-lok-sabha-101773233452462.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;when&#45;
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/oppositions-no-confidence-motion-against-lok-sabha-om-birla-dismissed-101773233597200.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;oppositio
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/10-maoist-cadres-including-leader-with-55-lakh-bounty-surrender-in-odisha-101773232629611.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;10&#45;ma
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/dont-panic-please-govt-to-consumers-panic-booking-lpg-cylinders-fearing-shortage-101773229744075.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;dont&#45;
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/meghalaya-board-postpones-two-class-12-exams-in-violence-hit-west-garo-hills-101773228849633.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;meghalaya
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/90-of-indias-lpg-imports-travels-through-hormuz-strait-but-things-in-control-govt-101773229443643.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;90&#45;of
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/mamata-banerjee-targets-pm-modi-over-lpg-price-rise-announces-rally-in-kolkata-101773229728698.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;mamata&#4
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/no-proposal-for-front-of-pack-labelling-awareness-campaign-govt-tells-rs-101773228110893.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;no&#45;pr
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/indias-crude-oil-supply-secure-centre-amid-shortage-fears-due-to-strait-of-hormuz-closure-101773229134179.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;indias&#4
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/rajasthan-shocker-class-11-student-hit-with-iron-rods-stabbed-to-death-after-dispute-over-social-media-reels-101773226453452.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;rajasthan
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/only-words-birla-ji-has-for-us-no-no-no-opposition-mps-101773227550906.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;only&#45;
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/manipur-six-injured-in-protest-against-census-without-nrc-101773227629432.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;manipur&#
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/lpg-shortage-fears-grow-amid-strait-of-hormuz-closure-how-cylinders-reach-your-doorstep-101773220230029.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;lpg&#45;s
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/arunachal-governor-asks-tour-operators-to-focus-on-sustainable-tourism-101773226295868.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;arunachal
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/census-2027-to-also-include-transgender-headed-households-rajya-sabha-told-101773226049515.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;census&#4
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/video-shows-moment-air-india-express-plane-made-hard-landing-on-phuket-runway-wheel-damaged-101773225187284.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;video&#45
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/after-judiciary-chapter-row-supreme-court-orders-removal-of-3-ncert-members-from-finalising-future-textbooks-101773219184837.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;after&#45
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/cbserickrolledclass-12-math-paper-qr-code-links-to-1987-rick-astley-hit-101773224566682.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;cbserickr
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/new-green-express-highway-from-surat-will-reduce-delhi-chennai-distance-by-320-kms-gadkari-101773225302816.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;new&#45;g
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/to-be-or-not-to-be-what-supreme-court-said-in-harish-rana-euthanasia-case-top-quotes-101773220890526.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;to&#45;be
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/delhi-hc-canteen-stops-serving-main-course-cites-unavailability-of-lpg-cylinders-oil-prices-today-101773216590484.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;delhi&#45
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/meghalaya-postpones-ghadc-elections-amid-clashes-curfew-protests-in-garo-hills-101773220245356.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;meghalaya
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/rural-tap-water-connections-rose-from-17-to-82-per-cent-since-launch-of-jal-jeevan-mission-prez-101773219389400.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;rural&#45
+2026-03-11 19:15:47  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/kirti-azad-controversy-india-t20-world-cup-triumph-how-gautam-gambhir-ishan-kishan-responded-101773211769387.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;kirti&#45
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/who-is-harish-rana-in-coma-for-12-years-man-gets-passive-euthanasia-nod-from-supreme-court-101773213603786.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;who&#45;i
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/indian-national-injured-drones-fall-near-dubai-airport-amid-iran-us-war-middle-east-uae-abu-dhabi-strikes-missile-101773216117629.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;indian&#4
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/census-exercise-house-listing-to-begin-from-may-1-in-andhra-pradesh-101773216690002.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;census&#4
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/iran-holds-us-accountable-for-disruptions-in-energy-routes-101773214869943.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;iran&#45;
+2026-03-11 19:15:48  INFO      127.0.0.1 - - [11/Mar/2026 19:15:48] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/sc-bars-three-from-curriculum-work-over-class-8-judiciary-chapter-101773214543387.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;sc&#45;ba
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/irctc-asks-catering-licensees-to-adopt-contingency-plans-over-possible-lpg-shortage-101773211962423.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;irctc&#45
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/andhra-cm-proposes-indian-school-of-agriculture-sets-governance-targets-for-collectors-101773212256341.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;andhra&#4
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/kerala-cm-ministers-likely-to-skip-pm-s-event-in-kochi-over-non-inclusion-of-pwd-min-101773211658728.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;kerala&#4
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/12-months-13-recharges-raghav-chadha-flags-prepaid-mobile-scam-in-parliament-101773212936035.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;12&#45;mo
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/india-buys-30-million-barrels-of-russian-oil-after-us-waiver-amid-oil-concerns-101773205641291.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;india&#45
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/largest-maoist-weapons-dump-found-as-108-insurgents-surrender-in-chhattisgarh-101773210042195.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;largest&#
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/18yearold-battles-leopard-with-bare-hands-kills-it-using-stones-in-himachal-village-101773208009836.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;18yearold
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/delhi-airport-advises-international-passengers-to-check-updates-amid-westbound-flight-delays-101773209637854.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;delhi&#45
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/paramilitaries-likely-to-be-withdrawn-from-bastar-by-mar-2027-chhattisgarh-dycm-101773206921857.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;paramilit
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/supreme-court-allows-harish-rana-passive-euthanasia-for-man-in-coma-for-over-a-decade-101773206671250.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;supreme&#
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/cag-highlights-namami-gange-programme-s-poor-implementation-in-uttarakhand-101773205782061.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;cag&#45;h
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/lpg-gas-cylinders-costs-today-prices-domestic-commercial-gas-delhi-mumbai-kolkata-full-list-101773202879395.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;lpg&#45;g
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/iranus-war-govt-announces-relief-measures-for-stranded-west-asia-bound-shippers-101773204010080.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;iranus&#4
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/nepals-balen-shah-says-will-work-with-india-to-strengthen-bilateral-ties-101773204502810.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;nepals&#4
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/shockwaves-from-west-asia-war-clouds-hiring-bonus-at-firms-with-gulf-links-in-india-101773204343250.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;shockwave
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/up-woman-declared-brain-dead-comes-back-to-life-as-ambulance-strikes-a-pothole-vineeta-shukla-pilibhit-101773198419182.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;up&#45;wo
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/tandoors-out-bengaluru-iconic-dosas-bear-the-brunt-lpg-shortage-fears-iran-israel-war-hits-restaurants-across-india-101773199605891.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;tandoors&
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/amateur-with-ai-drafted-plea-gets-supreme-court-rebuke-101773201222795.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;amateur&#
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/indians-wont-be-left-stranded-pm-modi-on-nationals-stuck-in-us-iran-warzones-101773221870414.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;indians&#
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/sahil-dhaneshra-accident-accused-minor-in-dwarka-crash-gets-bail-jjb-flags-lack-of-parental-supervision-101773194996072.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;sahil&#45
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/rs-one-lakh-crore-investment-proposals-turned-into-projects-in-five-years-says-rajeev-101773199995435.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;rs&#45;on
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/himanta-sarmas-post-comparing-assam-highway-to-f1-track-under-fire-over-ai-claims-he-reacts-101773195826083.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;himanta&#
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/bill-to-safeguard-manuscripts-among-4-tabled-in-k-taka-assembly-101773170908303.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;bill&#45;
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/mp-seeks-ban-on-social-media-for-kids-centre-hints-no-such-plans-101773170549475.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;mp&#45;se
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/sir-heats-up-house-kharge-calls-it-fraud-nadda-defends-101773170848193.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;sir&#45;h
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/lpg-panic-booking-in-delhi-starts-as-govts-25-day-gap-rule-sets-in-101773193372051.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;lpg&#45;p
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/uniform-civil-code-ucc-may-solve-gender-bias-in-personal-laws-supreme-court-101773194331777.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;uniform&#
+2026-03-11 19:15:48  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/bengaluru-pg-owners-body-hold-meeting-to-deal-with-lpg-crisis-101773170787887.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;bengaluru
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/govt-diverting-sc-st-funds-to-guarantees-bjp-101773170674041.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;govt&#45;
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/restaurants-across-b-luru-cut-operations-over-lpg-shortage-101773170616364.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;restauran
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/air-india-indigo-airlines-special-flights-middle-east-uae-saudia-oman-bahrain-doha-kuwait-tel-aviv-iran-us-war-101773190597593.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;air&#45;i
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/hpv-vaccination-drive-only-285-jabs-in-first-10-days-officials-blame-exams-for-low-turnout-101773192485970.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;hpv&#45;v
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/pentecosts-in-kerala-granted-christian-denomination-status-101773170430535.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;pentecost
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/cabinet-approval-to-11km-long-stretch-linking-noidas-jewar-airport-to-faridabad-101773190376387.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;cabinet&#
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/restaurants-tweak-menus-as-lpg-crisis-worsens-101773191882968.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;restauran
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/ec-meet-today-to-finalise-schedule-for-assembly-polls-101773170251034.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;ec&#45;me
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/air-india-to-hike-fuel-surcharges-amid-west-asia-conflict-101773170668768.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;air&#45;i
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/sc-raps-govt-over-delay-in-benefits-to-cadets-101773169656302.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;sc&#45;ra
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/india-unveils-roadmap-to-revamp-military-by-2047-101773170792245.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;india&#45
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/138-soil-loss-across-aravallis-study-101773169709502.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;138&#45;s
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/cabinet-eases-investment-rules-for-china-and-neighbours-sharing-land-borders-with-india-101773188475787.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;cabinet&#
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/guarantee-for-speedy-trials-also-ensures-timely-justice-sc-101773169593622.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;guarantee
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/cabinet-clears-8-69-lakh-crore-for-jal-jeevan-mission-101773169529393.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;cabinet&#
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/ncert-trims-class-9-english-syllabus-features-texts-by-sudha-murty-tagore-101773169411678.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;ncert&#45
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/india-government-invokes-esma-to-prioritise-lpg-production-for-domestic-use-as-west-asia-conflict-escalates-us-iran-war-101773185180230.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;india&#45
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/assam-cabinet-decides-to-rename-medical-college-named-after-former-president-fakhruddin-ali-ahmed-101773183056735.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;assam&#45
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/good-actors-white-house-on-allowing-india-to-resume-russian-oil-purchase-west-asia-tensions-us-iran-war-oil-supply-101773168191225.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;good&#45;
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/relief-measures-for-stranded-indian-shippers-bound-for-west-asia-101773167250125.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;relief&#4
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/air-india-flight-fares-set-to-go-up-airline-announces-hike-in-fuel-surcharge-amid-us-iran-war-101773159192813.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;air&#45;i
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/jaishankar-speaks-with-iran-foreign-minister-seyed-abbas-araghchi-amid-west-asia-tensions-101773165863417.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;jaishanka
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/nepals-balendra-shah-thanks-pm-for-good-wishes-congratulates-india-on-world-cup-win-101773155357843.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;nepals&#4
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/india-to-consider-bangladesh-s-request-for-additional-diesel-supplies-101773158844964.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;india&#45
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/mumbai-traffic-police-introduce-odd-even-parking-rule-in-dahisar-for-3-months-details-101773154147709.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;mumbai&#4
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/useless-question-ishan-kishan-on-row-as-kirti-azad-objected-to-world-cup-t20-trophy-taken-to-hindu-temple-101773155150026.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;useless&#
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/pakistan-pm-shehbaz-congratulates-irans-new-supreme-leader-101773155753321.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;pakistan&
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/indigo-ceo-pieter-elbers-seeks-notice-period-waiver-see-his-resignation-letter-airline-statement-101773150716429.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;indigo&#4
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/air-india-launches-probe-after-video-shows-former-cabin-crew-member-inside-cockpit-during-flight-101773147124597.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;air&#45;i
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/what-happened-in-december-after-indigo-ceo-pieter-elbers-quits-founder-rahul-bhatia-steps-in-to-take-charge-101773150357159.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;what&#45;
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/govt-eases-fdi-norms-from-indias-bordering-countries-no-special-nod-for-up-to-10-decision-on-proposals-in-60-days-101773151047358.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;govt&#45;
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/home-lpg-gets-priority-hotels-fear-closure-govt-says-upping-production-as-oil-supply-hit-by-west-asia-crisis-updates-101773144074839.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;home&#45;
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/steps-taken-to-enhance-production-hindustan-petroleum-after-lpg-supply-hit-in-india-amid-us-iran-war-101773145461633.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;steps&#45
+2026-03-11 19:15:49  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/no-violation-of-privacy-in-state-govt-s-bulk-messaging-campaign-kerala-hc-101773148399537.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;no&#45;vi
+2026-03-11 19:15:50  WARNING   get_html_status(): bad status code 403 on URL: https://www.hindustantimes.com/india-news/cabinet-approves-4k-cr-railway-projects-international-status-for-madurai-airport-101773170728528.html, html: <HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#46;com&#47;india&#45;news&#47;cabinet&#
+2026-03-11 19:15:50  INFO      127.0.0.1 - - [11/Mar/2026 19:15:50] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:15:53  INFO      127.0.0.1 - - [11/Mar/2026 19:15:53] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:15:56  INFO      127.0.0.1 - - [11/Mar/2026 19:15:56] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:15:59  INFO      127.0.0.1 - - [11/Mar/2026 19:15:59] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:16:02  INFO      127.0.0.1 - - [11/Mar/2026 19:16:02] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:16:05  INFO      127.0.0.1 - - [11/Mar/2026 19:16:05] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:16:09  INFO      127.0.0.1 - - [11/Mar/2026 19:16:09] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:16:12  INFO      127.0.0.1 - - [11/Mar/2026 19:16:12] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-11 19:16:12  INFO      127.0.0.1 - - [11/Mar/2026 19:16:12] "GET /api/stats HTTP/1.1" 200 -
+2026-03-11 19:17:04  INFO      127.0.0.1 - - [11/Mar/2026 19:17:04] "GET / HTTP/1.1" 200 -
+2026-03-11 19:17:04  INFO      127.0.0.1 - - [11/Mar/2026 19:17:04] "GET /api/job-status HTTP/1.1" 200 -

@@ -292,7 +292,7 @@ if __name__ == "__main__":
     print()
 
     fetch_full_articles(
-        batch_size=300,    # process up to 300 articles per run
+        batch_size=3000,    # process up to 300 articles per run
         max_workers=10,    # 10 simultaneous downloads
                            # reduce to 5 if you see many failures
     )
