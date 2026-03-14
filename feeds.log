@@ -5089,3 +5089,1203 @@ You don't have permission to access "http&#58;&#47;&#47;www&#46;hindustantimes&#
 2026-03-11 19:16:12  INFO      127.0.0.1 - - [11/Mar/2026 19:16:12] "GET /api/stats HTTP/1.1" 200 -
 2026-03-11 19:17:04  INFO      127.0.0.1 - - [11/Mar/2026 19:17:04] "GET / HTTP/1.1" 200 -
 2026-03-11 19:17:04  INFO      127.0.0.1 - - [11/Mar/2026 19:17:04] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:28:22  INFO      [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-03-14 15:28:22  INFO      [33mPress CTRL+C to quit[0m
+2026-03-14 15:28:24  INFO      127.0.0.1 - - [14/Mar/2026 15:28:24] "GET / HTTP/1.1" 200 -
+2026-03-14 15:28:24  INFO      127.0.0.1 - - [14/Mar/2026 15:28:24] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:28:24  INFO      127.0.0.1 - - [14/Mar/2026 15:28:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-03-14 15:28:26  INFO      =======================================================
+2026-03-14 15:28:26  INFO      127.0.0.1 - - [14/Mar/2026 15:28:26] "POST /api/trigger-rss HTTP/1.1" 200 -
+2026-03-14 15:28:26  INFO        Indian News RSS Feed Collector
+2026-03-14 15:28:26  INFO        Run ID  : 641c69b1
+2026-03-14 15:28:26  INFO        Started : 2026-03-14 09:58:26 UTC
+2026-03-14 15:28:26  INFO        Outlets : 32
+2026-03-14 15:28:26  INFO      =======================================================
+2026-03-14 15:28:26  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:28:26  INFO        Outlet : OpIndia  [RIGHT]
+2026-03-14 15:28:26  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:28:26  INFO      
+    Parsing: https://www.opindia.com/feed/
+2026-03-14 15:28:30  INFO          Found 10 entries
+2026-03-14 15:28:30  INFO          [+] The crisis of illegal hoarding? Read how LPG concerns are being fanned
+2026-03-14 15:28:30  INFO          [+] LPG-loaded tankers cross Strait of Hormuz to come to India: PM Modi’s 
+2026-03-14 15:28:30  INFO          [+] Anti-Indian hate surged on X during US immigration debates, small netw
+2026-03-14 15:28:30  INFO          [+] Akhilesh Yadav meets Swami Avimukteshwaranand: Read how Mulayam’s poli
+2026-03-14 15:28:30  INFO          [+] From Pakistan to Vietnam: How the Strait of Hormuz crisis is triggerin
+2026-03-14 15:28:30  INFO          [+] India’s strategic tightrope in the US-Israel war against Iran: As a cl
+2026-03-14 15:28:30  INFO          [+] Is the US facing an increased domestic terrorism threat while Trump fi
+2026-03-14 15:28:30  INFO          [+] LPG, LNG, and the host of other oil products that run the world: Read 
+2026-03-14 15:28:30  INFO          [+] Fighter jets, Stratotanker crashing, billion-dollar radars blown up: H
+2026-03-14 15:28:30  INFO          [+] Exclusive: JNU ‘scholar’, once charged for sedition in Manipur, is now
+2026-03-14 15:28:31  INFO      
+  Result → Saved: 10  |  Skipped: 0  |  Status: success
+2026-03-14 15:28:32  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:28:32  INFO        Outlet : Swarajya  [RIGHT]
+2026-03-14 15:28:32  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:28:32  INFO      
+    Parsing: https://swarajyamag.com/feed
+2026-03-14 15:28:32  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:28:32  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-14 15:28:32  INFO      127.0.0.1 - - [14/Mar/2026 15:28:32] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:28:33  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:28:33  INFO        Outlet : Organiser  [RIGHT]
+2026-03-14 15:28:33  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:28:33  INFO      
+    Parsing: https://organiser.org/feed/
+2026-03-14 15:28:33  INFO          Found 10 entries
+2026-03-14 15:28:33  INFO          [+] From Vedic Freedom to Modern Debates: Swami Vivekananda’s vision of wo
+2026-03-14 15:28:33  INFO          [+] Tamil Nadu: Thoothukudi schoolgirl murder case, crowd confronts DMK MP
+2026-03-14 15:28:33  INFO          [+] From Oil-LPG Caverns to Diversified Global Imports: How India is secur
+2026-03-14 15:28:33  INFO          [+] Dattatreya Hosabale issues statement on 650th birth anniversary of San
+2026-03-14 15:28:33  INFO          [+] From Zero to Infinite Series: The remarkable mathematical discoveries 
+2026-03-14 15:28:33  INFO          [+] Fake Address! Congress Leader Sreenadevi Kunjamma’s Ration Card Cancel
+2026-03-14 15:28:33  INFO          [+] Maharashtra: Tensions erupt in Kolhapur after Islamists allegedly assa
+2026-03-14 15:28:33  INFO          [+] BJP Woman Councillor Assaulted by Contract Worker’s Husband in Kerala 
+2026-03-14 15:28:33  INFO          [+] Kumbh Mela Viral Girl Monalisa’s Father Appeals to MP Chief Minister M
+2026-03-14 15:28:33  INFO          [+] Keralam’s Divine Heritage: Exploring the most revered Mandirs across e
+2026-03-14 15:28:34  INFO      
+  Result → Saved: 10  |  Skipped: 0  |  Status: success
+2026-03-14 15:28:35  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:28:35  INFO        Outlet : Republic World  [RIGHT]
+2026-03-14 15:28:35  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:28:35  INFO      
+    Parsing: https://www.republicworld.com/rss.xml
+2026-03-14 15:28:35  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:28:35  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-14 15:28:36  INFO      127.0.0.1 - - [14/Mar/2026 15:28:36] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:28:36  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:28:36  INFO        Outlet : DNA India  [RIGHT]
+2026-03-14 15:28:36  INFO        Feeds  : 2 feed(s)
+2026-03-14 15:28:36  INFO      
+    Parsing: https://www.dnaindia.com/feeds/india.xml
+2026-03-14 15:28:36  INFO          Found 20 entries
+2026-03-14 15:28:36  INFO          [+] LPG Crisis Deepens: Man dies in LPG queue; multiple raids expose massi
+2026-03-14 15:28:36  INFO          [+] US-Israel-Iran war: IndiGo flights to cost more as it imposes fuel sur
+2026-03-14 15:28:36  INFO          [+] Delhi CM Rekha Gupta says 'Summer Action Plan-2026' to ensure adequate
+2026-03-14 15:28:36  INFO          [+] Coffee Table Book on Prahlad Singh Patel's Padyatras Launched on Dandi
+2026-03-14 15:28:36  INFO          [+] Delhi CM Rekha Gupta flags off advanced amphibious excavators to clean
+2026-03-14 15:28:36  INFO          [+] US-Israel-Iran War: Popular pizza chain cuts timings in Delhi, Gurgaon
+2026-03-14 15:28:36  INFO          [+] LPG crisis: Kerosene back as cooking fuel? Govt allocates 40000 kl to 
+2026-03-14 15:28:36  INFO          [+] Menstrual Leave: SC cautions about women's career prospects, seeks gov
+2026-03-14 15:28:36  INFO          [+] US-Iran war: PM Modi says it is 'test for entire nation' as India face
+2026-03-14 15:28:36  INFO          [+] Farooq Abdullah firing case: Accused sent to five-day police custody a
+2026-03-14 15:28:36  INFO          [+] Delhi Lok Adalat Rescheduled: New dates announced for traffic challans
+2026-03-14 15:28:36  INFO          [+] LPG Crisis Deepens: Zomato, Swiggy deliveries take major hit amid Iran
+2026-03-14 15:28:36  INFO          [+] No shortage of diesel, petrol or kerosene, claims Petroleum Minister H
+2026-03-14 15:28:36  INFO          [+] Farooq Abdullah receives call from Amit Shah after his assassination a
+2026-03-14 15:28:36  INFO          [+] Who is IAS Vandana Vaidya? Police raid at her farmhouse busts gambling
+2026-03-14 15:28:36  INFO          [+] US-Israel-Iran conflict: Why did Iran open restricted Strait of Hormuz
+2026-03-14 15:28:36  INFO          [+] Mumbai Bomb Scare: Threat email received at BSE, High Court, Vidhan Bh
+2026-03-14 15:28:36  INFO          [+] LPG Crisis: Hyderabad restaurant returns to wood fuel, problem mounts 
+2026-03-14 15:28:36  INFO          [+] She cracked UPSC in first attempt without coaching, IPS officer became
+2026-03-14 15:28:36  INFO          [+] Pakistan terror module busted: Indian Navy Lance Naik arrested for all
+2026-03-14 15:28:37  INFO      
+    Parsing: https://www.dnaindia.com/feeds/politics.xml
+2026-03-14 15:28:37  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:28:37  INFO      
+  Result → Saved: 20  |  Skipped: 0  |  Status: success
+2026-03-14 15:28:38  INFO      127.0.0.1 - - [14/Mar/2026 15:28:38] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:28:38  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:28:38  INFO        Outlet : The Sunday Guardian  [RIGHT]
+2026-03-14 15:28:38  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:28:38  INFO      
+    Parsing: https://www.sundayguardianlive.com/feed
+2026-03-14 15:28:39  INFO          Found 10 entries
+2026-03-14 15:28:39  INFO          [+] 8th Pay Commission: Why Has FNPO Proposed a 3.0–3.25 Fitment Factor?
+2026-03-14 15:28:39  INFO          [+] Fact Check: Is This the Last Image of Israeli PM Benjamin Netanyahu? T
+2026-03-14 15:28:39  INFO          [+] US Israel Iran War News: ‘US Is Now Begging’ Iran Slams US Policy U-Tu
+2026-03-14 15:28:39  INFO          [+] IPL vs PSL War? PCB Threatens Action After Blessing Muzarabani Snubs P
+2026-03-14 15:28:39  INFO          [+] GTA 6 Trailer 3 Before April? Rockstar Activity Raises Hopes of New Re
+2026-03-14 15:28:39  INFO          [+] Dinosaur Mystery Deepens: 74-Million-Year-Old Giant Tyrannosaur Fossil
+2026-03-14 15:28:39  INFO          [+] Olive Oil vs Coconut Oil: Which Is Better for Cooking, Nutrition, Heal
+2026-03-14 15:28:39  INFO          [+] Russia Ukraine War: Moscow Launches Massive Drone and Missile Attack, 
+2026-03-14 15:28:39  INFO          [+] F1 Chinese GP Qualifying: Kimi Antonelli Becomes Youngest Ever Pole-Si
+2026-03-14 15:28:39  INFO          [+] Fact Check: Is Reliance Jio Ending SRH Sponsorship Ahead of IPL 2026 A
+2026-03-14 15:28:40  INFO      
+  Result → Saved: 10  |  Skipped: 0  |  Status: success
+2026-03-14 15:28:40  INFO      127.0.0.1 - - [14/Mar/2026 15:28:40] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:28:41  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:28:41  INFO        Outlet : Zee News  [RIGHT]
+2026-03-14 15:28:41  INFO        Feeds  : 2 feed(s)
+2026-03-14 15:28:41  INFO      
+    Parsing: https://zeenews.india.com/rss/india-national-news.xml
+2026-03-14 15:28:42  INFO          Found 20 entries
+2026-03-14 15:28:42  INFO          [+] Musk`s new secret weapon? IIT Bombay alum Devendra Chaplot joins xAI &
+2026-03-14 15:28:42  INFO          [+] Excise policy case: Arvind Kejriwal, Manish Sisodia furnish security b
+2026-03-14 15:28:42  INFO          [+] `Location: Canada; Vibe: Subhash Nagar`: Man’s hilarious Brampton mall
+2026-03-14 15:28:42  INFO          [+] Mohali woman says she received timely cardiac surgery under Sehat Yoja
+2026-03-14 15:28:42  INFO          [+] Centre revokes Sonam Wangchuk`s NSA detention: Climate activist set fo
+2026-03-14 15:28:42  INFO          [+] Himachal weather update: 10cm snow in Lahaul-Spiti as severe heatwave 
+2026-03-14 15:28:42  INFO          [+] India announces 30-day visa extension to foreigners in country amid Mi
+2026-03-14 15:28:42  INFO          [+] Bihar medical scandal: Horrifying viral video shows quack `stapling` b
+2026-03-14 15:28:42  INFO          [+] MEA condoles loss of lives of two Indian nationals in attack in Oman
+2026-03-14 15:28:42  INFO          [+] Fake hospital sealed in Rajasthan’s Jhalawar after complaint of doctor
+2026-03-14 15:28:42  INFO          [+] Delhi govt signs MoU with IIT Madras for pilot study to combat air pol
+2026-03-14 15:28:42  INFO          [+] Jeweler turned out to be robber in Hardoi: Accused with Rs 50,000 rewa
+2026-03-14 15:28:42  INFO          [+] Scorpio driver runs over wedding procession in Balaghat, MP; Several I
+2026-03-14 15:28:42  INFO          [+] Iran confirms safe passage for ships via Strait of Hormuz for its `fri
+2026-03-14 15:28:42  INFO          [+] Under previous govts in Punjab, industries couldn`t get approvals with
+2026-03-14 15:28:42  INFO          [+] Royal scion Lakshyaraj Singh Mewar to lead award celebrating service, 
+2026-03-14 15:28:42  INFO          [+] Delhi CM Rekha Gupta flags off amphibious excavator machines for city 
+2026-03-14 15:28:42  INFO          [+] India gets first image-based AI Gau Swastha for cattle health and dise
+2026-03-14 15:28:42  INFO          [+] Shared peaks, shared prosperity: Why the India-Nepal bond is the futur
+2026-03-14 15:28:42  INFO          [+] ‘Judiciary must be open to scrutiny’: Priyanka Chaturvedi slams `Judic
+2026-03-14 15:28:42  INFO      
+    Parsing: https://zeenews.india.com/rss/politics-news.xml
+2026-03-14 15:28:43  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:28:43  INFO      
+  Result → Saved: 20  |  Skipped: 0  |  Status: success
+2026-03-14 15:28:43  INFO      127.0.0.1 - - [14/Mar/2026 15:28:43] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:28:44  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:28:44  INFO        Outlet : India Today  [RIGHT]
+2026-03-14 15:28:44  INFO        Feeds  : 2 feed(s)
+2026-03-14 15:28:44  INFO      
+    Parsing: https://www.indiatoday.in/rss/1206578
+2026-03-14 15:28:44  INFO          Found 20 entries
+2026-03-14 15:28:44  INFO          [+] They put Islam first: Trump loyalist Laura Loomer blasts Zohran Mamdan
+2026-03-14 15:28:44  INFO          [+] Iran war could reshape alliances, strengthen US-India ties: Adelle Naz
+2026-03-14 15:28:44  INFO          [+] World more vulnerable to terror without Trump, Modi, Netanyahu: Laura 
+2026-03-14 15:28:44  INFO          [+] India repatriates Iranian ship's non-essential crew from Kochi amid Ir
+2026-03-14 15:28:44  INFO          [+] Shouldn't have said: Trump ally Laura Loomer apologises for some anti-
+2026-03-14 15:28:44  INFO          [+] Pak's biggest export is terrorism, US shouldn't cosy up to it: Laura L
+2026-03-14 15:28:44  INFO          [+] I love India, Modi, will visit soon: Trump loyalist reads out US Presi
+2026-03-14 15:28:44  INFO          [+] Can be argued IRIS Dena sinking was illegal: Sri Lankan MP Namal Rajap
+2026-03-14 15:28:44  INFO          [+] Govt set to release Sonam Wangchuk from detention months after Leh vio
+2026-03-14 15:28:44  INFO          [+] Europe doesn't like US lifting sanctions on Russian oil: German envoy
+2026-03-14 15:28:44  INFO          [+] Love jihad victim: Kumbh girl Monalisa's father seeks Madhya Pradesh C
+2026-03-14 15:28:44  INFO          [+] Over 100 cops fall ill after eating mess food in Bihar; food poisoning
+2026-03-14 15:28:44  INFO          [+] Swarm of honeybees attacks villagers in Telangana's Sangareddy, severa
+2026-03-14 15:28:44  INFO          [+] Indian captain, 33 crew stranded near Hormuz, families appeal governme
+2026-03-14 15:28:44  INFO          [+] Either I collapse or get up and go: Anil Agarwal reflects on loss of h
+2026-03-14 15:28:44  INFO          [+] Question Time: Weekly News Quiz
+2026-03-14 15:28:44  INFO          [+] Why LPG, not petrol or diesel, took the hit amid Hormuz choke
+2026-03-14 15:28:44  INFO          [+] Is Yogi rewriting his political brand, and with it, his legacy?
+2026-03-14 15:28:44  INFO          [+] Ujjain man arrested for stealing neighbour's undergarments over one-si
+2026-03-14 15:28:44  INFO          [+] West Bengal STF seizes drugs worth Rs 4.79 crore in raids across three
+2026-03-14 15:28:45  INFO      
+    Parsing: https://www.indiatoday.in/rss/home
+2026-03-14 15:28:45  INFO          Found 128 entries
+2026-03-14 15:28:45  INFO          [+] Trump bombs Iran's 'Forbidden Island' Kharg: US ground invasion next?
+2026-03-14 15:28:45  INFO          [+] Spreading panic amid war, puppet of anti-India forces: PM tears into C
+2026-03-14 15:28:45  INFO          [+] NOPO: Secret force guarding 'injured' new Supreme Leader Mojtaba Khame
+2026-03-14 15:28:45  INFO          [+] Communists Lose Nepal Too: If Not Marx, Then Who In South Asia?
+2026-03-14 15:28:45  INFO          [+] RGV says industry is waiting for Aditya Dhar, Yami Gautam to fumble an
+2026-03-14 15:28:45  INFO          [+] Live: Iranians want blood revenge for Ali Khamenei's death, says Tehra
+2026-03-14 15:28:45  INFO          [+] If valuables vanish from your locker, can insurance cover the loss?
+2026-03-14 15:28:45  INFO          [+] Begging the world, including India, to buy Russian oil: Iran hits out 
+2026-03-14 15:28:45  INFO          [+] BCCI to honour Rahul Dravid, Roger Binny, Mithali Raj with Lifetime Ac
+2026-03-14 15:28:45  INFO          [+] Meet Maryam Mirzakhani, Iranian who became first woman to win Nobel Pr
+2026-03-14 15:28:45  INFO          [+] Dhurandhar 2: Ranveer Singh's film opens for advance bookings
+2026-03-14 15:28:45  INFO          [+] India's jugaad era is over. IIT Madras makes green tech affordable
+2026-03-14 15:28:45  INFO          [+] Geopolitical expert Adelle Nazarian explains why Iran war may boost US
+2026-03-14 15:28:45  INFO          [+] Build all night, get hired by morning: Hackathons are the new fresher 
+2026-03-14 15:28:45  INFO          [+] Will turn US-linked oil infra into ashes: Iran vows retaliation after 
+2026-03-14 15:28:45  INFO          [+] Badminton: Saina Nehwal strongly opposes proposed 15-point system
+2026-03-14 15:28:45  INFO          [+] Trump banned from LA 2028, FIFA World Cup? World Anti-Doping Agency po
+2026-03-14 15:28:45  INFO          [+] Chinese GP: Kimi Antonelli creates history, becomes youngest-ever pole
+2026-03-14 15:28:45  INFO          [+] Man shares why 'Indians have terrible reputation' as tourists abroad a
+2026-03-14 15:28:45  INFO          [+] AI-powered school promises kids they will earn $1M by graduation or fu
+2026-03-14 15:28:45  INFO          [+] Rapido driver helps blind passenger reach college safely in Assam. Vid
+2026-03-14 15:28:45  INFO          [+] Trump loyalist Laura Loomer tears into Pakistan, links it to global te
+2026-03-14 15:28:45  INFO          [+] Not our war, say European envoys as escalating Gulf conflict enters th
+2026-03-14 15:28:45  INFO          [+] Rajkummar Rao and Keerthy Suresh team up for start-up drama Raftaar, r
+2026-03-14 15:28:45  INFO          [+] Sri Lankan MP Namal Rajapaksa names Vijay as favourite actor
+2026-03-14 15:28:45  INFO          [+] Elon Musk is the owner of 6 companies: Check list
+2026-03-14 15:28:45  INFO          [+] iPhone 17 Pro Max price drops to lowest: Full details
+2026-03-14 15:28:45  INFO          [+] iPhone Air price drop alert, check details here
+2026-03-14 15:28:45  INFO          [+] iPhone 16 price drops: Full details here
+2026-03-14 15:28:45  INFO          [+] Samsung Galaxy S25 Plus price drops below Rs 72,000
+2026-03-14 15:28:45  INFO          [+] iPhone 17 price drops to lowest
+2026-03-14 15:28:45  INFO          [+] Mumbai man shows parents his first modelling poster. Their wholesome r
+2026-03-14 15:28:45  INFO          [+] Indian woman in Amsterdam loses house keys while cycling. Here's where
+2026-03-14 15:28:45  INFO          [+] Man meets elderly woman promoting son's business on bus. Internet give
+2026-03-14 15:28:45  INFO          [+] Meet Devendra Chaplot, IIT Bombay grad joining xAI to build super inte
+2026-03-14 15:28:45  INFO          [+] The T20 World Cup of comebacks
+2026-03-14 15:28:45  INFO          [+] Indore teen missing after leaving note inspired by Premanand Ji Mahara
+2026-03-14 15:28:45  INFO          [+] Revenge killing? Double murder at Badaun's HPCL ethanol plant
+2026-03-14 15:28:45  INFO          [+] UPSC rank mix-up: Bulandshahr woman admits AIR 113 claim was a mistake
+2026-03-14 15:28:45  INFO          [+] Supreme Court Allows Withdrawal Of Life Support In Landmark Harish Ran
+2026-03-14 15:28:45  INFO          [+] ₹64 Changed His Life | Gwalior Student Manish Aswar's Viral Story
+2026-03-14 15:28:45  INFO          [+] Taylor Swift At A Jamnagar Wedding? Meet The Doppelganger Who Fooled T
+2026-03-14 15:28:45  INFO          [+] Relief from March heat likely, forecast indicates storms and rain
+2026-03-14 15:28:45  INFO          [+] EV adoption picks up pace in India, experts debate challenges ahead
+2026-03-14 15:28:45  INFO          [+] EV transition gains pace in India, but hurdles remain: Experts debate 
+2026-03-14 15:28:45  INFO          [+] Gangster groom arrested at his wedding, bride begs cops to let rituals
+2026-03-14 15:28:45  INFO          [+] 4 Agra officials suspended after class 1 girl dies after falling throu
+2026-03-14 15:28:45  INFO          [+] Drunk man urinates on woman from auto, mob beats him to death in Chenn
+2026-03-14 15:28:45  INFO          [+] Mumbai's Jai Ho musical road sparks debate among Breach Candy resident
+2026-03-14 15:28:45  INFO          [+] Jaipur man kills wife, 8-year-old daughter with sword, then surrenders
+2026-03-14 15:28:45  INFO          [+] India turns back to kerosene. But can it work?
+2026-03-14 15:28:45  INFO          [+] Can India's kitchens go electric if LPG supplies tighten?
+2026-03-14 15:28:45  INFO          [+] Fertiliser prioritised amid gas shortage scare. How critical is import
+2026-03-14 15:28:45  INFO          [+] Social media put Himachal's Raulane festival on the map, but not witho
+2026-03-14 15:28:45  INFO          [+] Elon Musk's mother Maye Musk feels kids are a 'good investment for hap
+2026-03-14 15:28:45  INFO          [+] Quote of the day by Albert Einstein: We cannot solve our problems with
+2026-03-14 15:28:46  INFO          [+] IIT Madras to study 'smog-eating' surfaces to cut Delhi pollution
+2026-03-14 15:28:46  INFO          [+] Pause to move forward: Author Pico Iyer on the power of stillness
+2026-03-14 15:28:46  INFO          [+] Just 20 minutes of quiet can transform your day: Art of Stillness auth
+2026-03-14 15:28:46  INFO          [+] Their careers will be over: Supreme Court on plea seeking mandatory me
+2026-03-14 15:28:46  INFO          [+] Why it took India 13 years to let Harish Rana go: Lessons for the nati
+2026-03-14 15:28:46  INFO          [+] Health 360: Delhi's summer AQI, childhood obesity linked to faster age
+2026-03-14 15:28:46  INFO          [+] Struggling to concentrate? Psychologist reveals how to unlock deep foc
+2026-03-14 15:28:46  INFO          [+] Gestational diabetes: The hidden risks babies carry for life
+2026-03-14 15:28:46  INFO          [+] Maye Musk on life at 78: Work, children and independence matter most
+2026-03-14 15:28:46  INFO          [+] AI-generated drone footage shared as IRGC operatives surrendering befo
+2026-03-14 15:28:46  INFO          [+] Did MEA spokie threaten Iran at a presser? No, this video is a deepfak
+2026-03-14 15:28:46  INFO          [+] Fact Check: Old, AI-generated videos shared as the Iranian attack on I
+2026-03-14 15:28:46  INFO          [+] Fact check: Three viral videos, none related to the ongoing US-Israel-
+2026-03-14 15:28:46  INFO          [+] Fact Check: Old Zubeen Garg tribute clip shared as march for man kille
+2026-03-14 15:28:46  INFO          [+] OSINT in name, propaganda's the game: Meet the 'war experts' spreading
+2026-03-14 15:28:46  INFO          [+] क्या है Lazy Girl Jobs कल्चर ? जो Gen Z में तेजी से बढ़ रहा है... क्या
+2026-03-14 15:28:46  INFO          [+] 'दुनिया को पाकिस्तान का सबसे बड़ा निर्यात आतंकवाद, US को बिल्कुल भी...
+2026-03-14 15:28:46  INFO          [+] ईरान के खार्ग आईलैंड को 'कोहिनूर' क्यों कहा जाता है? यहां क्या है US ह
+2026-03-14 15:28:46  INFO          [+] कोलकाता: PM की रैली से पहले TMC-BJP कार्यकर्ताओं में झड़प, पथराव में B
+2026-03-14 15:28:46  INFO          [+] श्रीलंका की घरेलू से लेकर समुद्री पॉलिटिक्स में घुस गए हैं ‘बाहरी’, इं
+2026-03-14 15:28:46  INFO          [+] कोविड पीड़ितों को मुआवजा: 'नो-फॉल्ट' कंपेंसेशन पॉलिसी, न्याय की दिशा म
+2026-03-14 15:28:46  INFO      127.0.0.1 - - [14/Mar/2026 15:28:46] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:28:46  INFO      
+  Result → Saved: 97  |  Skipped: 51  |  Status: success
+2026-03-14 15:28:47  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:28:47  INFO        Outlet : Firstpost  [RIGHT]
+2026-03-14 15:28:47  INFO        Feeds  : 2 feed(s)
+2026-03-14 15:28:47  INFO      
+    Parsing: https://www.firstpost.com/rss/india.xml
+2026-03-14 15:28:48  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:28:48  INFO      
+    Parsing: https://www.firstpost.com/rss/politics.xml
+2026-03-14 15:28:48  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:28:48  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-14 15:28:49  INFO      127.0.0.1 - - [14/Mar/2026 15:28:49] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:28:49  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:28:49  INFO        Outlet : News18  [RIGHT]
+2026-03-14 15:28:49  INFO        Feeds  : 2 feed(s)
+2026-03-14 15:28:49  INFO      
+    Parsing: https://www.news18.com/rss/india.xml
+2026-03-14 15:28:50  INFO          Found 200 entries
+2026-03-14 15:28:50  INFO          [+] Akasa Air Joins Airlines In Raising Fares, Hikes Rs 199-1,300 Surcharg
+2026-03-14 15:28:50  INFO          [+] Tamil Nadu Woman In Dubai ICU, Family Pleads For Help As Hospital Bill
+2026-03-14 15:28:50  INFO          [+] Sri Lankan MP Rajapaksa Calls US Strike On IRIS Dena Unethical, Says '
+2026-03-14 15:28:50  INFO          [+] Teach Marathi Or Lose Recognition: Maharashtra Minister's Stern Warnin
+2026-03-14 15:28:50  INFO          [+] ‘Threatened To Kill Me’: Uber Driver Allegedly Molests Woman During Bi
+2026-03-14 15:28:50  INFO          [+] Upset With Girlfriend, Weed-Intoxicated Man Pelts Stones At Vande Bhar
+2026-03-14 15:28:50  INFO          [+] Centre Decides To Revoke Activist Sonam Wangchuk's Detention Months Af
+2026-03-14 15:28:50  INFO          [+] Man Arrested For Killing Live-In Partner In Bengaluru’s Varthur
+2026-03-14 15:28:50  INFO          [+] After 'Shivalik', LPG Carrier 'Nanda Devi' Clears Strait Of Hormuz, To
+2026-03-14 15:28:50  INFO          [+] Indian Seafarer From Mumbai Killed In Iranian Strike On US Tanker, Fam
+2026-03-14 15:28:50  INFO          [+] About 73% Drop In Bangladeshi Visitors Dragged Down India’s Foreign To
+2026-03-14 15:28:50  INFO          [+] Mumbai’s First School Road Safety Pilot Exposes Major Infrastructure G
+2026-03-14 15:28:50  INFO          [+] From Telangana To Bihar: These States Offer Compensation For Heatstrok
+2026-03-14 15:28:50  INFO          [+] Iran Sends Chartered Plane To Repatriate Crew Of Warship IRIS Lavan Do
+2026-03-14 15:28:50  INFO          [+] Kerala Lottery Result Today Live: Karunya KR-746 Ticket KG 569383 Wins
+2026-03-14 15:28:50  INFO          [+] Indian LPG Vessel 'Shivalik' Reaches Open Sea With Navy Escort, Anothe
+2026-03-14 15:28:50  INFO          [+] Foreigners In India To Get 30-Day Visa Extension Amid West Asia War, N
+2026-03-14 15:28:50  INFO          [+] DK Shivakumar Sets May Deadline For Full Replacement Of Tungabhadra Da
+2026-03-14 15:28:50  INFO          [+] Repatriation Of Fallen IRIS Dena Sailors Begins Following India-Led Di
+2026-03-14 15:28:50  INFO          [+] Beyond The Blockade: Ambassador Deepak Mittal On Why India’s Energy Se
+2026-03-14 15:28:50  INFO          [+] Iran Grants Rare Permission For Two Indian LPG Tankers To Transit Stra
+2026-03-14 15:28:50  INFO          [+] How India Is Navigating BRICS Differences On West Asia Conflict | Excl
+2026-03-14 15:28:50  INFO          [+] ‘Delhi-Dehradun Highway Not For Muslims’: How Trio's Arrest Brought Hi
+2026-03-14 15:28:50  INFO          [+] Dakshineswar-Themed Stage Unveiled For PM Modi’s Brigade Rally In Kolk
+2026-03-14 15:28:50  INFO          [+] El Nino Is Brewing Again: Should India Brace For A Deficient Monsoon I
+2026-03-14 15:28:50  INFO          [+] India Steps Up Diplomacy On West Asia Crisis As PM Modi, Jaishankar Ho
+2026-03-14 15:28:50  INFO          [+] 'No Need To Panic': Centre On LPG Supply Amid West Asia Crisis; Says D
+2026-03-14 15:28:50  INFO          [+] Andhra Pradesh: Student Attempts Suicide After Alleged Harassment By C
+2026-03-14 15:28:50  INFO          [+] Who Is Laura Loomer? US Activist Who Once Termed Indians 'Third-World 
+2026-03-14 15:28:50  INFO          [+] Income Cannot Alone Decide OBC ‘Creamy Layer’ Status: Supreme Court
+2026-03-14 15:28:50  INFO          [+] Vande Bharat Timings Revised From March 15: Check Routes Affected In K
+2026-03-14 15:28:50  INFO          [+] India To Repatriate 183 Iranian Sailors From Warship IRIS Lavan In Koc
+2026-03-14 15:28:50  INFO          [+] Fish Production In Maharashtra Up By 47%; Govt Plans AI-Driven Push In
+2026-03-14 15:28:50  INFO          [+] End Of The Road For Two-Wheeler Tolls? NICE Road Bikers May Soon Ride 
+2026-03-14 15:28:50  INFO          [+] Who Is India’s Missile Woman? The Inspiring Journey Of Tessy Thomas An
+2026-03-14 15:28:50  INFO          [+] Did Hackers Infiltrate CRPF’s Internal Email Network? Cybersecurity Wa
+2026-03-14 15:28:50  INFO          [+] 'Only 2 Dealmakers': US Envoy Sergio Gor Credits PM Modi, Trump For In
+2026-03-14 15:28:50  INFO          [+] Beyond Diplomacy: Why Indian Tankers Were Allowed To Pass Through Stra
+2026-03-14 15:28:50  INFO          [+] ‘Best Time To Wed’, Pouring Punches, Neta’s 55-Cylinder Hoard: WATCH I
+2026-03-14 15:28:50  INFO          [+] Notion That India Turned Authoritarian Under BJP Total Bulls**t: Ex-Au
+2026-03-14 15:28:50  INFO          [+] 'Nobody Will Hire Women': Supreme Court Refuses Plea Seeking Menstrual
+2026-03-14 15:28:50  INFO          [+] LPG Gas Cylinder Shortage In India Live Updates: Govt Says 'No Need To
+2026-03-14 15:28:50  INFO          [+] Days After Protocol Row, Rashtrapati Bhavan Turns Down TMC MPs’ Reques
+2026-03-14 15:28:50  INFO          [+] AI In Supreme Court? Report Says CJI Surya Kant Planning New System
+2026-03-14 15:28:50  INFO          [+] Two Arrested In Chennai For Hoarding LPG Cylinders, Officials Say No N
+2026-03-14 15:28:50  INFO          [+] Bengaluru Weather: Sunny Today, Heavy Rain Likely Over The Next Two Da
+2026-03-14 15:28:50  INFO          [+] LPG Cylinder Booking: India Extends Lock-in Period For Rural Household
+2026-03-14 15:28:50  INFO          [+] 'No Protection From HIV': Morning-After Pill Gets Warning Labels As Go
+2026-03-14 15:28:50  INFO          [+] Kerala Lottery Result Today Live: Suvarna Keralam SK-44 Ticket RT 5208
+2026-03-14 15:28:50  INFO          [+] How Old Is Viral Kumbh Girl Monalisa? VHP Alleges 'Child Marriage' To 
+2026-03-14 15:28:50  INFO          [+] India In Talks With Iran For Safe Passage Of Around 28 Merchant Vessel
+2026-03-14 15:28:50  INFO          [+] PM Modi Speaks To Iran's President, Conveys Concerns Over Escalating H
+2026-03-14 15:28:50  INFO          [+] Mira-Bhayandar Viral Flyover Row Reaches Maharashtra Assembly; Govt Or
+2026-03-14 15:28:50  INFO          [+] Indian Carriers Restart Riyadh Flights After West Asia Conflict Disrup
+2026-03-14 15:28:50  INFO          [+] Rashmika Mandanna Warns Legal Action Over Viral Audio Clip; Neena Gupt
+2026-03-14 15:28:50  INFO          [+] 'Ghost Oil Tankers': What Is India's 'Shadow' Fleet That Has Got Secur
+2026-03-14 15:28:50  INFO          [+] 'India's Non-Proliferation Record Impeccable': MEA Slams Pakistan Over
+2026-03-14 15:28:50  INFO          [+] Oil Ministry Says Some Commercial LPG Cylinders To Be Released; States
+2026-03-14 15:28:50  INFO          [+] ‘No Fuel Shortage’: Hardeep Singh Puri Says LPG Output Up 28%, Panic B
+2026-03-14 15:28:50  INFO          [+] India Shifted 70% Of Crude Imports Away From Hormuz, All Fuel Supplies
+2026-03-14 15:28:50  INFO          [+] I PU Pass Marks Reduced From 35% To 33% In Karnataka, Effective This Y
+2026-03-14 15:28:50  INFO          [+] LPG Crisis Hits Homes, But India’s Mega Temple Kitchens Aren't Worried
+2026-03-14 15:28:50  INFO          [+] From Doha To Desert Drive To Visa Wait To Chennai Touchdown: Indian Ma
+2026-03-14 15:28:50  INFO          [+] Bengaluru Restaurant Shuts Within A Week Of Opening Due To LPG Shortag
+2026-03-14 15:28:50  INFO          [+] Married Just 9 Months Ago, Pregnant Woman Sets Herself On Fire In Karn
+2026-03-14 15:28:50  INFO          [+] 'No Amount Of Storytelling…': India Slams Pakistan Over 'Terror Sponso
+2026-03-14 15:28:50  INFO          [+] First India-Bound Vessel Carrying Crude Reaches Mumbai Via Hormuz Amid
+2026-03-14 15:28:50  INFO          [+] How India’s Oil Strategy Is Helping Prevent A Global Price Shock Amid 
+2026-03-14 15:28:50  INFO          [+] LPG Cylinder Crisis: Book A Gas Cylinder In Seconds Without Calling
+2026-03-14 15:28:50  INFO          [+] How Two India-Bound Oil Tankers Crossed Strait of Hormuz Undetected
+2026-03-14 15:28:50  INFO          [+] MHA Orders States To Secure LPG Plants, Crack Down On Black Marketing,
+2026-03-14 15:28:50  INFO          [+] 108 Naxalites With Rs 3.95 Cr Bounty Surrender In Chhattisgarh; Rs 3.6
+2026-03-14 15:28:50  INFO          [+] 'Thought It Was A Firecracker': Farooq Abdullah Breaks Silence, Recall
+2026-03-14 15:28:50  INFO          [+] Oil, War And Diplomacy: 8 Steps India Took To Protect Its Tankers In S
+2026-03-14 15:28:50  INFO          [+] ‘No Bias In My Actions, Gave Adequate Time To Both Sides’: Om Birla Re
+2026-03-14 15:28:50  INFO          [+] LPG Shortage: Black Market Prices Reach Rs 1,500 In Delhi, Rs 3K In Mu
+2026-03-14 15:28:50  INFO          [+] Caught In Conflict: How Indian Sailors Power Global Shipping And Why T
+2026-03-14 15:28:50  INFO          [+] Supreme Court Grants Bail To Separatist Leader Shabir Shah In Terror F
+2026-03-14 15:28:50  INFO          [+] In Pics: How Tensions Near Strait Of Hormuz Affect India's Kitchen? Ex
+2026-03-14 15:28:50  INFO          [+] West Bengal Assembly Elections Likely To Be Held In 2 Phases: EC Offic
+2026-03-14 15:28:50  INFO          [+] Gas Agency Owner Among 7 Held In Jhansi For Stealing, Diverting 524 Do
+2026-03-14 15:28:50  INFO          [+] India Weighs Naval Escorts For Tankers & Cargo Ships For Safe Passage 
+2026-03-14 15:28:50  INFO          [+] LPG Shortage: Kerala Tops Google Searches For Induction Cookers And Co
+2026-03-14 15:28:50  INFO          [+] ‘Served Him As Much As Destiny Allowed Us’: Father Of 32-Year-Old Afte
+2026-03-14 15:28:50  INFO          [+] Bengaluru Weather Twist: Scorching Sun In The Day, Rain Possible Later
+2026-03-14 15:28:50  INFO          [+] India LPG Gas Shortage Updates: PM Modi Says Panic Being Spread Over L
+2026-03-14 15:28:50  INFO          [+] LPG Vs Induction: Which Is Cheaper For Cooking As India Faces Cylinder
+2026-03-14 15:28:50  INFO          [+] 'Cowardly Firing': Political Leaders Condemn Attack On Farooq Abdullah
+2026-03-14 15:28:50  INFO          [+] Kerala Lottery Result Today Live: Karunya Plus KN-614 Ticket PW 306349
+2026-03-14 15:28:50  INFO          [+] India Warns Pharma Firms Against Indirect Promotion Of GLP-1 Weight-Lo
+2026-03-14 15:28:50  INFO          [+] March 12, 1993: How The Mumbai Serial Blasts Changed India’s Financial
+2026-03-14 15:28:50  INFO          [+] Centre Plans School-Led Push To Reach Girls For HPV Vaccine, Education
+2026-03-14 15:28:50  INFO          [+] Virgo Horoscope Today, March 12, 2026
+2026-03-14 15:28:50  INFO          [+] ‘How Could Someone Get This Close?’ Omar Abdullah Reacts To Assassinat
+2026-03-14 15:28:50  INFO          [+] 'Wanted To Kill Farooq Abdullah For 20 Years': Accused In Jammu Weddin
+2026-03-14 15:28:50  INFO          [+] Man Who Fired Shots In Presence Of Farooq Abdullah, Jammu Deputy CM Ap
+2026-03-14 15:28:50  INFO          [+] Narrow Escape For NC Chief Farooq Abdullah, J&K Deputy CM Surinder Cho
+2026-03-14 15:28:50  INFO          [+] Viral Kumbh Mela Woman Marries Muslim Boyfriend In Kerala, Says Southe
+2026-03-14 15:28:50  INFO          [+] India Deplores Attack On Ship Bound For Kandla In Strait Of Hormuz
+2026-03-14 15:28:51  INFO          [+] This Summer, Extreme Heat Will Make Work Harder And Riskier For Millio
+2026-03-14 15:28:51  INFO      
+    Parsing: https://www.news18.com/rss/politics.xml
+2026-03-14 15:28:51  INFO      127.0.0.1 - - [14/Mar/2026 15:28:51] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:28:52  INFO          Found 200 entries
+2026-03-14 15:28:52  INFO          [+] 'Congress Creating Panic Within Country’: PM Modi Slams Party In Assam
+2026-03-14 15:28:52  INFO          [+] Amid Poaching Fears, Congress Trouble-Shooter Shivakumar Hosts Odisha 
+2026-03-14 15:28:52  INFO          [+] With Focus On Muslims & Christians In Kerala, RSS Looks To Expand Foot
+2026-03-14 15:28:52  INFO          [+] When DK Shivakumar Asked AI 'How To Win Assam Elections'
+2026-03-14 15:28:52  INFO          [+] 'Listen To Nehru': PM Modi Accuses Congress Of Spreading Misinformatio
+2026-03-14 15:28:52  INFO          [+] Vijay’s Moment Of Reckoning Is Here: To NDA Or Go His Own Way?
+2026-03-14 15:28:52  INFO          [+] Bengal’s ‘Seemanchal’? Why Demography Is Dominating The 2026 Debate | 
+2026-03-14 15:28:52  INFO          [+] Between Records And Reminders: The Quiet Battle For Karnataka’s CM Cha
+2026-03-14 15:28:52  INFO          [+] 'God Saved Me': Farooq Abdullah Blames 'Deep-Rooted Hate In Country' F
+2026-03-14 15:28:52  INFO          [+] Nitish Kumar Likely To Resign In April To Move To Rajya Sabha; New Bih
+2026-03-14 15:28:52  INFO          [+] 'Propaganda': Nadda Defends Centre After Kharge's Remark, Assures Inqu
+2026-03-14 15:28:52  INFO      
+  Result → Saved: 111  |  Skipped: 289  |  Status: success
+2026-03-14 15:28:53  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:28:53  INFO        Outlet : The Wire  [LEFT]
+2026-03-14 15:28:53  INFO        Feeds  : 3 feed(s)
+2026-03-14 15:28:53  INFO      
+    Parsing: https://thewire.in/rss/politics/feed
+2026-03-14 15:28:54  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:28:54  INFO      
+    Parsing: https://thewire.in/rss/law/feed
+2026-03-14 15:28:54  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:28:54  INFO      
+    Parsing: https://thewire.in/rss/media/feed
+2026-03-14 15:28:54  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:28:54  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-14 15:28:54  INFO      127.0.0.1 - - [14/Mar/2026 15:28:54] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:28:55  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:28:55  INFO        Outlet : Scroll.in  [LEFT]
+2026-03-14 15:28:55  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:28:55  INFO      
+    Parsing: https://scroll.in/feed
+2026-03-14 15:28:57  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:28:57  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-14 15:28:58  INFO      127.0.0.1 - - [14/Mar/2026 15:28:58] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:28:58  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:28:58  INFO        Outlet : The Caravan  [LEFT]
+2026-03-14 15:28:58  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:28:58  INFO      
+    Parsing: https://caravanmagazine.in/feed
+2026-03-14 15:28:58  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:28:58  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-14 15:28:59  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:28:59  INFO        Outlet : Newslaundry  [LEFT]
+2026-03-14 15:28:59  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:28:59  INFO      
+    Parsing: https://www.newslaundry.com/feed
+2026-03-14 15:29:00  INFO          Found 2 entries
+2026-03-14 15:29:00  INFO          [+] Centre revokes Sonam Wangchuk’s NSA detention with ‘immediate effect’
+2026-03-14 15:29:00  INFO          [+] TV Newsance 336 | LPG shortages hit kitchens across India, yet TV medi
+2026-03-14 15:29:00  INFO      
+  Result → Saved: 2  |  Skipped: 0  |  Status: success
+2026-03-14 15:29:00  INFO      127.0.0.1 - - [14/Mar/2026 15:29:00] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:01  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:01  INFO        Outlet : The News Minute  [LEFT]
+2026-03-14 15:29:01  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:29:01  INFO      
+    Parsing: https://www.thenewsminute.com/rss.xml
+2026-03-14 15:29:02  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:29:02  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-14 15:29:06  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:06  INFO        Outlet : Article 14  [LEFT]
+2026-03-14 15:29:06  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:29:06  INFO      
+    Parsing: https://article-14.com/feed
+2026-03-14 15:29:06  INFO      127.0.0.1 - - [14/Mar/2026 15:29:06] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:06  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:29:06  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-14 15:29:07  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:07  INFO        Outlet : Alt News  [LEFT]
+2026-03-14 15:29:07  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:29:07  INFO      
+    Parsing: https://www.altnews.in/feed/
+2026-03-14 15:29:08  INFO          Found 10 entries
+2026-03-14 15:29:08  INFO          [+] Hindu Raksha Dal members arrested for communal graffiti on NH. When wi
+2026-03-14 15:29:08  INFO          [+] Israelis smashing street cams to hide missile strike footage? Old, unr
+2026-03-14 15:29:08  INFO          [+] Footage of Uttam Nagar fish market fire viral as explosion in India-Is
+2026-03-14 15:29:08  INFO          [+] Deepfake alert: Video of Palki Sharma ‘reporting’ on IRIS Dena & India
+2026-03-14 15:29:08  INFO          [+] Aaj Tak’s Anjana Om Kashyap calls 1979 Iran hostage crisis ‘Breaking N
+2026-03-14 15:29:08  INFO          [+] Netanyahu’s brother killed in Iranian missile strike at his home? Unre
+2026-03-14 15:29:08  INFO          [+] Uttam Nagar on edge after Tarun Kumar’s death: Claims, counterclaims f
+2026-03-14 15:29:08  INFO      
+  Result → Saved: 7  |  Skipped: 3  |  Status: success
+2026-03-14 15:29:09  INFO      127.0.0.1 - - [14/Mar/2026 15:29:09] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:09  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:09  INFO        Outlet : Maktoob Media  [LEFT]
+2026-03-14 15:29:09  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:29:09  INFO      
+    Parsing: https://maktoobmedia.com/feed/
+2026-03-14 15:29:11  INFO          Found 8 entries
+2026-03-14 15:29:11  INFO          [+] Tensions escalate as two Kuki men found dead in Manipur’s Kamjong
+2026-03-14 15:29:11  INFO          [+] Sambhal CO tells Muslims to “go to Iran” over concern about West Asia 
+2026-03-14 15:29:11  INFO          [+] Doctors, nurses and paramedics among 12 killed in Israeli strike on he
+2026-03-14 15:29:11  INFO          [+] The Veil, Bomb and Liberation
+2026-03-14 15:29:11  INFO          [+] US intervenes at ICJ to defend Israel against genocide allegations in 
+2026-03-14 15:29:11  INFO          [+] Explosions near Tehran al-Quds Day march in solidarity with Palestinia
+2026-03-14 15:29:11  INFO          [+] NHRC seeks report after father carries newborn’s body in cardboard box
+2026-03-14 15:29:11  INFO          [+] UN says over 200 civilians killed in Sudan since 4 March
+2026-03-14 15:29:11  INFO      
+  Result → Saved: 8  |  Skipped: 0  |  Status: success
+2026-03-14 15:29:11  INFO      127.0.0.1 - - [14/Mar/2026 15:29:11] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:12  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:12  INFO        Outlet : The Leaflet  [LEFT]
+2026-03-14 15:29:12  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:29:12  INFO      
+    Parsing: https://theleaflet.in/feed/
+2026-03-14 15:29:13  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:29:13  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-14 15:29:14  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:14  INFO        Outlet : The Citizen  [LEFT]
+2026-03-14 15:29:14  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:29:14  INFO      
+    Parsing: https://www.thecitizen.in/rss/feed/all
+2026-03-14 15:29:14  INFO      127.0.0.1 - - [14/Mar/2026 15:29:14] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:14  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:29:14  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-14 15:29:15  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:15  INFO        Outlet : The Hindu  [CENTER]
+2026-03-14 15:29:15  INFO        Feeds  : 3 feed(s)
+2026-03-14 15:29:15  INFO      
+    Parsing: https://www.thehindu.com/news/national/?service=rss
+2026-03-14 15:29:16  INFO          Found 100 entries
+2026-03-14 15:29:16  INFO          [+] Udupi Excise Deputy Commissioner accused of possessing disproportionat
+2026-03-14 15:29:16  INFO          [+] ₹10 crore sanctioned for land acquisition for Kadalundi railway overbr
+2026-03-14 15:29:16  INFO          [+] Watch: India must find sources of sustainable energy to curb inflation
+2026-03-14 15:29:16  INFO          [+] Real estate businessman in Karnataka arrested for cheating temple devo
+2026-03-14 15:29:16  INFO          [+] Tamil Nadu govt. appoints senior IPS officer Bala Naga Devi as DGP, In
+2026-03-14 15:29:16  INFO          [+] Watch: PM Modi says Congress failed to act responsibly during war situ
+2026-03-14 15:29:16  INFO          [+] Nearly 2.37 lakh domestic cylinders delivered in Telangana on March 13
+2026-03-14 15:29:16  INFO          [+] Over 30 sheep die as car ploughs into herd in Bapatla district
+2026-03-14 15:29:16  INFO          [+] A cradle of care: How Kerala fights infant mortality
+2026-03-14 15:29:16  INFO          [+] PM Modi arrives in Kolkata, to unveil development projects worth over 
+2026-03-14 15:29:16  INFO          [+] Government working to minimise impact of global conflicts on people, C
+2026-03-14 15:29:16  INFO          [+] Tadikonda MRO, three other Revenue officers suspended
+2026-03-14 15:29:16  INFO          [+] Telangana DCA seizes ₹2.7 lakh worth erectile dysfunction tablets ship
+2026-03-14 15:29:16  INFO          [+] Around 20 injured, as van overturns in Alluri Sitharama Raju district
+2026-03-14 15:29:16  INFO          [+] Kerala Assembly elections: High command will decide on MPs contesting,
+2026-03-14 15:29:16  INFO          [+] Musi Riverfront in Hyderabad to house East-West Corridor in BOT model,
+2026-03-14 15:29:16  INFO          [+] AAP government drowned Punjab in corruption, drugs and crime: Amit Sha
+2026-03-14 15:29:16  INFO          [+] Lok Adalat resolves disputes in Andhra Pradesh’s Guntur
+2026-03-14 15:29:16  INFO          [+] Lone elephant driven back into forest after 48-hour operation in Erode
+2026-03-14 15:29:16  INFO          [+] LPG shortage sparks surge in firewood demand in Kerala
+2026-03-14 15:29:16  INFO          [+] Karnataka High Court upholds KPTCL regulations entrusting departmental
+2026-03-14 15:29:16  INFO          [+] Centre revokes detention of climate activist Sonam Wangchuk under NSA
+2026-03-14 15:29:16  INFO          [+] Case against school after children being allegedly forced to stand in 
+2026-03-14 15:29:16  INFO          [+] Nine-judge SC Bench to hear arguments on March 17 on definition of 'in
+2026-03-14 15:29:16  INFO          [+] Telangana Civil Supplies Minister to meet with LPG Distributors Associ
+2026-03-14 15:29:16  INFO          [+] Lt Gen (Retd) Syed Ata Hasnain sworn in as Bihar Governor
+2026-03-14 15:29:16  INFO          [+] Several Maharashtra Cities Record Temperatures Above 40°C; Rain and Th
+2026-03-14 15:29:16  INFO          [+] Petrol, diesel, and domestic LPG supply in the State remains normal, s
+2026-03-14 15:29:16  INFO          [+] MRTS train services begin on Velachery-St. Thomas Mount extended secti
+2026-03-14 15:29:16  INFO          [+] Debut in politics, Nishant Kumar remains busy with party activities
+2026-03-14 15:29:16  INFO          [+] Bhopal gas tragedy: Madhya Pradesh HC asks government to share clean-u
+2026-03-14 15:29:16  INFO          [+] Rahul Gandhi pays tribute to Kanshi Ram ahead of birth anniversary, vo
+2026-03-14 15:29:16  INFO          [+] Attack on Manipur woman: NHRC issues notice to Delhi Police
+2026-03-14 15:29:16  INFO          [+] 11 Indian nationals charged in U.S. over visa fraud scheme
+2026-03-14 15:29:16  INFO          [+] Pi Day 2026: significance of the mathematical constant π
+2026-03-14 15:29:16  INFO          [+] The curious case of SCR’s twin stations
+2026-03-14 15:29:16  INFO          [+] What are the changes being proposed to Transgender Persons (Protection
+2026-03-14 15:29:16  INFO          [+] India roots for benefits system at pandemic agreement talks
+2026-03-14 15:29:16  INFO          [+] CM Mamata announces development boards for marginalised communities ah
+2026-03-14 15:29:16  INFO          [+] Restored Kamarajar Salai in Arcot town opened for public use
+2026-03-14 15:29:16  INFO          [+] New District Munsif and Judicial Magistrate Court near Katpadi inaugur
+2026-03-14 15:29:16  INFO          [+] Udhayanidhi Stalin to inaugurate lounge for construction workers, vill
+2026-03-14 15:29:16  INFO          [+] Congregational prayers, rallies held in Kashmir on Ramzan’s last Frida
+2026-03-14 15:29:16  INFO          [+] Seven dead, 92 inmates infected with herpes virus at overcrowded Jalpa
+2026-03-14 15:29:16  INFO          [+] West Asia crisis: The Indians caught in the crossfire
+2026-03-14 15:29:16  INFO          [+] Retention rate below 50% in BMC schools, finds report
+2026-03-14 15:29:16  INFO          [+] Exercise LAMITIYE-2026: India and Seychelles carry out joint military 
+2026-03-14 15:29:16  INFO          [+] IndiGo to levy fuel charge for domestic and international flights from
+2026-03-14 15:29:16  INFO          [+] Opposition leaders press government, Lok Sabha Speaker to revoke the s
+2026-03-14 15:29:16  INFO          [+] Maharashtra govt. tables Bill to ban ‘unlawful conversions’
+2026-03-14 15:29:16  INFO          [+] Tamil Nadu’s AVGC-XR policy aims for creative boom
+2026-03-14 15:29:16  INFO          [+] Futuristic mindfulness city fuels Bhutan’s ‘fly east’ via Assam
+2026-03-14 15:29:16  INFO          [+] Assistant professor aspirants criticise T.N. government for selective 
+2026-03-14 15:29:16  INFO          [+] AAP govt. will provide facilities for industries to compete with China
+2026-03-14 15:29:16  INFO          [+] Indian LPG carrier crosses Strait of Hormuz: marine traffic website
+2026-03-14 15:29:16  INFO          [+] West Bengal govt. employees protest over DA arrears
+2026-03-14 15:29:16  INFO          [+] Can manage for at least a week: Owners of small eateries
+2026-03-14 15:29:16  INFO          [+] MoU signed to protect bio-medical research through patent and IPR fili
+2026-03-14 15:29:16  INFO          [+] CM Stalin offers homage to Sivanthi Adithan’s wife
+2026-03-14 15:29:16  INFO          [+] Chennai Corporation launches projects, expedites works ahead of poll
+2026-03-14 15:29:16  INFO          [+] Stalin announces pension, family pension hike for journalists
+2026-03-14 15:29:16  INFO          [+] Forensic scientist K.P.C. Gandhi recalls Dora’s unparalled services
+2026-03-14 15:29:16  INFO          [+] Karnataka High Court notice on plea against govt.’s decision to use ve
+2026-03-14 15:29:16  INFO          [+] Kerala Cabinet approves Film Policy
+2026-03-14 15:29:16  INFO          [+] VCK hopes to keep its ‘recognised party’ tag
+2026-03-14 15:29:16  INFO          [+] Around 100 Iranian sailors fly out of Kochi airport
+2026-03-14 15:29:16  INFO          [+] Nitish Kumar hints at Samrat Choudhary as his successor in Bihar
+2026-03-14 15:29:16  INFO          [+] 50 years on, piped water supply in Thiru.Vi.Ka Nagar remains elusive
+2026-03-14 15:29:16  INFO          [+] Former MLA Ramulu passes away
+2026-03-14 15:29:16  INFO          [+] CM castigates the critics of Musi project
+2026-03-14 15:29:16  INFO          [+] Fuel crisis: hoteliers advised to trim menus, cut operating hours
+2026-03-14 15:29:16  INFO          [+] Kerala Cabinet approves formulation of land assignment rules for use o
+2026-03-14 15:29:16  INFO          [+] Haryana Rajya Sabha polls: Congress MLAs reach Himachal Pradesh to pre
+2026-03-14 15:29:16  INFO          [+] Tributes paid to poetess Molla on her 586th birth anniversary
+2026-03-14 15:29:16  INFO          [+] Pawan Kalyan to celebrate JSP foundation day with tribals in ASR today
+2026-03-14 15:29:16  INFO          [+] 27 Indian-flagged ships remain stranded in Persian Gulf, one starts mo
+2026-03-14 15:29:16  INFO          [+] British Council honoured alumni at the Study U.K. Alumni Awards 2026 i
+2026-03-14 15:29:16  INFO          [+] Leaders of AIADMK, allies to participate in State-wide demos on March 
+2026-03-14 15:29:16  INFO          [+] How many constituencies can a candidate contest from? | TN Elections w
+2026-03-14 15:29:16  INFO          [+] 13th annual conference of Kerala Economic Association begins
+2026-03-14 15:29:16  INFO          [+] Government bypassing all norms to appoint body builders as police offi
+2026-03-14 15:29:16  INFO          [+] In Rajya Sabha, BJP MP proposes setting up National Commission for per
+2026-03-14 15:29:16  INFO          [+] Class X student ends life in Bhadradri Kothagudem district
+2026-03-14 15:29:16  INFO          [+] Man arrested for cheating buyers with fake ‘Prime Minister scheme’ on 
+2026-03-14 15:29:16  INFO          [+] Tamil Nadu elections 2026: TVK dismisses speculation of alliance with 
+2026-03-14 15:29:16  INFO          [+] Collector reviews LPG stocks at Kondapalli bottling plant
+2026-03-14 15:29:16  INFO          [+] Compensation for wildlife attack victims increased to ₹14 lakh in Kera
+2026-03-14 15:29:16  INFO          [+] PM distributes land deeds to Assam’s tea workers
+2026-03-14 15:29:16  INFO          [+] Supreme Court declines plea to make nucleic acid tests compulsory at b
+2026-03-14 15:29:16  INFO          [+] IPL 2026 in Bengaluru likely to get nod after stadium safety overhaul
+2026-03-14 15:29:16  INFO          [+] Mohanan Kunnummal wades into controversy with disparaging remarks agai
+2026-03-14 15:29:16  INFO          [+] Kerala HC directs to defer nurses’ strike till March 19, suggests medi
+2026-03-14 15:29:16  INFO          [+] Bengaluru shows consistently low PM2.5 levels compared to other cities
+2026-03-14 15:29:16  INFO          [+] Lok Ayukta orders probe against scheme of  Boby Chemmannoor’s firm
+2026-03-14 15:29:16  INFO          [+] Civil supplies officials raid godown, seize 400 cylinders
+2026-03-14 15:29:16  INFO          [+] Tracing Hyderabad’s centuries-old Persian connections
+2026-03-14 15:29:16  INFO          [+] Kozhikode Corpn. Council gives nod to publish LAP for Palayam sector d
+2026-03-14 15:29:16  INFO          [+] One lakh Indiramma houses will be completed across the State by this m
+2026-03-14 15:29:16  INFO          [+] Focus is on modernising agriculture, improving farmers’ income, says C
+2026-03-14 15:29:16  INFO          [+] Mother arrested on charge of murdering toddler
+2026-03-14 15:29:16  INFO      
+    Parsing: https://www.thehindu.com/news/politics-and-government/?service=rss
+2026-03-14 15:29:17  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:29:17  INFO      
+    Parsing: https://www.thehindu.com/opinion/?service=rss
+2026-03-14 15:29:17  INFO      127.0.0.1 - - [14/Mar/2026 15:29:17] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:17  INFO          Found 100 entries
+2026-03-14 15:29:17  INFO          [+] Vijay Sethupathi interview: ‘Cinema is not just about claps and whistl
+2026-03-14 15:29:17  INFO          [+] Letters to The Editor — March 14, 2026
+2026-03-14 15:29:17  INFO          [+] ​Price pressures: On new series of Consumer Price Index, inflation
+2026-03-14 15:29:17  INFO          [+] The fate of the Washington Consensus, once talisman
+2026-03-14 15:29:17  INFO          [+] ​Duty of care: On vaccine injury compensation programmes
+2026-03-14 15:29:17  INFO          [+] The India-Canada turnaround is about deliverables
+2026-03-14 15:29:17  INFO          [+] Development strategies work best with strong institutions
+2026-03-14 15:29:17  INFO          [+] Making sense of the political tsunami in Nepal
+2026-03-14 15:29:17  INFO          [+] DNA of authoritarianism | Interview with Anne Applebaum on her book Au
+2026-03-14 15:29:17  INFO          [+] Is India tailing the U.S. in its West Asia policy?
+2026-03-14 15:29:17  INFO          [+] Dismantling the ‘biological tax’ in Indian legal system
+2026-03-14 15:29:17  INFO          [+] MSM could be a war casualty
+2026-03-14 15:29:17  INFO          [+] War lays a political and diplomatic minefield for Modi
+2026-03-14 15:29:17  INFO          [+] A reality check on Indian ambition for internationalising higher educa
+2026-03-14 15:29:17  INFO          [+] Letters to The Editor — March 13, 2026
+2026-03-14 15:29:17  INFO          [+] ​Justice for all: On the NCERT textbook issue, the judiciary
+2026-03-14 15:29:17  INFO          [+] Preparing India for a true innovation-led economy
+2026-03-14 15:29:17  INFO          [+] ​Arbitrary and opaque: On the Employees’ Pension Scheme 2026
+2026-03-14 15:29:17  INFO          [+] Economic Survey promises, impact of new labour codes
+2026-03-14 15:29:17  INFO          [+] Corrections and Clarifications — March 12, 2026
+2026-03-14 15:29:17  INFO          [+] Reforming choice-based education
+2026-03-14 15:29:17  INFO          [+] Letters to The Editor — March 12, 2026
+2026-03-14 15:29:17  INFO          [+] Policy missteps: On the government’s handling of India’s fuel crisis
+2026-03-14 15:29:17  INFO          [+] Holding up half the sky on India’s farms
+2026-03-14 15:29:17  INFO          [+] The crisis of the Left in Telangana
+2026-03-14 15:29:17  INFO          [+] A seismic decision: On revision to India’s earthquake zoning, rollback
+2026-03-14 15:29:17  INFO          [+] Youth-backed RSP win signals Nepal’s new political era
+2026-03-14 15:29:18  INFO      
+  Result → Saved: 127  |  Skipped: 73  |  Status: success
+2026-03-14 15:29:19  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:19  INFO        Outlet : Indian Express  [CENTER]
+2026-03-14 15:29:19  INFO        Feeds  : 2 feed(s)
+2026-03-14 15:29:19  INFO      
+    Parsing: https://indianexpress.com/feed/
+2026-03-14 15:29:19  INFO          Found 200 entries
+2026-03-14 15:29:19  INFO          [+] Rajasthan Board Class 10 Result 2026 Date: When did RBSE declare resul
+2026-03-14 15:29:19  INFO          [+] Periods of extreme volatility don’t last forever: Sebi chief on market
+2026-03-14 15:29:19  INFO          [+] LPG customers don’t belong to distributors: Kerala High Court upholds 
+2026-03-14 15:29:19  INFO          [+] The menstrual leave trap: When benevolent sexism creates professional 
+2026-03-14 15:29:19  INFO          [+] ‘Centre on backfoot, withdrew NSA against Sonam Wangchuk fearing SC de
+2026-03-14 15:29:19  INFO          [+] NHAI increases rate of the FASTag Annual pass: What has changed?
+2026-03-14 15:29:19  INFO          [+] Mass copying through a microphone? Video leads to lecturer’s suspensio
+2026-03-14 15:29:19  INFO          [+] Karan Aujla Mohali concert: Heading to PCA stadium? Check out the 10 n
+2026-03-14 15:29:19  INFO          [+] Inside Ameesha Patel’s Mumbai home: Versace ashtray, Hermes and Louis 
+2026-03-14 15:29:19  INFO          [+] Neither ‘paraaya’ nor ‘dhan’: Reclaiming the married daughter’s place 
+2026-03-14 15:29:19  INFO          [+] Top 10 highest-paid actors in the world: 22-year-old actress debuts, e
+2026-03-14 15:29:19  INFO          [+] As Centre revokes Sonam Wangchuk’s NSA detention, a look at why Ladakh
+2026-03-14 15:29:19  INFO          [+] ‘Dost aate toh woh room chale jaate’: Suniel Shetty on why he chose to
+2026-03-14 15:29:19  INFO          [+] Before Dhurandhar’s ‘Naya Bharat’, Rohit Shetty’s Zameen planted the s
+2026-03-14 15:29:19  INFO          [+] ‘Road feels like a furnace’: How Pune’s traffic cops battle blistering
+2026-03-14 15:29:19  INFO          [+] Abhishek Sharma finds ‘a huge fan’ in ex-Australia World Cup winner: ‘
+2026-03-14 15:29:19  INFO          [+] Sudhakaran to Sasi, could CPI(M) rebels queer the pitch for Vijayan’s 
+2026-03-14 15:29:19  INFO          [+] High-level committee formed to draft autonomy plan for 2 medical colle
+2026-03-14 15:29:19  INFO          [+] Pune home kitchens in Catch 22 situation; tiffin orders soar, but chef
+2026-03-14 15:29:19  INFO          [+] ‘Welcome step, hope MHA returns to table for negotiations’: Kargil Dem
+2026-03-14 15:29:19  INFO          [+] 151 Himachal govt schools to switch to CBSE; tablets and teacher recru
+2026-03-14 15:29:19  INFO          [+] Why the Competition Commission cleared BookMyShow of market dominance 
+2026-03-14 15:29:19  INFO          [+] 76,000 kg of ghee failed quality tests in Gujarat since 2024, Mehsana 
+2026-03-14 15:29:19  INFO          [+] Can’t curb number of worshippers at mosque, resign if you can’t enforc
+2026-03-14 15:29:19  INFO          [+] As Centre revokes detention under NSA, how Sonam Wangchuk went from in
+2026-03-14 15:29:19  INFO          [+] Middle East War Day 15: US strikes Iran’s Kharg Island, US embassy in 
+2026-03-14 15:29:19  INFO          [+] 6 Ghaziabad men arrested for ‘links to banned groups, spreading anti-n
+2026-03-14 15:29:19  INFO          [+] ‘I told Govinda don’t do the film if you can’t come on time’: Priyadar
+2026-03-14 15:29:19  INFO          [+] North Korea fires ballistic missiles towards sea, says South Korea
+2026-03-14 15:29:19  INFO          [+] First photo surface of ex-prince Andrew and Peter Mandelson together w
+2026-03-14 15:29:19  INFO          [+] Dhurandhar 2 advance box office collection report: Ranveer Singh starr
+2026-03-14 15:29:19  INFO          [+] ‘Young graduates may struggle to stand out’: ServiceNow CEO Bill McDer
+2026-03-14 15:29:19  INFO          [+] 70 seconds, $1.7 million gone: Shocking video captures ‘mob-style’ hei
+2026-03-14 15:29:19  INFO          [+] After few India-bound oil tankers, Indian-flagged LPG tanker crosses S
+2026-03-14 15:29:19  INFO          [+] Faithful to rituals, traditions at Sabarimala: Kerala Devaswom Ministe
+2026-03-14 15:29:19  INFO          [+] Simhastha Kumbh Mela: Maharashtra CM Devendra Fadnavis fast-tracks inf
+2026-03-14 15:29:19  INFO          [+] From ‘Uri’ to ‘Dhurandhar’: The Rise of Director Aditya Dhar in Bollyw
+2026-03-14 15:29:19  INFO          [+] WADA to mull rule changes that could bar Donald Trump, US officials fr
+2026-03-14 15:29:19  INFO          [+] LPG shortage forces menu changes at IIT Bombay hostels
+2026-03-14 15:29:19  INFO          [+] Centre revokes Sonam Wangchuk’s detention under National Security Act
+2026-03-14 15:29:19  INFO          [+] Ranveer Allahbadia says media targeted him after India’s Got Latent ro
+2026-03-14 15:29:19  INFO          [+] Beyond the label: Women and the emotional exhaustion of being ‘strong’
+2026-03-14 15:29:19  INFO          [+] In war on Iran, Israel knows what it wants — US does not
+2026-03-14 15:29:19  INFO          [+] Key accused in IDFC Bank Rs. 590 crore scam, held by UT police
+2026-03-14 15:29:19  INFO          [+] Mohammad Kaif throws weight behind Pakistan captain Salman Ali Agha in
+2026-03-14 15:29:19  INFO          [+] Iran war: Air Canada cancels Toronto-Dubai flights until May 1; IndiGo
+2026-03-14 15:29:19  INFO          [+] Instagram is killing end-to-end encryption for DMs by May 8
+2026-03-14 15:29:19  INFO          [+] ‘My blood boils when I see Chinese imports,’ says Kejriwal, offers all
+2026-03-14 15:29:19  INFO          [+] Couple working at construction site killed in wall collapse incident i
+2026-03-14 15:29:19  INFO          [+] Class 9 student’s death sparks late-night protests against Jalandhar s
+2026-03-14 15:29:19  INFO          [+] Progressive Punjab Investors Summit 2026: On day 1, Lakshmi Mittal ple
+2026-03-14 15:29:19  INFO          [+] Knowledge Nugget: India launches HPV vaccination drive to prevent cerv
+2026-03-14 15:29:19  INFO          [+] Built in the heat: Why Fever Dream is a play for our times
+2026-03-14 15:29:19  INFO          [+] Beyond the ‘unitary method only’ mindset
+2026-03-14 15:29:19  INFO          [+] War in West Asia: Delhi Chief Secy seeks rationalised use of LPG, asks
+2026-03-14 15:29:19  INFO          [+] Accused shot at after ‘attacking’ State Monitoring Cell personnel in G
+2026-03-14 15:29:19  INFO          [+] India’s navigation satellite system suffers major setback: 1 of 4 oper
+2026-03-14 15:29:19  INFO          [+] The 18-year wait: Why Calcutta High Court told insurance giant to ‘pay
+2026-03-14 15:29:19  INFO          [+] In ‘Place’, Ananya Vajpeyi Maps Grief, Politics and the Soul of Cities
+2026-03-14 15:29:19  INFO          [+] Bengaluru realtor murder case: After BJP MLA Byrathi Basavaraj, 4 key 
+2026-03-14 15:29:19  INFO          [+] Youth held in theft case, was booked for endangering country’s soverei
+2026-03-14 15:29:19  INFO          [+] Oppn raises question on Surat water tank collapse; govt says ‘recovere
+2026-03-14 15:29:19  INFO          [+] IGPL Invitational Chandigarh Gaganjeet Bhullar defends title, Varun Pa
+2026-03-14 15:29:19  INFO          [+] Around Town: Inside Gypsy Chinese, a Dadar favourite where Raj Thacker
+2026-03-14 15:29:19  INFO          [+] Why residents of a posh South Delhi locality are opposing construction
+2026-03-14 15:29:19  INFO          [+] BTech in Bioengineering vs BTech in Biosciences and Bioengineering: Wh
+2026-03-14 15:29:19  INFO          [+] Opposition flags misuse concerns as Maharashtra govt introduces Dharma
+2026-03-14 15:29:19  INFO          [+] Pi Day 2026: Google marks March 14 with interactive doodle celebrating
+2026-03-14 15:29:19  INFO          [+] Uttam Nagar murder case: Rs 37L raised by posting misleading video, sa
+2026-03-14 15:29:19  INFO          [+] Rajnath, Yogi inaugurate phase 2 of Green Corridor project in Lucknow
+2026-03-14 15:29:19  INFO          [+] Gaurav Kapur recalls first-ever conversation with wife Kritika Kamra, 
+2026-03-14 15:29:19  INFO          [+] Bomb threat email to Vadodara school traced to Class X student: Police
+2026-03-14 15:29:19  INFO          [+] Agitation for repair of Vaman Temple ends after a month
+2026-03-14 15:29:19  INFO          [+] From coal and electricity to truncated menus: how Bengaluru eateries a
+2026-03-14 15:29:19  INFO          [+] 1,483 locations raided, 6 arrested: UP cracks down on LPG black market
+2026-03-14 15:29:19  INFO          [+] Lucknow is playing a bigger role in boosting India’s security: Rajnath
+2026-03-14 15:29:19  INFO          [+] Orange alert issued for north, yellow alert for south Bengal districts
+2026-03-14 15:29:19  INFO          [+] Clifton Crais exposes the Dark Origins of Modernity — Guns, Empire and
+2026-03-14 15:29:19  INFO          [+] How Maharashtra’s Dharma Swatantrya Bill seeks to curb unlawful religi
+2026-03-14 15:29:19  INFO          [+] ‘Hasty justice is stepmother of misfortune’: Punjab and Haryana High C
+2026-03-14 15:29:19  INFO          [+] ‘If you are so bothered, go fight for Iran’: Sambhal SP seeks explanat
+2026-03-14 15:29:19  INFO          [+] Know the reasons Bengal govt cited while seeking extension in SC deadl
+2026-03-14 15:29:19  INFO          [+] Anurag Dobhal health update: YouTuber’s condition gets worse because o
+2026-03-14 15:29:19  INFO          [+] Daily Briefing: New Delhi’s diplomatic walk gets tougher as Tehran ask
+2026-03-14 15:29:19  INFO          [+] LPG ‘shortage’| Long queues outside Ram Darbar LPG agency in Chandigar
+2026-03-14 15:29:19  INFO          [+] Farmers from 8 villages protest land acquisition for Aerotropolis expa
+2026-03-14 15:29:19  INFO          [+] From ‘women’s work’ to contemporary art: The rise of textile feminism
+2026-03-14 15:29:19  INFO          [+] Traffic advisory issued for Modi’s Brigade rally today; check which ro
+2026-03-14 15:29:19  INFO          [+] Rishab Rikhiram Sharma says 10 years of living in the US has reduced h
+2026-03-14 15:29:19  INFO          [+] Congress MLA flags LPG shortage in Assembly; Gujarat govt denies suppl
+2026-03-14 15:29:19  INFO          [+] Tinder’s 50 million users are burning out. The app is betting AI can f
+2026-03-14 15:29:19  INFO          [+] Anil Kapoor reveals he turned down Aditya Dhar’s offer for a cameo in 
+2026-03-14 15:29:19  INFO          [+] Explained: US attack on Kharg Island marks new escalation in war, coul
+2026-03-14 15:29:19  INFO          [+] Solving Crime: After a 2,000km hunt and a 17-year wait, how Bengaluru 
+2026-03-14 15:29:19  INFO          [+] West Asia conflict | With question mark on flexible gas plants, govt e
+2026-03-14 15:29:19  INFO          [+] US initiates ‘forced labour’ trade probe against India, 59 others
+2026-03-14 15:29:19  INFO          [+] How AD Singh built Olive and helped transform Bandra into Mumbai’s din
+2026-03-14 15:29:19  INFO          [+] Can FIR be registered against juvenile for petty offence? Karnataka Hi
+2026-03-14 15:29:19  INFO          [+] Supreme Court on police hiring: Why ‘clean chit’ from court may still 
+2026-03-14 15:29:19  INFO          [+] Strike over DA sees mixed outcomes in Bengal; 75% absent at Calcutta H
+2026-03-14 15:29:19  INFO          [+] A new raga at Carnegie Hall: Ila Paliwal’s $10 million bet on Indian c
+2026-03-14 15:29:19  INFO          [+] Dubai, Abu Dhabi News Live Updates: Fire occured in Fujairah as drone 
+2026-03-14 15:29:20  INFO          [+] US-Israel vs Iran War News Live Updates: Akasa Air joins Air India, In
+2026-03-14 15:29:20  INFO          [+] Will Kim Jong Un talk to Trump: US President and South Korea’s Kim Min
+2026-03-14 15:29:20  INFO          [+] Cooking without the flame: The LPG crisis, seen from inside the kitche
+2026-03-14 15:29:20  INFO          [+] Abujhmad’s Pole Stars: How a mallakhamb academy is eyeing the world st
+2026-03-14 15:29:20  INFO          [+] Two weeks of war in West Asia: The five big takeaways from the widenin
+2026-03-14 15:29:20  INFO          [+] A misspelled word and a Dubai-based email: How Rajasthan Police busted
+2026-03-14 15:29:20  INFO          [+] Aamir Khan had his brief ‘angry young man’ moment with Raakh that won 
+2026-03-14 15:29:20  INFO          [+] The man who gives: How Sachin Tendulkar has quietly shaped Indian cric
+2026-03-14 15:29:20  INFO          [+] BJP borrows AAP’s ‘badlaav’ plank as Amit Shah kicks off Punjab push t
+2026-03-14 15:29:20  INFO          [+] A single complaint not enough: Andhra Pradesh High Court issues crucia
+2026-03-14 15:29:20  INFO          [+] Quoting Einstein, J&K High Court frees man detained under PSA
+2026-03-14 15:29:20  INFO          [+] In Gujarat, why C R Patil’s ‘bonhomie’ with suspended Congress leader 
+2026-03-14 15:29:20  INFO          [+] 10 Indians arrested in US for staging robberies to secure visas
+2026-03-14 15:29:20  INFO          [+] Meta may cut up to 20% of workforce as AI spending surges
+2026-03-14 15:29:20  INFO          [+] ‘Benefit of doubt’: Court acquits three in 2020 killing of J&K BJP lea
+2026-03-14 15:29:20  INFO          [+] TVK’s ‘Rs 5-crore problem’: Cash crunch pushes Vijay’s party to consid
+2026-03-14 15:29:20  INFO          [+] A silent world shattered: How scuffle during T20 World Cup final led t
+2026-03-14 15:29:20  INFO          [+] How many kilos has Rishabh Pant lost? Enough to scare every IPL bowler
+2026-03-14 15:29:20  INFO          [+] Who speaks for the caged? How a PIL on animal plight led Gauhati High 
+2026-03-14 15:29:20  INFO          [+] Backbone of Iran’s oil industry Kharg Island ‘totally obliterated’, sa
+2026-03-14 15:29:20  INFO          [+] On climate change, mind the science-policy gap
+2026-03-14 15:29:20  INFO          [+] Tariffs to LPG, crisis spillover sharpens policy challenge
+2026-03-14 15:29:20  INFO          [+] In Pritzker Prize winner Radić’s radical architecture, the poetics of 
+2026-03-14 15:29:20  INFO          [+] LPG cylinder is an object of both domestic aspiration, welfare. War in
+2026-03-14 15:29:20  INFO          [+] Why India must step up amid West Asia’s turbulence
+2026-03-14 15:29:20  INFO          [+] In Iran, martyrdom and military mindset lead the charge
+2026-03-14 15:29:20  INFO          [+] Society bears AI risks. It must have a say in AI governance
+2026-03-14 15:29:20  INFO          [+] AI zoomers and doomers hog attention, real work happens in the middle:
+2026-03-14 15:29:20  INFO          [+] In Nepal and Bangladesh, the people have spoken
+2026-03-14 15:29:20  INFO          [+] 40 years ago, March 14, 1986: Chavan finalises ministers
+2026-03-14 15:29:20  INFO          [+] The billion-dollar hangover: Can the Tata-backed Tejas Networks outgro
+2026-03-14 15:29:20  INFO          [+] Maharashtra anti-conversion Bill says child of ‘unlawful’ conversion m
+2026-03-14 15:29:20  INFO          [+] Strong chemical smell forces 1-hour flight halt at 4 major DC-area air
+2026-03-14 15:29:20  INFO          [+] Two wars, two similar timelines, two rules: How money and power shape 
+2026-03-14 15:29:20  INFO          [+] ‘What are the signs of severe constipation that require medical treatm
+2026-03-14 15:29:20  INFO          [+] $10 million bounty: US targets Iran’s new Supreme Leader Mojtaba Khame
+2026-03-14 15:29:20  INFO          [+] LPG crisis fuels uproar in Lok Sabha, adjourned twice
+2026-03-14 15:29:20  INFO          [+] BAC meet: Opp seeks discussion on West Asia crisis, govt  says it may 
+2026-03-14 15:29:20  INFO          [+] Delhi Confidential: Credit Sharing
+2026-03-14 15:29:20  INFO          [+] Darjeeling DM Manish Mishra shifted to state home dept amid central de
+2026-03-14 15:29:20  INFO          [+] El Niño likely to emerge post-July, say international weather models
+2026-03-14 15:29:20  INFO          [+] Paracetamol, syringes, gloves may be in short supply as LPG curbs disr
+2026-03-14 15:29:20  INFO          [+] Trump administration set to receive $10 billion fee for brokering TikT
+2026-03-14 15:29:20  INFO          [+] Exclusive: Delhi SIR preparations crawling, CEO asks govt depts to ens
+2026-03-14 15:29:20  INFO          [+] Why foreign investors are dumping Indian stocks, pushing rupee down
+2026-03-14 15:29:20  INFO          [+] As BRICS chair, condemn attacks on Iran: Tehran’s message to Delhi
+2026-03-14 15:29:20  INFO          [+] Oil price rise: Market sinks 5% in a week, logs worst 4-yr weekly fall
+2026-03-14 15:29:20  INFO          [+] Supreme Court asks Centre to revisit yellow dal import policy, underli
+2026-03-14 15:29:20  INFO          [+] Will try our best: Iran envoy on safe passage for India-bound fuel shi
+2026-03-14 15:29:20  INFO          [+] Homecoming in a coffin: Six months after SOS from Russian warfront, Pu
+2026-03-14 15:29:20  INFO          [+] LPG shortage hits eateries during Ramzan – too few cylinders, too cost
+2026-03-14 15:29:20  INFO          [+] ‘I’m repaying a debt’: Modi hands over land rights to 28,000 tea worke
+2026-03-14 15:29:20  INFO          [+] ‘I used to feel so lonely’: Manushi Chhillar opens the doors to her 36
+2026-03-14 15:29:20  INFO          [+] Your ultimate guide to cleaning a coffee brewer
+2026-03-14 15:29:20  INFO          [+] Man who rammed car into Michigan synagogue was US citizen born in Leba
+2026-03-14 15:29:20  INFO          [+] ‘He was away from the wicket and I was just looking for the ball’: Ban
+2026-03-14 15:29:20  INFO          [+] Motor racing-Bahrain and Saudi F1 races set to be cancelled
+2026-03-14 15:29:20  INFO          [+] Hockey World Cup Qualifiers: Below-par India edge past Italy 1-0 to re
+2026-03-14 15:29:20  INFO          [+] Why South Africa won Rs 9.28 crore while England pocketed 8.99 cr afte
+2026-03-14 15:29:20  INFO          [+] Namita Thapar, 48, reveals her six-month struggle with a frozen should
+2026-03-14 15:29:20  INFO      127.0.0.1 - - [14/Mar/2026 15:29:20] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:20  INFO          [+] Police say scammer edited file on Telegram after exam, SSC paper not l
+2026-03-14 15:29:20  INFO          [+] Trafficking victim suffers due to lapses by authorities: Bombay HC
+2026-03-14 15:29:20  INFO          [+] ‘Dispute with UGC not an excuse…’: Gujarat HC orders varsity to pay 3-
+2026-03-14 15:29:20  INFO          [+] Had he been alive, Nehru would have made Kanshi Ram CM: Rahul Gandhi i
+2026-03-14 15:29:20  INFO          [+] BTech first-year student found hanging on IIT Delhi campus
+2026-03-14 15:29:20  INFO          [+] Re 11.80 lakh for a ticket: Fan frenzy runs high for pop sensation Kar
+2026-03-14 15:29:20  INFO          [+] Former AIFF general secretary Kushal Das dies
+2026-03-14 15:29:20  INFO          [+] BJP slams Himachal Pradesh govt’s move to exclude vigilance dept from 
+2026-03-14 15:29:20  INFO          [+] Igor Tudor says some Tottenham players ‘cannot manage’ as relegation p
+2026-03-14 15:29:20  INFO          [+] Praja report flags 57% staff vacancies in BMC primary schools, raises 
+2026-03-14 15:29:20  INFO          [+] BJP-backed panel sweeps Panaji civic polls; Utpal Parrikar’s ‘Ami Panj
+2026-03-14 15:29:20  INFO          [+] Shlokas, self portraits and spirituality: How a Pune artist is navigat
+2026-03-14 15:29:20  INFO          [+] 2024 coaching centre deaths | Difficult to believe MCD officials had n
+2026-03-14 15:29:20  INFO          [+] CSK in copyright infringement trouble over use of Rajini dialogues, An
+2026-03-14 15:29:20  INFO          [+] ‘Throws the body’s internal clock off rhythm’: Study finds link betwee
+2026-03-14 15:29:20  INFO          [+] ‘Akshaye Khanna was not a nice person on set’: Farah Khan says he was 
+2026-03-14 15:29:20  INFO          [+] LG meets DDA vice chairman, Delhi Police chief, reviews key challenges
+2026-03-14 15:29:20  INFO          [+] Maharashtra to mandate permits for e rickshaws, e bikes used for passe
+2026-03-14 15:29:20  INFO          [+] Family of man who died after falling off train berth entitled to compe
+2026-03-14 15:29:20  INFO          [+] LPG crisis may affect Malayalam film shoots; producers warn of Rs 5 cr
+2026-03-14 15:29:20  INFO          [+] Centre sets conditions for states to receive Jal Jeevan Mission funds
+2026-03-14 15:29:20  INFO          [+] After MNGL support, restaurant owners plan to meet dist collector, PMC
+2026-03-14 15:29:20  INFO          [+] Ustaad Bhagat Singh ticket prices: Andhra Pradesh govt approves hike a
+2026-03-14 15:29:20  INFO          [+] Garbage dumping in Mula-Mutha river: MIT-ADT students restart protest 
+2026-03-14 15:29:20  INFO          [+] Water supply for irrigation extended till April 30, minister tells Hou
+2026-03-14 15:29:20  INFO          [+] From lab to industry: Amid LPG shortages, CSIR-NCL’s homegrown DME tec
+2026-03-14 15:29:20  INFO          [+] Singed by RS poll debacles in Haryana, Congress shifts MLAs to Shimla 
+2026-03-14 15:29:20  INFO          [+] Globalization faces its next crisis
+2026-03-14 15:29:20  INFO          [+] ‘She left everything…stayed in the chawl’: Jackie Shroff’s daughter Kr
+2026-03-14 15:29:20  INFO          [+] HUNTR/X is coming back: Netflix confirms KPop Demon Hunters sequel wit
+2026-03-14 15:29:20  INFO          [+] Pentagon chief on Iran war: ‘US will deliver highest volume of strikes
+2026-03-14 15:29:20  INFO          [+] No LPG shortage in Himachal: Sukhu; eatery owners say footfall decreas
+2026-03-14 15:29:20  INFO          [+] West Asia crisis | Amid LPG supply concerns, induction cooktops fly of
+2026-03-14 15:29:20  INFO          [+] IndiGo to levy fuel charges ranging from Rs 425 to Rs 2,300 on flights
+2026-03-14 15:29:20  INFO          [+] Farah Khan reveals the one way Salman Khan actually deals with major c
+2026-03-14 15:29:20  INFO          [+] Mumbai sizzles as suburbs hit 37°C; Thane records 39.8°C amid heatwave
+2026-03-14 15:29:20  INFO          [+] 2 held for EV bike scam worth crores in Bengaluru
+2026-03-14 15:29:20  INFO          [+] 2 Indians killed, 10 injured as downed drone falls in Oman city
+2026-03-14 15:29:20  INFO      
+    Parsing: https://indianexpress.com/section/political-pulse/feed/
+2026-03-14 15:29:21  INFO          Found 200 entries
+2026-03-14 15:29:21  INFO          [+] ‘With Mayawati no longer fighting for the Bahujan, Rahul Gandhi has ta
+2026-03-14 15:29:21  INFO          [+] Why Mamata Banerjee announced 5 community boards — and what it says ab
+2026-03-14 15:29:21  INFO          [+] Stalin’s test: DMK veterans seek one last battle, but can they be pers
+2026-03-14 15:29:21  INFO          [+] As Vellappally Natesan, son are disqualified as SNDP Yogam directors, 
+2026-03-14 15:29:21  INFO          [+] Who is Shabir Shah, Kashmir’s ‘perpetual prisoner’
+2026-03-14 15:29:21  INFO          [+] ‘Kiske Kanshi Ram?’: UP parties vie for BSP founder’s legacy as 2027 p
+2026-03-14 15:29:21  INFO          [+] Stripped of Bengal law ministry, facing Mamata Banerjee’s ire: Who is 
+2026-03-14 15:29:21  INFO          [+] Blow to CPI(M) ahead of Kerala Assembly polls as former minister G Sud
+2026-03-14 15:29:21  INFO          [+] Riding on polarisation, why Himanta Sarma eyes cash sops, infra push a
+2026-03-14 15:29:21  INFO          [+] Seeking Parliament debate on West Asia war, Opposition seeks to turn u
+2026-03-14 15:29:21  INFO          [+] West Asia crisis a reminder for self-reliance, energy growth: PM Modi 
+2026-03-14 15:29:21  INFO      
+  Result → Saved: 211  |  Skipped: 189  |  Status: success
+2026-03-14 15:29:22  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:22  INFO        Outlet : NDTV  [CENTER]
+2026-03-14 15:29:22  INFO        Feeds  : 2 feed(s)
+2026-03-14 15:29:22  INFO      
+    Parsing: https://feeds.feedburner.com/ndtvnews-india-news
+2026-03-14 15:29:22  INFO      127.0.0.1 - - [14/Mar/2026 15:29:22] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:24  INFO          Found 20 entries
+2026-03-14 15:29:24  INFO          [+] Top Court Stays Defamation Case Against Lawyer For Posting Book Extrac
+2026-03-14 15:29:24  INFO          [+] 2 India-Bound Ships Cross Hormuz After 4 Rounds Of Phone Calls, PM's O
+2026-03-14 15:29:24  INFO          [+] NCERT Row: IIT Gandhinagar Ends Ties With Guest Faculty Member After S
+2026-03-14 15:29:24  INFO          [+] NEET MDS 2026 Application Form (Out Today) Live: Here's Direct Link To
+2026-03-14 15:29:24  INFO          [+] Speech, Applause, Gone: Bihar Man Missing After UPSC Rank 440 Claim Fo
+2026-03-14 15:29:24  INFO          [+] Climate Activist Sonam Wangchuk, Detained For Nearly 6 Months, To Be R
+2026-03-14 15:29:24  INFO          [+] UP Engineer's 'Surprise' For Mother - Twin Sister's Body With 84 Stab 
+2026-03-14 15:29:24  INFO          [+] Madhya Pradesh ESB Sub-Inspector Exam 2026: First-Phase Result Out, Do
+2026-03-14 15:29:24  INFO          [+] India Announces 30-day Visa Extension To Foreigners In Country Amid Co
+2026-03-14 15:29:24  INFO          [+] Anna University Result, Marksheet 2026 Out For UG, PG Courses, Downloa
+2026-03-14 15:29:24  INFO          [+] Opinion: Opinion | Trump And His America Are Fast Losing Touch With Re
+2026-03-14 15:29:24  INFO          [+] India Exports First GI-Tagged Joha Rice Consignment From Assam To UK, 
+2026-03-14 15:29:24  INFO          [+] 2 Men Kill Friend In Mumbai After Fish 'Disappears' From Pan. Rats Had
+2026-03-14 15:29:24  INFO          [+] Spelling Error Reveals Teachers' Recruitment Scam In Rajasthan, 20 Arr
+2026-03-14 15:29:24  INFO          [+] Pi Day 2026: Interesting Facts, History, Significance And How To Celeb
+2026-03-14 15:29:24  INFO          [+] Delhi Police Cautions People Against Cyber Fraud Amid LPG Shortage
+2026-03-14 15:29:24  INFO          [+] Bhopal Declared Water-Scarce Zone, New Private Borewells Banned
+2026-03-14 15:29:24  INFO          [+] Summer Flights Likely To Get Expensive As Jet Fuel Prices Rise Amid Ir
+2026-03-14 15:29:24  INFO          [+] International Mathematics Day 2026: Theme, Classroom Activities, Signi
+2026-03-14 15:29:24  INFO          [+] The Process To Impeach Poll Body Chief And How Opposition Is Prepared
+2026-03-14 15:29:24  INFO      
+    Parsing: https://feeds.feedburner.com/ndtvnews-top-stories
+2026-03-14 15:29:25  INFO      127.0.0.1 - - [14/Mar/2026 15:29:25] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:26  INFO          Found 20 entries
+2026-03-14 15:29:26  INFO          [+] Mother In Dubai ICU, Rs 1.25 Crore Bill: Indian Man Pleads For Help Am
+2026-03-14 15:29:26  INFO          [+] Mojtaba Khamenei To Ali Larijani, Iran's Powerbrokers In US 'Rewards F
+2026-03-14 15:29:26  INFO          [+] "Orphan Pearl" On Fire: The Critical Oil Island Struck By US In Iran
+2026-03-14 15:29:26  INFO          [+] Indian Consulate In Dubai Sets Up 24x7 Control Room Amid Middle East C
+2026-03-14 15:29:26  INFO          [+] "I'd Rather Get Hit": Arabs In Northern Israel Fume Over Lack Of Shelt
+2026-03-14 15:29:26  INFO          [+] Blast Outside Jewish School In Amsterdam, 2nd Such Attack In Netherlan
+2026-03-14 15:29:26  INFO          [+] Devendra Singh Chaplot: IIT-Bombay Alumnus Who Joined Elon Musk's Spac
+2026-03-14 15:29:26  INFO          [+] North Korea Fires Ballistic Missile Towards Sea During US-South Korea 
+2026-03-14 15:29:26  INFO          [+] '$150, Hope': US Senate Pays Tribute To Indian-American Businessman Su
+2026-03-14 15:29:26  INFO          [+] Want To Renounce US Citizenship? Fee Now Slashed By 80% To $450
+2026-03-14 15:29:26  INFO          [+] Man Who Rammed Into Michigan Synagogue Had Lost Family In An Israeli S
+2026-03-14 15:29:27  INFO      
+  Result → Saved: 31  |  Skipped: 9  |  Status: success
+2026-03-14 15:29:28  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:28  INFO        Outlet : Times of India  [CENTER]
+2026-03-14 15:29:28  INFO        Feeds  : 2 feed(s)
+2026-03-14 15:29:28  INFO      
+    Parsing: https://timesofindia.indiatimes.com/rssfeedstopstories.cms
+2026-03-14 15:29:28  INFO          Found 41 entries
+2026-03-14 15:29:28  INFO          [+] UP woman ‘revived’ by jolt on NH-74: NHAI says ‘no potholes’ on stretc
+2026-03-14 15:29:28  INFO          [+] 'I apologise': Trump aide Laura Loomer apologises for 'anti-India' pos
+2026-03-14 15:29:28  INFO          [+] Inside Iran's war tunnel: Huge collection of drones displayed under Kh
+2026-03-14 15:29:28  INFO          [+] India’s Nobel paradox: Why Mahatma Gandhi remains the most famous non-
+2026-03-14 15:29:28  INFO          [+] PCB threatens KKR pacer for choosing IPL over PSL, sparks massive cont
+2026-03-14 15:29:28  INFO          [+] Attackers dance after hacking Bengaluru man 68 times with iron straps
+2026-03-14 15:29:28  INFO          [+] Huge fire after Iran targets one of world’s largest oil storage hubs i
+2026-03-14 15:29:28  INFO          [+] TMC and BJP supporters clash in Kolkata hours before PM Modi’s rally
+2026-03-14 15:29:28  INFO          [+] Accenture CEO Julie Sweet to company’s employees: If you want a promot
+2026-03-14 15:29:28  INFO          [+] After IndiGo and Air India, now Akasa Air to levy fuel surcharge - che
+2026-03-14 15:29:28  INFO          [+] Akshaye Khanna was 'not nice on set,' stayed irritable over hair loss,
+2026-03-14 15:29:28  INFO          [+] Meta is planning biggest-ever layoffs: Here's why 15,000 jobs could be
+2026-03-14 15:29:28  INFO          [+] MS Dhoni's last IPL season? Ex-cricketer makes big prediction
+2026-03-14 15:29:28  INFO          [+] ‘Surviving loan by loan’: Pak's wallet could take another hit from soa
+2026-03-14 15:29:28  INFO          [+] Climate activist Sonam Wangchuk to be released as govt revokes NSA det
+2026-03-14 15:29:28  INFO          [+] Women, kids among 40 trapped inside dilapidated building as new owner 
+2026-03-14 15:29:28  INFO          [+] 'We're going to create ... ': Suryakumar Yadav pens emotional note
+2026-03-14 15:29:28  INFO          [+] Cognizant advises BYOF for employees, reviews supply concerns
+2026-03-14 15:29:28  INFO          [+] Strait‑up chokehold of Hormuz: How Iran turned Middle East war into gl
+2026-03-14 15:29:28  INFO          [+] Robberies grow bolder and more organised with guns, knives and decepti
+2026-03-14 15:29:28  INFO          [+] Gangster groom arrested from marriage venue in Bhopal; fiancée pleads 
+2026-03-14 15:29:28  INFO          [+] Class VI students check Class X papers? Maharashtra Board to re-evalua
+2026-03-14 15:29:28  INFO          [+] Husband away since youngest’s birth, mom kills four daughters in Madhy
+2026-03-14 15:29:28  INFO          [+] Did Trump reject Putin's Iran deal to end war? What was the offer
+2026-03-14 15:29:28  INFO          [+] America’s low-cost reply to Iran’s Shahed drones? US launches LUCAS fr
+2026-03-14 15:29:28  INFO          [+] Explosion damages Jewish school in Amsterdam; mayor calls it targeted 
+2026-03-14 15:29:28  INFO          [+] 'He is riding his luck': Uthappa's big comment on Sooryavanshi ahead o
+2026-03-14 15:29:28  INFO          [+] 'Dhurandhar 2: The Revenge' advance bookings: Ranveer starrer crosses 
+2026-03-14 15:29:28  INFO          [+] 'Acting as puppet of forces against India's growth': PM Modi's big att
+2026-03-14 15:29:28  INFO          [+] 'Threatened to kill me': Delhi woman 'molested' during Uber bike ride
+2026-03-14 15:29:28  INFO          [+] What is DME? Scientists look to scale up output to offset LPG supply b
+2026-03-14 15:29:28  INFO          [+] Why Calcutta HC allowed kidney transplants from unrelated donors in 2 
+2026-03-14 15:29:28  INFO          [+] 'Wasn't saying nice things': Salman Ali Agha on war of words Mehidy Ha
+2026-03-14 15:29:28  INFO          [+] North Korea fires around 10 ballistic missiles toward Sea of Japan ami
+2026-03-14 15:29:28  INFO          [+] Deepika Padukone says Mumbai is ‘choking’ - how mayor responded
+2026-03-14 15:29:28  INFO      127.0.0.1 - - [14/Mar/2026 15:29:28] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:28  INFO          [+] Watch: Iran strikes US embassy in Baghdad, smoke rises over compound
+2026-03-14 15:29:28  INFO          [+] Meet Sadanand Date: MBBS-IPS officer and President’s awardee who is th
+2026-03-14 15:29:28  INFO          [+] Inside the F/A-18 Super Hornet: The backbone of the US Navy leading th
+2026-03-14 15:29:28  INFO          [+] Summer travel to get costlier: Jet fuel prices jump amid Middle East c
+2026-03-14 15:29:28  INFO          [+] 'Never do what Bangladesh captain did': Ex-India star blasts Mehidy Ha
+2026-03-14 15:29:28  INFO          [+] 'Made to abort': Student rapes 3 minors, impregnates 1; detained
+2026-03-14 15:29:28  INFO      
+    Parsing: https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms
+2026-03-14 15:29:29  INFO          Found 19 entries
+2026-03-14 15:29:29  INFO          [+] Exporters likely to get relief package
+2026-03-14 15:29:29  INFO          [+] Govt tables bill proposing more precise definition of transgender, dro
+2026-03-14 15:29:29  INFO          [+] Parliamentary panel seeks allocation of realistic fertiliser subsidy f
+2026-03-14 15:29:29  INFO          [+] Ahead of RS polls, Cong corrals Odisha MLAs in K'taka, Haryana netas i
+2026-03-14 15:29:29  INFO          [+] Oppn files notices in both Houses for removal of CEC
+2026-03-14 15:29:29  INFO          [+] 'Identifying sites in J&amp;K for new power plants'
+2026-03-14 15:29:29  INFO          [+] Railway board nod to flameless cooking
+2026-03-14 15:29:29  INFO          [+] Student from Ludhiana dies fighting Russia's war
+2026-03-14 15:29:29  INFO          [+] BJP: Infiltrators from B'desh behind Meghalaya violence
+2026-03-14 15:29:29  INFO          [+] CBI questions Anil Ambani's son in Rs 228 crore bank fraud case
+2026-03-14 15:29:29  INFO          [+] In Sabarimala U-turn, Kerala backs tradition on entry of women
+2026-03-14 15:29:29  INFO          [+] Govt wants Parliament sittings on March 28, 29
+2026-03-14 15:29:29  INFO          [+] HC indicates it may not give bail, poaching accused withdraws plea
+2026-03-14 15:29:29  INFO          [+] Help farmers shift from paddy to pulses, SC suggests to govt
+2026-03-14 15:29:29  INFO      
+  Result → Saved: 55  |  Skipped: 5  |  Status: success
+2026-03-14 15:29:30  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:30  INFO        Outlet : Business Standard  [CENTER]
+2026-03-14 15:29:30  INFO        Feeds  : 2 feed(s)
+2026-03-14 15:29:30  INFO      
+    Parsing: https://www.business-standard.com/rss/politics-current-affairs-10601.rss
+2026-03-14 15:29:30  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:29:30  INFO      
+    Parsing: https://www.business-standard.com/rss/current-affairs-10605.rss
+2026-03-14 15:29:31  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:29:31  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-14 15:29:31  INFO      127.0.0.1 - - [14/Mar/2026 15:29:31] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:32  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:32  INFO        Outlet : Economic Times  [CENTER]
+2026-03-14 15:29:32  INFO        Feeds  : 2 feed(s)
+2026-03-14 15:29:32  INFO      
+    Parsing: https://economictimes.indiatimes.com/rssfeedsdefault.cms
+2026-03-14 15:29:33  INFO          Found 76 entries
+2026-03-14 15:29:33  INFO          [+] Smallcaps cheaper but not cheap yet: Sonam Srivastava urges selective 
+2026-03-14 15:29:33  INFO          [+] Mutual funds reduce investments in IT stocks in February, weight slips
+2026-03-14 15:29:33  INFO          [+] Sadanand Date takes charge as Sebi executive director
+2026-03-14 15:29:33  INFO          [+] Rising concerns over India’s LPG supply: Causes, constraints &amp; mar
+2026-03-14 15:29:33  INFO          [+] India revisits Press Note 3: Key clarifications to FDI framework for i
+2026-03-14 15:29:33  INFO          [+] Bitcoin hovers near $71,000 as crypto investors track macro and liquid
+2026-03-14 15:29:33  INFO          [+] Oil shock, inflation pressures dampen RBI rate-cut hopes
+2026-03-14 15:29:33  INFO          [+] West Asia conflict could hurt agri input availability: UPL Executive
+2026-03-14 15:29:33  INFO          [+] Diversion of stranded cargo to new markets under review
+2026-03-14 15:29:33  INFO          [+] West Asia conflict poses downside risk, India GDP growth seen at 7.1 p
+2026-03-14 15:29:33  INFO      
+    Parsing: https://economictimes.indiatimes.com/news/politics-and-nation/rssfeeds/28311565.cms
+2026-03-14 15:29:33  INFO      127.0.0.1 - - [14/Mar/2026 15:29:33] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:33  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:29:34  INFO      
+  Result → Saved: 10  |  Skipped: 66  |  Status: success
+2026-03-14 15:29:35  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:35  INFO        Outlet : Deccan Herald  [CENTER]
+2026-03-14 15:29:35  INFO        Feeds  : 2 feed(s)
+2026-03-14 15:29:35  INFO      
+    Parsing: https://www.deccanherald.com/rss-feed/national.rss
+2026-03-14 15:29:35  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:29:35  INFO      
+    Parsing: https://www.deccanherald.com/rss-feed/politics.rss
+2026-03-14 15:29:36  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:29:36  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-14 15:29:36  INFO      127.0.0.1 - - [14/Mar/2026 15:29:36] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:37  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:37  INFO        Outlet : The Print  [CENTER]
+2026-03-14 15:29:37  INFO        Feeds  : 2 feed(s)
+2026-03-14 15:29:37  INFO      
+    Parsing: https://theprint.in/feed/
+2026-03-14 15:29:37  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:29:37  INFO      
+    Parsing: https://theprint.in/category/politics/feed/
+2026-03-14 15:29:38  INFO          Found 20 entries
+2026-03-14 15:29:38  INFO          [+] ‘Mediator’ for school, ‘Captain’ for Kerala, ‘Mundu Modi’ for critics—
+2026-03-14 15:29:38  INFO          [+] Sasikala launches new party with a ‘coconut farm’ strategy. What it co
+2026-03-14 15:29:38  INFO          [+] Expelled AIADMK leader Sasikala announces name of new political party
+2026-03-14 15:29:38  INFO          [+] Closure of over 200 hotels & eateries in Chennai fuels DMK attacks on 
+2026-03-14 15:29:38  INFO          [+] End of Vellappally era? Why Kerala HC disqualified SNDP Yogam chief, s
+2026-03-14 15:29:38  INFO          [+] Left veteran Sudhakaran finally cuts the cord, plans Independent run i
+2026-03-14 15:29:41  INFO          [+] Russian oil, Epstein & an Om Birla intervention: Rahul sets off firewo
+2026-03-14 15:29:41  INFO          [+] Why Meghalaya’s Garo Hills have been on the boil ahead of tribal counc
+2026-03-14 15:29:41  INFO          [+] Rahul’s ‘Samajik Parivartan’ to Akhilesh’s ‘PDA Divas’, UP parties scr
+2026-03-14 15:29:41  INFO          [+] Back after no-confidence saga, Speaker Om Birla says no special privil
+2026-03-14 15:29:41  INFO          [+] ‘Everything starts & ends with one family’: In Trichy, Modi accuses DM
+2026-03-14 15:29:41  INFO          [+] The seer who stung Yogi plans a new cow protection yatra, this time fr
+2026-03-14 15:29:41  INFO          [+] Amit Shah targets Rahul’s attendance, hug & wink as Oppn motion to rem
+2026-03-14 15:29:41  INFO      
+  Result → Saved: 13  |  Skipped: 7  |  Status: success
+2026-03-14 15:29:42  INFO      127.0.0.1 - - [14/Mar/2026 15:29:42] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:42  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:42  INFO        Outlet : The Quint  [CENTER]
+2026-03-14 15:29:42  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:29:42  INFO      
+    Parsing: https://www.thequint.com/feed
+2026-03-14 15:29:43  INFO          Found 8 entries
+2026-03-14 15:29:43  INFO          [+] Machli Mandi Fire Incident Viral as Vde of Attack on India-Israel Dron
+2026-03-14 15:29:43  INFO          [+] Kumbh Star Monalisa’s Flight to Kerala Shows Where Interfaith Couples 
+2026-03-14 15:29:43  INFO          [+] 'To Foster Peace...': MHA Revokes Sonam Wangchuk’s Detention Under NSA
+2026-03-14 15:29:43  INFO          [+] Indian LPG Tankers Cross Strait Of Hormuz Amid Crisis: Reports
+2026-03-14 15:29:43  INFO          [+] Exclusive: दिल्ली सरकार ने सनातन संस्था के इवेंट में दिए 20 लाख, RTI स
+2026-03-14 15:29:43  INFO          [+] US Bombs Iran’s Kharg Island, Escalating War and Oil Fears
+2026-03-14 15:29:43  INFO          [+] Parliament Tables Bill Redefining Transgender Identity And Rights
+2026-03-14 15:29:43  INFO          [+] Ten Indians Arrested In US For Staging Robberies To Secure Visas
+2026-03-14 15:29:43  INFO      
+  Result → Saved: 8  |  Skipped: 0  |  Status: success
+2026-03-14 15:29:44  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:44  INFO        Outlet : BBC India  [CENTER]
+2026-03-14 15:29:44  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:29:44  INFO      
+    Parsing: https://feeds.bbci.co.uk/news/world/asia/india/rss.xml
+2026-03-14 15:29:45  INFO      127.0.0.1 - - [14/Mar/2026 15:29:45] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:45  INFO          Found 23 entries
+2026-03-14 15:29:45  INFO          [+] Is Dubai's glossy image under threat? Not everyone thinks so
+2026-03-14 15:29:45  INFO          [+] In photos: Tracing India's history through its chairs
+2026-03-14 15:29:45  INFO          [+] 'No-one will hire women' - India's top court rejects menstrual leave p
+2026-03-14 15:29:45  INFO          [+] 'The situation is dire': War on Iran squeezes India's cooking-gas supp
+2026-03-14 15:29:45  INFO          [+] Bodies of 84 Iranian sailors killed in US torpedo strike to be repatri
+2026-03-14 15:29:45  INFO          [+] More Indian women play cricket now than in 2020 - BBC study
+2026-03-14 15:29:45  INFO          [+] Abrar signing allays Hundred India-Pakistan concern
+2026-03-14 15:29:45  INFO          [+] Video shows moment point-blank gunshot misses Indian politician
+2026-03-14 15:29:45  INFO      
+  Result → Saved: 8  |  Skipped: 15  |  Status: success
+2026-03-14 15:29:46  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:46  INFO        Outlet : Reuters India  [CENTER]
+2026-03-14 15:29:46  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:29:46  INFO      
+    Parsing: https://feeds.reuters.com/reuters/INtopNews
+2026-03-14 15:29:47  INFO      127.0.0.1 - - [14/Mar/2026 15:29:47] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:50  INFO      127.0.0.1 - - [14/Mar/2026 15:29:50] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:50  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:29:50  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-14 15:29:51  INFO      
+───────────────────────────────────────────────────────
+2026-03-14 15:29:51  INFO        Outlet : AP India  [CENTER]
+2026-03-14 15:29:51  INFO        Feeds  : 1 feed(s)
+2026-03-14 15:29:51  INFO      
+    Parsing: https://rsshub.app/apnews/topics/apf-india
+2026-03-14 15:29:51  WARNING       [!] No entries found — feed may be empty or blocked
+2026-03-14 15:29:51  INFO      
+  Result → Saved: 0  |  Skipped: 0  |  Status: success
+2026-03-14 15:29:52  INFO      
+2026-03-14 15:29:52  INFO      =======================================================
+2026-03-14 15:29:52  INFO        RUN COMPLETE — 85s elapsed
+2026-03-14 15:29:52  INFO        New articles saved : 758
+2026-03-14 15:29:52  INFO        Duplicates skipped : 707
+2026-03-14 15:29:52  INFO      =======================================================
+2026-03-14 15:29:52  INFO      
+═══════════════════════════════════════════════════════
+2026-03-14 15:29:52  INFO        DATABASE SUMMARY
+2026-03-14 15:29:52  INFO      ═══════════════════════════════════════════════════════
+2026-03-14 15:29:52  INFO        OUTLET                       BIAS   ARTICLES
+2026-03-14 15:29:52  INFO        ────────────────────────── ──────── ────────
+2026-03-14 15:29:52  INFO        OpIndia                     right         20
+2026-03-14 15:29:52  INFO        Swarajya                    right          1
+2026-03-14 15:29:52  INFO        Organiser                   right         31
+2026-03-14 15:29:52  INFO        DNA India                   right         56
+2026-03-14 15:29:52  INFO        The Sunday Guardian         right         32
+2026-03-14 15:29:52  INFO        Zee News                    right         60
+2026-03-14 15:29:52  INFO        India Today                 right        323
+2026-03-14 15:29:52  INFO        News18                      right        563
+2026-03-14 15:29:52  INFO        The Hindu                   center       571
+2026-03-14 15:29:52  INFO        Indian Express              center       829
+2026-03-14 15:29:52  INFO        NDTV                        center        87
+2026-03-14 15:29:52  INFO        Times of India              center       273
+2026-03-14 15:29:52  INFO        Economic Times              center        92
+2026-03-14 15:29:52  INFO        The Print                   center        38
+2026-03-14 15:29:52  INFO        The Quint                   center        42
+2026-03-14 15:29:52  INFO        BBC India                   center        35
+2026-03-14 15:29:52  INFO        Newslaundry                  left          6
+2026-03-14 15:29:52  INFO        Alt News                     left         20
+2026-03-14 15:29:52  INFO        Maktoob Media                left         23
+2026-03-14 15:29:52  INFO        ────────────────────────── ──────── ────────
+2026-03-14 15:29:52  INFO        TOTAL                                   3102
+2026-03-14 15:29:52  INFO      ═══════════════════════════════════════════════════════
+
+2026-03-14 15:29:52  INFO      127.0.0.1 - - [14/Mar/2026 15:29:52] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:29:56  INFO      127.0.0.1 - - [14/Mar/2026 15:29:56] "POST /api/trigger-body HTTP/1.1" 200 -
+2026-03-14 15:29:57  INFO      Using requests library for http requests (alternative cloudscraper library is recommended for bypassing Cloudflare protection)
+2026-03-14 15:29:59  INFO      127.0.0.1 - - [14/Mar/2026 15:29:59] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:03  INFO      127.0.0.1 - - [14/Mar/2026 15:30:03] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:05  INFO      127.0.0.1 - - [14/Mar/2026 15:30:05] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:08  INFO      127.0.0.1 - - [14/Mar/2026 15:30:08] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:10  INFO      127.0.0.1 - - [14/Mar/2026 15:30:10] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:13  INFO      127.0.0.1 - - [14/Mar/2026 15:30:13] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:19  INFO      127.0.0.1 - - [14/Mar/2026 15:30:19] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:22  INFO      127.0.0.1 - - [14/Mar/2026 15:30:22] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:24  INFO      127.0.0.1 - - [14/Mar/2026 15:30:24] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:27  INFO      127.0.0.1 - - [14/Mar/2026 15:30:27] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:30  INFO      127.0.0.1 - - [14/Mar/2026 15:30:30] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:32  INFO      127.0.0.1 - - [14/Mar/2026 15:30:32] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:35  INFO      127.0.0.1 - - [14/Mar/2026 15:30:35] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:38  INFO      127.0.0.1 - - [14/Mar/2026 15:30:38] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:41  INFO      127.0.0.1 - - [14/Mar/2026 15:30:41] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:44  INFO      127.0.0.1 - - [14/Mar/2026 15:30:44] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:46  INFO      127.0.0.1 - - [14/Mar/2026 15:30:46] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:52  INFO      127.0.0.1 - - [14/Mar/2026 15:30:52] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:55  INFO      127.0.0.1 - - [14/Mar/2026 15:30:55] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:30:57  INFO      127.0.0.1 - - [14/Mar/2026 15:30:57] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:31:00  INFO      127.0.0.1 - - [14/Mar/2026 15:31:00] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:31:03  INFO      127.0.0.1 - - [14/Mar/2026 15:31:03] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:31:06  INFO      127.0.0.1 - - [14/Mar/2026 15:31:06] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:31:06  INFO      127.0.0.1 - - [14/Mar/2026 15:31:06] "GET /api/stats HTTP/1.1" 200 -
+2026-03-14 15:31:17  INFO      127.0.0.1 - - [14/Mar/2026 15:31:17] "GET / HTTP/1.1" 200 -
+2026-03-14 15:31:17  INFO      127.0.0.1 - - [14/Mar/2026 15:31:17] "GET /api/job-status HTTP/1.1" 200 -
+2026-03-14 15:31:19  INFO      127.0.0.1 - - [14/Mar/2026 15:31:19] "GET / HTTP/1.1" 200 -
+2026-03-14 15:31:19  INFO      127.0.0.1 - - [14/Mar/2026 15:31:19] "GET /api/job-status HTTP/1.1" 200 -
