@@ -214,6 +214,7 @@ def tokenize_query(query: str) -> list[str]:
         tokens = [t for t in raw_query.split() if len(t) > 2]
     return tokens or [raw_query]
 
+@app.get("/search/stories")
 @app.get("/stories")
 def get_stories(
     q: Optional[str] = None,
