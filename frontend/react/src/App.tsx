@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import BrowseArticles from "./components/BrowseArticles";
 import Layout from "./components/Layout";
-import Logs from "./components/Logs";
 import AnalysisDashboard from "./components/AnalysisDashboard";
 import ArticleList from "./components/ArticlesList";
 import SearchPage from "./components/SearchPage";
@@ -38,10 +37,6 @@ const routes = [
       {
         path: "Story/:id",
         element: <StoryPage />,
-      },
-      {
-        path: "Logs",
-        element: <Logs />,
       },
     ],
   },
