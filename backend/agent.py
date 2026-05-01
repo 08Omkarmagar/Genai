@@ -184,18 +184,30 @@ def fetch_bodies_node(state: AgentState) -> dict:
             if row and row.body:
                 articles_text[url] = row.body[:8_000]
             else:
+                # Try to extract metadata if it was passed from GDELT
+                meta = {"title": state["topic"], "source": "GDELT"}
+                existing_meta = state["articles"].get(url)
+                if existing_meta and existing_meta.startswith("{"):
+                    try:
+                        meta = json.loads(existing_meta)
+                    except: pass
+
                 body, score, _ = _fetch_body(url)
                 if body:
                     articles_text[url] = body[:8_000]
                     if not row:
-                        # Create a new entry for fallback/GDELT articles
                         row = RSSArticle(
                             url=url,
-                            outlet="GDELT",
+                            outlet=meta.get("source", "GDELT"),
                             bias="Unknown",
-                            title=state["topic"],  # Use topic as title fallback
+                            title=meta.get("title", state["topic"]),
+                            published=meta.get("published", ""),
                         )
                         session.add(row)
+                    else:
+                        # Update title if it was a placeholder
+                        if row.outlet == "GDELT" or not row.title:
+                            row.title = meta.get("title", row.title)
 
                     row.body = body
                     row.body_quality = score
@@ -235,12 +247,37 @@ def gdelt_fetch_node(state: AgentState) -> dict:
         if resp.status_code == 200:
             data = resp.json()
             gdelt_list = data.get("articles", [])
-            for item in gdelt_list:
-                art_url = item.get("url")
-                if art_url:
+            with Session(engine) as session:
+                for item in gdelt_list:
+                    art_url = item.get("url")
+                    if not art_url:
+                        continue
+                    
                     new_urls.append(art_url)
-                    # We store metadata as a prefix to the body (which will be fetched later)
-                    new_articles[art_url] = f"TITLE: {item.get('title', 'Unknown')}\nSOURCE: {item.get('sourcecountry', 'Unknown')}\n\n"
+                    
+                    # 1. Check if article already exists
+                    row = session.query(RSSArticle).filter_by(url=art_url).first()
+                    if not row:
+                        # 2. Create new record with all GDELT metadata
+                        row = RSSArticle(
+                            url=art_url,
+                            outlet=item.get("sourcecountry", "GDELT"),
+                            country=item.get("sourcecountry", "Unknown")[:2].upper(),
+                            bias="Unknown",
+                            title=item.get("title", topic),
+                            published=item.get("seoname", ""),
+                        )
+                        session.add(row)
+                    
+                    # Pass structured metadata for the next node
+                    new_articles[art_url] = json.dumps({
+                        "title": item.get("title", topic),
+                        "source": item.get("sourcecountry", "GDELT"),
+                        "published": item.get("seoname", ""),
+                        "is_gdelt": True
+                    })
+                
+                session.commit()
         else:
             logger.warning(f"GDELT API returned status {resp.status_code}")
     except Exception as exc:

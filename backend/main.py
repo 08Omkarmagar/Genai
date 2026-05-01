@@ -497,7 +497,47 @@ def trigger_analysis(req: AnalyzeRequest):
                 urls_to_analyze = [article.url for article in articles]
 
         # If no articles found in DB, we still run the agent so it can use GDELT fallback
-        return run_agent(topic=req.topic, urls=urls_to_analyze)
+        result = run_agent(topic=req.topic, urls=urls_to_analyze)
+
+        with Session(engine) as session:
+            # 1. Save the deep analysis report
+            report = BiasAnalysisReport(
+                topic=req.topic,
+                balanced_brief=result.get("balanced_brief", ""),
+                comparison=result.get("comparison", ""),
+                visualization_path=result.get("visualization_path", ""),
+                raw_result=result,
+                agreement_score=result.get("metrics", {}).get("agreement", 0),
+                is_polarized=result.get("metrics", {}).get("is_polarized", False),
+            )
+            session.add(report)
+
+            # 2. Create a Story for these results so they appear on the Dashboard
+            # Check if a story already exists for this topic
+            story = session.query(Story).filter(Story.title == req.topic).first()
+            if not story:
+                story = Story(
+                    title=req.topic,
+                    summary=result.get("balanced_brief", "")[:500],
+                    category="investigative",
+                    bias_distribution=result.get("metrics", {}).get("bias_distribution", {}),
+                    disagreement_score=result.get("metrics", {}).get("agreement", 0),
+                    confidence_score=0.8
+                )
+                session.add(story)
+                session.flush() # Get story.id
+
+            # 3. Link all articles to this story
+            for url in result.get("articles", {}):
+                article = session.query(RSSArticle).filter(RSSArticle.url == url).first()
+                if article:
+                    # Check if already linked
+                    exists = session.query(StoryArticle).filter_by(story_id=story.id, article_id=article.id).first()
+                    if not exists:
+                        session.add(StoryArticle(story_id=story.id, article_id=article.id))
+
+            session.commit()
+        return result
     except Exception as e:
         print(f"[API] Analysis trigger failed: {e}")
         raise HTTPException(status_code=500, detail=str(e))
