@@ -26,8 +26,11 @@ export default function SearchPage() {
     if (q) {
       setQuery(q);
       performSearch(q);
+    } else {
+      setResults([]);
+      setSearched(false);
     }
-  }, []);
+  }, [searchParams]);
 
   const performSearch = async (searchQuery: string) => {
     if (!searchQuery.trim()) return;
