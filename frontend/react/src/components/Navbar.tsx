@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Home, FileText, Brain, BarChart3, Search, Settings, Menu, X } from "lucide-react";
+import { Home, FileText, Brain, Search, Settings, Menu, X } from "lucide-react";
 
 const navItems = [
   { path: "/", label: "Dashboard", icon: Home },
   { path: "/Articles", label: "Articles", icon: FileText },
   { path: "/Analyze", label: "Analysis", icon: Brain },
-  { path: "/Insights", label: "Insights", icon: BarChart3 },
   { path: "/Logs", label: "Pipeline", icon: Settings },
 ];
 

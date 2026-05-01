@@ -5,7 +5,6 @@ import Layout from "./components/Layout";
 import Logs from "./components/Logs";
 import AnalysisDashboard from "./components/AnalysisDashboard";
 import ArticleList from "./components/ArticlesList";
-import InsightsPage from "./components/InsightsPage";
 import SearchPage from "./components/SearchPage";
 import StoryPage from "./components/StoryPage";
 import NotFoundPage from "./components/NotFoundPage";
@@ -31,10 +30,6 @@ const routes = [
       {
         path: "Analyze",
         element: <AnalysisDashboard />,
-      },
-      {
-        path: "Insights",
-        element: <InsightsPage />,
       },
       {
         path: "Search",
