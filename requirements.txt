@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+feedparser
+python-dotenv
+urllib3
+newspaper3k 
+lxml_html_clean
+pgvector
+sentence-transformers
+google-genai

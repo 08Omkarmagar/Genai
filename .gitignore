@@ -1,0 +1,34 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+.env
+
+# Database & Logs
+*.db
+*.sqlite3
+*.dump
+*.log
+backend/logs/
+
+# Frontend (React/Vite)
+node_modules/
+dist/
+.npm
+.DS_Store
+
+# Agent Assets
+frontend/react/public/charts/*.png
+
+# IDEs
+.vscode/
+.idea/
+.gemini/
+
+# OS
+.DS_Store
+Thumbs.db
