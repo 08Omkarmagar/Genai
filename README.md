@@ -36,16 +36,27 @@ This is a personal project built to experiment with **LangGraph agent architectu
 
 ---
 
+## 🛠️ Tech Stack
+
+### Backend
+- **Core**: [FastAPI](https://fastapi.tiangolo.com/), [PostgreSQL](https://www.postgresql.org/) with [pgvector](https://github.com/pgvector/pgvector)
+- **AI/ML**: [Google Gemini](https://ai.google.dev/) (via `google-genai`), [LangGraph](https://github.com/langchain-ai/langgraph), `sentence-transformers`
+- **Data**: `feedparser`, `newspaper3k`, `trafilatura`, `Pandas`, `Matplotlib`, `Seaborn`
+
+### Frontend
+- **Framework**: [React](https://reactjs.org/) (Vite + TypeScript)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/), [Lucide React](https://lucide.dev/)
+
+---
+
 ## 🖼️ Screenshots
 
-> _Screenshots coming soon — run the project locally to explore the dashboard!_
 >
 > **Pages include:**
-> - **Home** — Story cards with bias distribution bars and disagreement scores
-> - **Story Detail** — Full article list, AI-generated neutral brief, and deep analysis
-> - **Search** — Semantic search across all stories
-> - **Analyze** — Trigger deep bias analysis on any topic
-> - **Browse Articles** — Filter by outlet, bias, country, and date
+> - **Dashboard** — ![Home to the application](home.png)
+> - **Story Detail** — ![Full article list, AI-generated neutral brief, and deep analysis](StoryDetail.png)
+> - **Analyze** — ![Trigger deep bias analysis on any topic](Analyze.png)
+> - **Browse Articles** — ![Filter by outlet, bias, country, and date](Browse_Articles.png)
 
 ---
 
@@ -88,6 +99,13 @@ GOOGLE_API_KEY=your_gemini_api_key
 
 ### 4. Backend Setup
 
+If you are using Conda (recommended):
+```bash
+conda env create -f environment.yml
+conda activate Gai
+```
+
+Alternatively, using pip:
 ```bash
 pip install -r requirements.txt
 ```
@@ -105,7 +123,10 @@ npm install
 
 ### Start the Backend
 
+Open a **new terminal window**, activate your environment, and start the API:
+
 ```bash
+conda activate Gai
 cd backend
 uvicorn main:app --reload --port 8000
 ```
@@ -113,6 +134,8 @@ uvicorn main:app --reload --port 8000
 The API will be available at `http://localhost:8000`. Visit `http://localhost:8000/docs` for the interactive Swagger UI.
 
 ### Start the Frontend
+
+Open a **second terminal window** and start the React development server:
 
 ```bash
 cd frontend/react
@@ -185,6 +208,7 @@ The dashboard will be available at `http://localhost:5173`.
 │   │   └── index.css               # Global styles
 │   └── package.json
 │
+├── environment.yml                 # Conda environment configuration
 ├── requirements.txt                # Python dependencies
 ├── .env                            # Environment variables (not committed)
 └── .gitignore
