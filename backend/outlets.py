@@ -1,5 +1,14 @@
+"""
+outlets.py — Global registry of news sources and RSS feeds.
 
-# Configuration for all News Outlets and their RSS Feeds
+This module acts as the single source of truth for all news outlets integrated into 
+the NewsHere platform. It categorizes outlets by bias and country, providing the
+initial heuristics used by the ingestion pipeline before deep AI analysis.
+
+Structure:
+- INDIAN_OUTLETS: Comprehensive list of national and regional Indian sources.
+- GLOBAL_OUTLETS: Curated list of international news organizations across 20+ countries.
+"""
 
 INDIAN_OUTLETS: dict[str, dict] = {
     "OpIndia": {"bias": "right", "country": "IN", "feeds": ["https://www.opindia.com/feed/"]},
@@ -37,11 +46,8 @@ INDIAN_OUTLETS: dict[str, dict] = {
 }
 
 GLOBAL_OUTLETS: list[dict] = [
-    # --- Global / Multi-Region ---
     {"name": "Reuters", "url": "https://www.reutersagency.com/feed/?best-topics=all&post_type=best", "bias": "center", "country": "GL"},
     {"name": "Associated Press", "url": "https://apnews.com/rss", "bias": "center", "country": "GL"},
-
-    # --- USA ---
     {"name": "CNN", "url": "http://rss.cnn.com/rss/edition.rss", "bias": "center", "country": "US"},
     {"name": "New York Times", "url": "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml", "bias": "center", "country": "US"},
     {"name": "Fox News", "url": "http://feeds.foxnews.com/foxnews/latest", "bias": "right", "country": "US"},
@@ -52,8 +58,6 @@ GLOBAL_OUTLETS: list[dict] = [
     {"name": "Axios", "url": "https://api.axios.com/feed/", "bias": "center", "country": "US"},
     {"name": "TechCrunch", "url": "https://techcrunch.com/feed/", "bias": "center", "country": "US"},
     {"name": "Wired", "url": "https://www.wired.com/feed/rss", "bias": "center", "country": "US"},
-
-    # --- UK ---
     {"name": "BBC News", "url": "http://feeds.bbci.co.uk/news/rss.xml", "bias": "center", "country": "UK"},
     {"name": "BBC World Service", "url": "http://feeds.bbci.co.uk/news/world/rss.xml", "bias": "center", "country": "UK"},
     {"name": "The Guardian", "url": "https://www.theguardian.com/world/rss", "bias": "left", "country": "UK"},
@@ -64,8 +68,6 @@ GLOBAL_OUTLETS: list[dict] = [
     {"name": "The Independent", "url": "https://www.independent.co.uk/news/world/rss", "bias": "center", "country": "UK"},
     {"name": "OpenDemocracy", "url": "https://www.opendemocracy.net/en/rss.xml", "bias": "left", "country": "UK"},
     {"name": "Politico Europe", "url": "https://www.politico.eu/feed/", "bias": "center", "country": "UK"},
-
-    # --- Canada ---
     {"name": "CBC News", "url": "https://www.cbc.ca/cmlink/rss-topstories", "bias": "center", "country": "CA"},
     {"name": "Global News", "url": "https://globalnews.ca/feed/", "bias": "center", "country": "CA"},
     {"name": "Toronto Star", "url": "https://www.thestar.com/content/thestar/feed.RSSManagerServlet.articles.topstories.rss", "bias": "center", "country": "CA"},
@@ -76,8 +78,6 @@ GLOBAL_OUTLETS: list[dict] = [
     {"name": "Financial Post", "url": "https://financialpost.com/feed/", "bias": "center", "country": "CA"},
     {"name": "BNN Bloomberg Canada", "url": "https://www.bnnbloomberg.ca/polopoly_fs/1.1!/feed/rss.xml", "bias": "center", "country": "CA"},
     {"name": "CityNews", "url": "https://toronto.citynews.ca/feed/", "bias": "center", "country": "CA"},
-
-    # --- Asia (Japan, Korea, Singapore, Thailand, Philippines) ---
     {"name": "NHK World", "url": "https://www3.nhk.or.jp/rss/news/cat0.xml", "bias": "center", "country": "JP"},
     {"name": "The Japan Times", "url": "https://www.japantimes.co.jp/feed/", "bias": "center", "country": "JP"},
     {"name": "Nikkei Asia", "url": "https://asia.nikkei.com/rss/feed/nar", "bias": "center", "country": "JP"},
@@ -88,67 +88,47 @@ GLOBAL_OUTLETS: list[dict] = [
     {"name": "Bangkok Post", "url": "https://www.bangkokpost.com/rss/data/topstories.xml", "bias": "center", "country": "TH"},
     {"name": "Jakarta Post", "url": "https://www.thejakartapost.com/feed", "bias": "center", "country": "ID"},
     {"name": "Philippine Daily Inquirer", "url": "https://newsinfo.inquirer.net/feed", "bias": "center", "country": "PH"},
-
-    # --- Turkey ---
     {"name": "Anadolu Agency", "url": "https://www.aa.com.tr/en/rss/default?cat=guncel", "bias": "center", "country": "TR"},
     {"name": "Daily Sabah", "url": "https://www.dailysabah.com/rss", "bias": "center", "country": "TR"},
     {"name": "Hürriyet", "url": "https://www.hurriyetdailynews.com/rss", "bias": "center", "country": "TR"},
     {"name": "TRT World", "url": "https://www.trtworld.com/rss.xml", "bias": "center", "country": "TR"},
     {"name": "Yeni Şafak", "url": "https://www.yenisafak.com/rss", "bias": "center", "country": "TR"},
-
-    # --- Brazil ---
     {"name": "O Globo", "url": "https://oglobo.globo.com/rss.xml", "bias": "center", "country": "BR"},
     {"name": "Folha de S.Paulo", "url": "https://feeds.folha.uol.com.br/internacional/en/world/rss091.xml", "bias": "center", "country": "BR"},
     {"name": "Estadão", "url": "https://www.estadao.com.br/rss/ultimas.xml", "bias": "center", "country": "BR"},
     {"name": "G1 Globo", "url": "https://g1.globo.com/rss/g1/", "bias": "center", "country": "BR"},
     {"name": "UOL Notícias", "url": "https://rss.uol.com.br/feed/noticias.xml", "bias": "center", "country": "BR"},
-
-    # --- Malaysia ---
     {"name": "The Star Malaysia", "url": "https://www.thestar.com.my/rss/news/nation", "bias": "center", "country": "MY"},
     {"name": "Malay Mail", "url": "https://www.malaymail.com/feed/rss", "bias": "center", "country": "MY"},
     {"name": "Bernama", "url": "https://www.bernama.com/en/rss.php", "bias": "center", "country": "MY"},
     {"name": "Free Malaysia Today", "url": "https://www.freemalaysiatoday.com/feed/", "bias": "center", "country": "MY"},
     {"name": "New Straits Times", "url": "https://www.nst.com.my/rss", "bias": "center", "country": "MY"},
-
-    # --- Indonesia ---
     {"name": "Tempo", "url": "https://en.tempo.co/rss", "bias": "center", "country": "ID"},
     {"name": "Antara News", "url": "https://en.antaranews.com/rss", "bias": "center", "country": "ID"},
     {"name": "Detik News", "url": "https://rss.detik.com/index.php/detikcom", "bias": "center", "country": "ID"},
     {"name": "Kompas", "url": "https://rss.kompas.com/rss", "bias": "center", "country": "ID"},
-
-    # --- Nigeria ---
     {"name": "Punch Nigeria", "url": "https://punchng.com/feed/", "bias": "center", "country": "NG"},
     {"name": "Vanguard Nigeria", "url": "https://www.vanguardngr.com/feed/", "bias": "center", "country": "NG"},
     {"name": "Premium Times", "url": "https://www.premiumtimesng.com/feed", "bias": "center", "country": "NG"},
     {"name": "The Guardian Nigeria", "url": "https://guardian.ng/feed/", "bias": "center", "country": "NG"},
     {"name": "ThisDay Live", "url": "https://www.thisdaylive.com/feed/", "bias": "center", "country": "NG"},
-
-    # --- South Africa ---
     {"name": "News24", "url": "https://www.news24.com/news24/rss", "bias": "center", "country": "ZA"},
     {"name": "Mail & Guardian", "url": "https://mg.co.za/feed/", "bias": "center", "country": "ZA"},
     {"name": "TimesLIVE", "url": "https://www.timeslive.co.za/rss/", "bias": "center", "country": "ZA"},
     {"name": "BusinessTech", "url": "https://businesstech.co.za/news/feed/", "bias": "center", "country": "ZA"},
     {"name": "Independent Online", "url": "https://www.iol.co.za/rss", "bias": "center", "country": "ZA"},
-
-    # --- China (State/Regional) ---
     {"name": "Xinhua", "url": "http://www.xinhuanet.com/english/rss/worldrss.xml", "bias": "center", "country": "CN"},
     {"name": "China Daily", "url": "http://www.chinadaily.com.cn/rss/world_rss.xml", "bias": "center", "country": "CN"},
     {"name": "Global Times", "url": "https://www.globaltimes.cn/rss/outbrain.xml", "bias": "center", "country": "CN"},
     {"name": "CGTN", "url": "https://news.cgtn.com/news/rss/index.xml", "bias": "center", "country": "CN"},
     {"name": "Sixth Tone", "url": "https://www.sixthtone.com/feeds/news", "bias": "center", "country": "CN"},
-
-    # --- Pakistan ---
     {"name": "Dawn", "url": "https://www.dawn.com/feeds/home", "bias": "center", "country": "PK"},
     {"name": "Geo News", "url": "https://www.geo.tv/rss/1/0", "bias": "center", "country": "PK"},
     {"name": "The News International", "url": "https://www.thenews.com.pk/rss/1/10", "bias": "center", "country": "PK"},
     {"name": "Express Tribune", "url": "https://tribune.com.pk/feed", "bias": "center", "country": "PK"},
-
-    # --- Iran ---
     {"name": "Press TV", "url": "https://www.presstv.ir/rss/rss.xml", "bias": "center", "country": "IR"},
     {"name": "Tehran Times", "url": "https://www.tehrantimes.com/rss", "bias": "center", "country": "IR"},
     {"name": "Tasnim News", "url": "https://www.tasnimnews.com/en/rss", "bias": "center", "country": "IR"},
-
-    # --- Russia ---
     {"name": "RT News", "url": "https://www.rt.com/rss/", "bias": "center", "country": "RU"},
     {"name": "TASS", "url": "https://tass.com/rss/v2.xml", "bias": "center", "country": "RU"},
     {"name": "Sputnik News", "url": "https://sputniknews.com/export/rss2/archive/index.xml", "bias": "center", "country": "RU"},

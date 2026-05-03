@@ -1,8 +1,11 @@
-
 """
-Constants and static data for the NewsHere project.
+constants.py — Shared configuration values and static data.
+
+This module consolidates configuration constants used across multiple backend
+services, including stop words for NLP, pagination limits, and fetcher timeouts.
 """
 
+# Common stop words used to filter noisy terms out of search queries and tokens
 STOP_WORDS = {
     "the", "a", "an", "and", "or", "but", "in", "on", "at", "to",
     "for", "of", "with", "by", "from", "as", "is", "was", "are",
@@ -22,15 +25,19 @@ STOP_WORDS = {
     "month", "year", "news", "update", "report",
 }
 
+# Default items per page for API article/story lists
 PAGE_SIZE = 40
 
-# Fetcher configurations
-MAX_BODY_BYTES = 5 * 1024 * 1024
-MAX_FAIL_COUNT = 3
-BATCH_SIZE = 300
-TIMEOUT = 15.0
+# ---------------------------------------------------------------------------
+# Ingestion & Fetcher Settings
+# ---------------------------------------------------------------------------
 
-# User Agent for HTTP requests
+MAX_BODY_BYTES = 5 * 1024 * 1024 # Reject pages larger than 5MB
+MAX_FAIL_COUNT = 3               # Mark URL as broken after 3 failed attempts
+BATCH_SIZE = 300                 # Max articles per ingestion batch
+TIMEOUT = 15.0                   # Network request timeout in seconds
+
+# standard browser User-Agent to avoid basic bot blocking
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 }

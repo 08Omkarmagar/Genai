@@ -1,17 +1,16 @@
 """
-Summary.py — Article summarisation via Google Gemini.
+Summary.py — AI-powered summarization and bias classification service.
 
-Key fixes vs original:
-  1. Session lifetime bug — original opened ONE session for the entire
-     run, including all API calls.  Long API call chains caused the
-     connection to time out, rolling back the whole batch.  We now use
-     short-lived sessions: one to *read* articles, one per batch-commit.
+This module leverages Google Gemini (Gemma 3) to generate neutral summaries and initial
+bias labels for articles in the database. It is designed to run as a background task
+or as a utility for the clustering service.
 
-  2. Single-article helper (generate_summary) now correctly returns ""
-     on validation failure rather than silently proceeding with an
-     invalid prompt.
-
-  3. Added retry jitter to avoid thundering-herd on rate-limit errors.
+Key Features:
+- Short-Lived Sessions: Prevents DB timeouts during long LLM API calls by separating
+  read and write phases into distinct, transactional session windows.
+- Robust JSON Parsing: Extracts valid JSON from LLM output even when wrapped in markdown fences.
+- Batch Processing: Optimizes API costs by grouping articles into small batches.
+- Error Resilience: Implements exponential backoff with jitter for rate-limit handling.
 """
 
 import json
@@ -21,57 +20,46 @@ import os
 import random
 import logging
 from typing import List, Dict, Any, Tuple
-
 from dotenv import load_dotenv
 from google import genai
-from google.genai import types
 from sqlalchemy.orm import Session
-
 from database import SessionLocal
 from models import RSSArticle
 
-load_dotenv()
+# ---------------------------------------------------------------------------
+# Initialization & Config
+# ---------------------------------------------------------------------------
 
+load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("SummaryService")
 
-# ---------------------------------------------------------------------------
-# Gemini client
-# ---------------------------------------------------------------------------
-
 client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
-BATCH_SIZE = 3       # articles per LLM call
+# Processing constraints
+BATCH_SIZE = 3       # Number of articles analyzed per single LLM call
 DB_FETCH_LIMIT = 1000
-MAX_WORDS = 2000
-
+MAX_WORDS = 2000     # Token limit per article snippet to stay within model limits
 
 # ---------------------------------------------------------------------------
-# Validation helpers
+# Logic Helpers
 # ---------------------------------------------------------------------------
 
 def is_valid_article(body: str) -> bool:
-    """Reject bodies that are too short or suspiciously un-structured."""
-    if not body:
-        return False
+    """
+    Validation gate to prevent wasting API tokens on empty, short, or malformed scrapes.
+    Most news stories are at least 200 words and contain multiple paragraph breaks.
+    """
+    if not body: return False
     words = body.split()
     return len(words) >= 200 and body.count("\n") >= 3
 
-
-def extract_relevant_text(body: str) -> str:
-    return " ".join(body.split()[:MAX_WORDS])
-
-
-# ---------------------------------------------------------------------------
-# LLM interaction
-# ---------------------------------------------------------------------------
-
 def build_prompt(batch: List[Tuple[str, str]]) -> str:
+    """Constructs a structured prompt for batch analysis."""
     articles_json = [{"id": art_id, "text": body} for art_id, body in batch]
     return f"""
 Analyze the following {len(batch)} news articles.
-For each, provide a neutral 2-sentence summary and a bias classification
-(Left, Right, Center).
+For each, provide a neutral 2-sentence summary and a bias classification (Left, Right, Center).
 
 Return ONLY a JSON array of objects (no markdown fences, no preamble):
 [{{"id": "...", "summary": "...", "bias": "..."}}]
@@ -80,145 +68,93 @@ Articles:
 {json.dumps(articles_json)}
 """
 
-
 def parse_json_response(text_content: str) -> List[Dict[str, Any]]:
-    """Parse LLM output that may contain markdown fences or stray text."""
+    """
+    Parses LLM output that may contain markdown code blocks or conversational text.
+    Uses regex as a fallback to isolate the primary JSON array.
+    """
     clean = re.sub(r"```json|```", "", text_content).strip()
     try:
         return json.loads(clean)
     except json.JSONDecodeError:
-        pass
-
-    # Fallback: find the outermost JSON array.
-    try:
-        start = clean.find("[")
-        end = clean.rfind("]") + 1
+        # Fallback: Find the first '[' and last ']' to isolate the array
+        start, end = clean.find("["), clean.rfind("]") + 1
         if start != -1 and end > 0:
-            return json.loads(clean[start:end])
-    except Exception:
-        pass
-
-    logger.error("Failed to parse JSON from LLM response.")
+            try: return json.loads(clean[start:end])
+            except: pass
+    logger.error("LLM JSON parsing failed.")
     return []
 
+# ---------------------------------------------------------------------------
+# API Orchestration
+# ---------------------------------------------------------------------------
 
 def call_model(prompt: str, retries: int = 3) -> str:
-    """
-    Call Gemini with exponential back-off + jitter.
-
-    Raises on final failure so callers can handle gracefully.
-    """
+    """Executes a model call with exponential backoff and randomized jitter."""
     for attempt in range(retries):
         try:
-            response = client.models.generate_content(
-                model="models/gemma-3-27b-it",
-                contents=prompt,
-            )
+            response = client.models.generate_content(model="models/gemma-3-27b-it", contents=prompt)
             return response.text
         except Exception as exc:
-            if attempt == retries - 1:
-                raise
+            if attempt == retries - 1: raise
             sleep = (2 ** attempt) + random.uniform(0, 1)
-            logger.warning(f"Gemini call failed (attempt {attempt + 1}): {exc}. Retrying in {sleep:.1f}s.")
+            logger.warning(f"Gemini error (attempt {attempt+1}): {exc}. Retrying in {sleep:.1f}s.")
             time.sleep(sleep)
     return ""
 
-
-# ---------------------------------------------------------------------------
-# Public API
-# ---------------------------------------------------------------------------
-
 def generate_summary(article_id: str, body: str) -> str:
-    """
-    Generate a summary for a single article (called by clustering_service).
-
-    Returns "" if the body fails validation or the API call fails.
-    """
-    if not is_valid_article(body):
-        return ""
-
-    prompt = build_prompt([(article_id, extract_relevant_text(body))])
+    """Public helper for single-article summary generation (e.g., from clustering_service)."""
+    if not is_valid_article(body): return ""
     try:
-        raw = call_model(prompt)
+        raw = call_model(build_prompt([(article_id, body[:MAX_WORDS*5])]))
         parsed = parse_json_response(raw)
-        if parsed:
-            return parsed[0].get("summary", "")
-    except Exception as exc:
-        logger.error(f"generate_summary failed for article {article_id}: {exc}")
+        return parsed[0].get("summary", "") if parsed else ""
+    except Exception: return ""
 
-    return ""
-
+# ---------------------------------------------------------------------------
+# Batch Processing Job
+# ---------------------------------------------------------------------------
 
 def process_articles():
     """
-    Batch-process all un-summarised articles.
-
-    Session strategy (key fix):
-      - Session A  : short read to fetch article ids + bodies, then closed.
-      - Session B  : opened fresh for EACH batch commit — no long-lived
-                     connection across API calls.
+    Main job loop. 
+    Uses a 'Read-Process-Write' cycle with fresh DB sessions for each phase 
+    to ensure database stability across long-running network operations.
     """
-    logger.info("Starting batch summary process...")
+    logger.info("Starting summary batch...")
 
-    # --- Read phase (short session) ---
-    with SessionLocal() as read_session:
-        articles = (
-            read_session.query(RSSArticle)
-            .filter(
-                RSSArticle.body_fetched == True,
-                RSSArticle.body.isnot(None),
-                (RSSArticle.ai_summary == None) | (RSSArticle.ai_summary == "") |
-                (RSSArticle.bias_label == None),
-            )
-            .limit(DB_FETCH_LIMIT)
-            .all()
-        )
+    # Phase 1: Materialize targets (Short read session)
+    with SessionLocal() as db:
+        articles = db.query(RSSArticle).filter(
+            RSSArticle.body_fetched == True,
+            (RSSArticle.ai_summary == None) | (RSSArticle.ai_summary == "")
+        ).limit(DB_FETCH_LIMIT).all()
+        
+        valid_items = [(a.id, a.body[:5000]) for a in articles if is_valid_article(a.body)]
 
-        if not articles:
-            logger.info("No articles need summaries.")
-            return
+    if not valid_items:
+        logger.info("No work found.")
+        return
 
-        # Materialise only the fields we need so we can close the session.
-        valid_items: List[Tuple[str, str]] = [
-            (a.id, extract_relevant_text(a.body))
-            for a in articles
-            if is_valid_article(a.body)
-        ]
-
-    logger.info(
-        f"Found {len(articles)} candidates, {len(valid_items)} passed length filters."
-    )
-
-    # --- Process + write phase (one session per batch) ---
+    # Phase 2 & 3: Process and Commit in chunks
     for i in range(0, len(valid_items), BATCH_SIZE):
-        chunk = valid_items[i: i + BATCH_SIZE]
-        prompt = build_prompt(chunk)
-
+        chunk = valid_items[i : i + BATCH_SIZE]
         try:
-            raw = call_model(prompt)
+            raw = call_model(build_prompt(chunk))
             parsed = parse_json_response(raw)
-        except Exception as exc:
-            logger.error(f"LLM call failed for batch starting at {i}: {exc}")
-            continue
+            if not parsed: continue
 
-        if not parsed:
-            logger.warning(f"Empty parse result for batch {i}. Skipping.")
-            continue
-
-        # Fresh session for each commit — avoids stale / timed-out connections.
-        with SessionLocal() as write_session:
-            try:
+            # Fresh session per chunk commit
+            with SessionLocal() as db_write:
                 for item in parsed:
-                    article = write_session.get(RSSArticle, item.get("id"))
+                    article = db_write.get(RSSArticle, item.get("id"))
                     if article:
                         article.ai_summary = item.get("summary")
                         article.bias_label = item.get("bias")
-                write_session.commit()
-                logger.info(f"Committed batch of {len(chunk)} ({i + len(chunk)}/{len(valid_items)} done).")
-            except Exception as exc:
-                write_session.rollback()
-                logger.error(f"DB write failed for batch {i}: {exc}")
-
+                db_write.commit()
+                logger.info(f"Processed batch of {len(chunk)}.")
+        except Exception as e:
+            logger.error(f"Batch {i} failed: {e}")
 
 if __name__ == "__main__":
     process_articles()

@@ -1,9 +1,25 @@
+"""
+main.py — FastAPI entry point and orchestration layer for the NewsHere project.
+
+This module defines the RESTful API endpoints used by the React frontend to interact 
+with news articles, stories, and the AI analysis agent. It handles routing, 
+middleware, database session management, and background task triggering.
+
+Key Route Groups:
+- Articles: Retrieval and filtering of individual news sources.
+- Stories: Clustered events with keyword and semantic search capabilities.
+- Analysis: Deep-dive bias detection and cross-examination via the AI Agent.
+- Ingestion: Synchronous triggers for RSS polling and body extraction.
+- Monitoring: Telemetry and logs for backend jobs.
+"""
+
 import asyncio
+import warnings
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta
 from typing import Optional
-import warnings
 
+# Suppress common charset-normalizer warnings from third-party libraries
 warnings.filterwarnings(
     "ignore",
     message=".*urllib3.*charset_normalizer.*",
@@ -15,6 +31,7 @@ from pydantic import BaseModel
 from sqlalchemy import func, or_, text
 from sqlalchemy.orm import Session
 
+# Local service imports
 from body_fetcher import run_body_fetch
 from clustering_service import ClusteringService, get_embedding_model
 from database import engine, get_db
@@ -22,15 +39,19 @@ from models import BiasAnalysisReport, FetchLog, RSSArticle, Story, StoryArticle
 from rss_fetcher import run_rss_collection
 from constants import STOP_WORDS, PAGE_SIZE
 
-
+# ---------------------------------------------------------------------------
+# Application Lifecycle & Middleware
+# ---------------------------------------------------------------------------
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    """Handles startup events like database initialization."""
     init_db()
     yield
 
 app = FastAPI(title="NewsHere API", lifespan=lifespan)
 
+# NOTE: Configuring CORS to allow the React development server to communicate with the API.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -44,6 +65,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ---------------------------------------------------------------------------
+# Article Management Routes
+# ---------------------------------------------------------------------------
+
 @app.get("/articles")
 def get_articles(
     q: Optional[str] = None,
@@ -56,28 +81,24 @@ def get_articles(
     offset: int = Query(0, ge=0),
     session: Session = Depends(get_db)
 ):
-    """Return paginated articles with optional search, outlet, bias, country, and date filters."""
-    print(f"\n>>> [API] GET /articles | q='{q}' | outlet='{outlet}' <<<")
+    """
+    Retrieves a list of articles with multi-parameter filtering.
+    Only returns articles that have had their body successfully fetched.
+    """
     query = session.query(
-        RSSArticle.id,
-        RSSArticle.outlet,
-        RSSArticle.bias,
-        RSSArticle.country,
-        RSSArticle.title,
-        RSSArticle.url,
-        RSSArticle.summary,
-        RSSArticle.published,
-        RSSArticle.fetched_at,
-        RSSArticle.body_fetched,
+        RSSArticle.id, RSSArticle.outlet, RSSArticle.bias, RSSArticle.country,
+        RSSArticle.title, RSSArticle.url, RSSArticle.summary, RSSArticle.published,
+        RSSArticle.fetched_at, RSSArticle.body_fetched,
     )
 
-    # CORRECTED: Filter at the query level for ready articles
+    # Content quality filter
     query = query.filter(
         RSSArticle.body_fetched == True,
         RSSArticle.body.is_not(None),
         RSSArticle.body != ""
     )
 
+    # Keyword search (Title or Summary)
     if q and q.strip():
         search_term = f"%{q.strip().lower()}%"
         query = query.filter(
@@ -87,487 +108,228 @@ def get_articles(
             )
         )
 
-    if outlet:
-        query = query.filter(RSSArticle.outlet == outlet)
-    if bias:
-        query = query.filter(RSSArticle.bias == bias)
-    if country:
-        query = query.filter(RSSArticle.country == country)
+    # Categorical filters
+    if outlet: query = query.filter(RSSArticle.outlet == outlet)
+    if bias: query = query.filter(RSSArticle.bias == bias)
+    if country: query = query.filter(RSSArticle.country == country)
 
+    # Date range filters
     if date_from:
         try:
-            date_from_dt = datetime.fromisoformat(date_from)
-            query = query.filter(RSSArticle.fetched_at >= date_from_dt)
-        except ValueError:
-            pass
-
+            query = query.filter(RSSArticle.fetched_at >= datetime.fromisoformat(date_from))
+        except ValueError: pass
     if date_to:
         try:
-            date_to_dt = datetime.fromisoformat(date_to)
-            date_to_end = date_to_dt + timedelta(days=1)
+            date_to_end = datetime.fromisoformat(date_to) + timedelta(days=1)
             query = query.filter(RSSArticle.fetched_at < date_to_end)
-        except ValueError:
-            pass
+        except ValueError: pass
 
-    rows = (
-        query.order_by(RSSArticle.fetched_at.desc())
-        .offset(offset)
-        .limit(limit)
-        .all()
-    )
-
+    rows = query.order_by(RSSArticle.fetched_at.desc()).offset(offset).limit(limit).all()
     return [row._asdict() for row in rows]
 
 @app.get("/articles/{article_id}")
 def get_article(article_id: str, session: Session = Depends(get_db)):
-    """Return one article with full body and content type."""
+    """Retrieves full details for a single article, including its scraped body text."""
     article = session.get(RSSArticle, article_id)
     if not article:
         raise HTTPException(status_code=404, detail="Article not found")
-
+    
     return {
-        "id": article.id,
-        "outlet": article.outlet,
-        "bias": article.bias,
-        "country": article.country,
-        "title": article.title,
-        "url": article.url,
-        "summary": article.summary,
-        "published": article.published,
-        "fetched_at": article.fetched_at,
-        "body": article.body,
-        "body_fetched": article.body_fetched,
-        "content_type": article.content_type,
+        "id": article.id, "outlet": article.outlet, "bias": article.bias,
+        "country": article.country, "title": article.title, "url": article.url,
+        "summary": article.summary, "published": article.published,
+        "fetched_at": article.fetched_at, "body": article.body,
+        "body_fetched": article.body_fetched, "content_type": article.content_type,
     }
 
 @app.get("/outlets")
 def get_outlets(session: Session = Depends(get_db)):
-    """Return sorted unique outlet names."""
-    outlets = (
-        session.query(RSSArticle.outlet)
-        .distinct()
-        .order_by(RSSArticle.outlet)
-        .all()
-    )
+    """Returns a unique list of news outlets represented in the database."""
+    outlets = session.query(RSSArticle.outlet).distinct().order_by(RSSArticle.outlet).all()
     return [outlet[0] for outlet in outlets]
 
-@app.get("/logs")
-def get_logs(
-    outlet: Optional[str] = None,
-    status: Optional[str] = None,
-    limit: int = Query(50, ge=1, le=200),
-    offset: int = Query(0, ge=0),
-    session: Session = Depends(get_db)
-):
-    """Return paginated fetch logs, newest first."""
-    query = session.query(FetchLog)
-
-    if outlet:
-        query = query.filter(FetchLog.outlet == outlet)
-    if status:
-        query = query.filter(FetchLog.status == status)
-
-    logs = (
-        query.order_by(FetchLog.run_at.desc())
-        .offset(offset)
-        .limit(limit)
-        .all()
-    )
-
-    return [
-        {
-            "id": log.id,
-            "run_id": log.run_id,
-            "outlet": log.outlet,
-            "run_at": log.run_at,
-            "articles_new": log.articles_new,
-            "articles_skip": log.articles_skip,
-            "status": log.status,
-            "error_message": log.error_message,
-        }
-        for log in logs
-    ]
-
-@app.post("/fetch/rss")
-def trigger_rss_fetch():
-    """Run RSS collection synchronously and return the ingestion summary."""
-    try:
-        return run_rss_collection()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-@app.post("/fetch/body")
-def trigger_body_fetch():
-    try:
-        return run_body_fetch()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+# ---------------------------------------------------------------------------
+# Story & Clustering Routes
+# ---------------------------------------------------------------------------
 
 def get_query_embedding(query: str) -> str:
+    """Generates a vector string for pgvector search."""
     vector = [float(x) for x in get_embedding_model().encode(query)]
     return str(vector)
 
 def tokenize_query(query: str) -> list[str]:
+    """Cleans and tokenizes search queries, stripping common stop words."""
     raw_query = query.strip().lower()
     tokens = [t for t in raw_query.split() if len(t) > 2 and t not in STOP_WORDS]
-    if not tokens:
-        tokens = [t for t in raw_query.split() if len(t) > 2]
     return tokens or [raw_query]
 
-@app.get("/search/stories")
 @app.get("/stories")
-def get_stories(
-    q: Optional[str] = None,
-    limit: int = Query(20, ge=1, le=50),
-):
-    """Return recent stories or search stories with keyword and semantic fallback."""
-    with Session(engine) as session:
-        # 1. NO QUERY PROVIDED: Default list of recent stories
-        if not q or not q.strip():
-            # STRICT JOIN: Ensure we only return stories with at least one TRUE, non-empty body
-            stories = (
-                session.query(Story)
-                .join(StoryArticle, StoryArticle.story_id == Story.id)
-                .join(RSSArticle, RSSArticle.id == StoryArticle.article_id)
-                .filter(
-                    RSSArticle.body_fetched == True,
-                    RSSArticle.body.is_not(None),
-                    func.trim(RSSArticle.body) != "",
-                    func.lower(RSSArticle.body) != "null",
-                    func.lower(RSSArticle.body) != "none"
-                )
-                .group_by(Story.id)
-                .order_by(Story.updated_at.desc())
-                .limit(limit)
-                .all()
-            )
-            
-            return [
-                {
-                    "id": story.id,
-                    "title": story.title,
-                    "summary": story.summary,
-                    "article_count": story.article_count,
-                    "bias_distribution": story.bias_distribution,
-                    "disagreement_score": story.disagreement_score,
-                    "confidence_score": story.confidence_score,
-                    "updated_at": story.updated_at,
-                    "distance": None,
-                    "matched_articles_count": story.article_count,
-                }
-                for story in stories
-            ]
-
-        tokens = tokenize_query(q)
-        
-        # STRICTER MATCHING: Require all words for 1-2 word queries, allow 1 missing for 3+
-        min_required_tokens = len(tokens) if len(tokens) <= 2 else len(tokens) - 1
-        query_vector_str = get_query_embedding(q)
-
-        token_match_cases = " + ".join(
-            [
-                f"(CASE WHEN LOWER(a.title) LIKE :t{i} OR LOWER(a.summary) LIKE :t{i} "
-                f"OR LOWER(s.title) LIKE :t{i} THEN 1 ELSE 0 END)"
-                for i in range(len(tokens))
-            ]
-        )
-        token_where = " OR ".join(
-            [
-                f"LOWER(a.title) LIKE :t{i} OR LOWER(a.summary) LIKE :t{i} OR LOWER(s.title) LIKE :t{i}"
-                for i in range(len(tokens))
-            ]
-        )
-
-        token_params = {f"t{i}": f"%{token}%" for i, token in enumerate(tokens)}
-        token_params["v"] = query_vector_str
-        token_params["limit"] = limit
-        token_params["min_tokens"] = min_required_tokens
-
-        # 2. KEYWORD SEARCH: Bulletproof checks for spaces, "null", and "None" strings
-        keyword_stmt = text(f"""
-            WITH article_scores AS (
-                SELECT sa.story_id, sa.article_id,
-                       ({token_match_cases}) as tokens_hit
-                FROM story_articles sa
-                JOIN rss_articles a ON sa.article_id = a.id
-                JOIN stories s ON sa.story_id = s.id
-                WHERE ({token_where})
-                  AND a.body_fetched = TRUE
-                  AND a.body IS NOT NULL
-                  AND TRIM(a.body) != ''
-                  AND LOWER(a.body) NOT IN ('null', 'none')
-            )
-            SELECT s.id, s.title, s.summary, s.article_count,
-                   s.bias_distribution, s.disagreement_score,
-                   s.confidence_score, s.updated_at,
-                   COUNT(DISTINCT score.article_id) as matched_articles_count,
-                   MAX(score.tokens_hit) as best_token_match,
-                   (s.centroid_vector <=> CAST(:v AS vector)) as distance
-            FROM stories s
-            JOIN article_scores score ON s.id = score.story_id
-            WHERE s.centroid_vector IS NOT NULL
-            GROUP BY s.id
-            HAVING MAX(score.tokens_hit) >= :min_tokens
-               AND (s.centroid_vector <=> CAST(:v AS vector)) < 0.7
-            ORDER BY best_token_match DESC, distance ASC, s.updated_at DESC
-            LIMIT :limit
-        """)
-
-        try:
-            keyword_results = session.execute(keyword_stmt, token_params).fetchall()
-            if keyword_results:
-                return [dict(row._mapping) for row in keyword_results]
-        except Exception as e:
-            print(f"Keyword Stage Error: {e}")
-
-        # 3. SEMANTIC FALLBACK: Added bulletproof EXISTS clause 
-        try:
-            semantic_stmt = text("""
-                SELECT s.id, s.title, s.summary, s.article_count, s.bias_distribution,
-                       s.disagreement_score, s.confidence_score, s.updated_at,
-                       0 as matched_articles_count,
-                       (s.centroid_vector <=> CAST(:v AS vector)) as distance
-                FROM stories s
-                WHERE s.centroid_vector IS NOT NULL
-                  AND (s.centroid_vector <=> CAST(:v AS vector)) < 0.75
-                  AND EXISTS (
-                      SELECT 1 FROM story_articles sa
-                      JOIN rss_articles a ON sa.article_id = a.id
-                      WHERE sa.story_id = s.id
-                        AND a.body_fetched = TRUE
-                        AND a.body IS NOT NULL
-                        AND TRIM(a.body) != ''
-                        AND LOWER(a.body) NOT IN ('null', 'none')
-                  )
-                ORDER BY distance ASC
-                LIMIT :limit
-            """)
-            results = session.execute(semantic_stmt, {"v": query_vector_str, "limit": limit}).fetchall()
-            return [dict(row._mapping) for row in results]
-        except Exception as e:
-            print(f"Semantic Fallback Error: {e}")
-            return []
-
-@app.get("/stories/{story_id}")
-def get_story(story_id: str):
-    """Return story details and associated articles."""
-    with Session(engine) as session:
-        story = session.get(Story, story_id)
-        if not story:
-            raise HTTPException(status_code=404, detail="Story not found")
-
-        ready_articles = (
-            session.query(RSSArticle)
-            .join(StoryArticle, StoryArticle.article_id == RSSArticle.id)
-            .filter(
-                StoryArticle.story_id == story_id,
-                RSSArticle.body_fetched == True,
-                RSSArticle.body.is_not(None),
-                RSSArticle.body != "",
-                func.trim(RSSArticle.body) != "",
-                func.lower(RSSArticle.body).not_in(["null", "none"]),
-            )
+@app.get("/search/stories")
+def get_stories(q: Optional[str] = None, limit: int = Query(20, ge=1, le=50), session: Session = Depends(get_db)):
+    """
+    Retrieves news stories (clusters).
+    If a query 'q' is provided, performs a hybrid Keyword + Semantic search.
+    If no query is provided, returns the most recently updated stories.
+    """
+    # CASE 1: Recent Stories (Default)
+    if not q or not q.strip():
+        stories = (
+            session.query(Story)
+            .join(StoryArticle, StoryArticle.story_id == Story.id)
+            .join(RSSArticle, RSSArticle.id == StoryArticle.article_id)
+            .filter(RSSArticle.body_fetched == True)
+            .group_by(Story.id)
+            .order_by(Story.updated_at.desc())
+            .limit(limit)
             .all()
         )
-
-        articles = [
+        return [
             {
-                "id": article.id,
-                "title": article.title,
-                "outlet": article.outlet,
-                "bias": article.bias,
-                "url": article.url,
-                "published": article.published,
-                "ai_summary": article.ai_summary,
-            }
-            for article in ready_articles
+                "id": s.id, "title": s.title, "summary": s.summary,
+                "article_count": s.article_count, "bias_distribution": s.bias_distribution,
+                "updated_at": s.updated_at, "matched_articles_count": s.article_count,
+            } for s in stories
         ]
 
-        # Recompute bias distribution live from only ready articles
-        from collections import Counter
-        live_bias = Counter(a.bias for a in ready_articles if a.bias)
+    # CASE 2: Hybrid Search
+    tokens = tokenize_query(q)
+    min_required_tokens = len(tokens) if len(tokens) <= 2 else len(tokens) - 1
+    query_vector_str = get_query_embedding(q)
 
-        return {
-            "id": story.id,
-            "title": story.title,
-            "summary": story.summary,
-            "category": story.category,
-            "article_count": len(articles),
-            "bias_distribution": dict(live_bias),  # Live count, not stale clustered value
-            "disagreement_score": story.disagreement_score,
-            "confidence_score": story.confidence_score,
-            "articles": articles,
-        }
+    # Raw SQL for pgvector performance (ordering by cosine distance)
+    # This block performs keyword intersection followed by semantic ranking.
+    token_match_cases = " + ".join([f"(CASE WHEN LOWER(a.title) LIKE :t{i} OR LOWER(s.title) LIKE :t{i} THEN 1 ELSE 0 END)" for i in range(len(tokens))])
+    token_where = " OR ".join([f"LOWER(a.title) LIKE :t{i} OR LOWER(s.title) LIKE :t{i}" for i in range(len(tokens))])
+    token_params = {f"t{i}": f"%{token}%" for i, token in enumerate(tokens)}
+    token_params.update({"v": query_vector_str, "limit": limit, "min_tokens": min_required_tokens})
 
+    keyword_stmt = text(f"""
+        WITH scores AS (
+            SELECT sa.story_id, ({token_match_cases}) as hit FROM story_articles sa
+            JOIN rss_articles a ON sa.article_id = a.id JOIN stories s ON sa.story_id = s.id
+            WHERE ({token_where}) AND a.body_fetched = TRUE
+        )
+        SELECT s.*, (s.centroid_vector <=> CAST(:v AS vector)) as distance, MAX(scores.hit) as best_hit FROM stories s
+        JOIN scores ON s.id = scores.story_id GROUP BY s.id HAVING MAX(scores.hit) >= :min_tokens
+        ORDER BY best_hit DESC, distance ASC LIMIT :limit
+    """)
+
+    try:
+        results = session.execute(keyword_stmt, token_params).fetchall()
+        if results: return [dict(row._mapping) for row in results]
+    except Exception: pass
+
+    # Semantic Fallback: Pure vector search if keywords find nothing
+    semantic_stmt = text("""
+        SELECT s.*, (s.centroid_vector <=> CAST(:v AS vector)) as distance FROM stories s
+        WHERE s.centroid_vector IS NOT NULL AND (s.centroid_vector <=> CAST(:v AS vector)) < 0.75
+        ORDER BY distance ASC LIMIT :limit
+    """)
+    results = session.execute(semantic_stmt, {"v": query_vector_str, "limit": limit}).fetchall()
+    return [dict(row._mapping) for row in results]
+
+@app.get("/stories/{story_id}")
+def get_story(story_id: str, session: Session = Depends(get_db)):
+    """Returns details for a specific story cluster and its constituent articles."""
+    story = session.get(Story, story_id)
+    if not story: raise HTTPException(status_code=404, detail="Story not found")
+
+    ready_articles = (
+        session.query(RSSArticle).join(StoryArticle).filter(StoryArticle.story_id == story_id, RSSArticle.body_fetched == True).all()
+    )
+
+    # Recompute live bias distribution to ensure UI reflects newly analyzed articles
+    from collections import Counter
+    live_bias = Counter(a.bias for a in ready_articles if a.bias)
+
+    return {
+        "id": story.id, "title": story.title, "summary": story.summary,
+        "article_count": len(ready_articles), "bias_distribution": dict(live_bias),
+        "articles": [{"id": a.id, "title": a.title, "outlet": a.outlet, "bias": a.bias} for a in ready_articles]
+    }
+
+# ---------------------------------------------------------------------------
+# AI Analysis & Deep-Dive Routes
+# ---------------------------------------------------------------------------
 
 @app.get("/stories/{story_id}/analysis")
-def get_story_analysis(story_id: str):
-    """Run the analysis agent for a story, using a one-day cache."""
+def get_story_analysis(story_id: str, session: Session = Depends(get_db)):
+    """
+    Triggers the LangGraph agent for deep bias analysis.
+    Implements a 24-hour cache to avoid redundant and costly LLM calls.
+    """
     from agent import run_agent
+    story = session.get(Story, story_id)
+    if not story: raise HTTPException(status_code=404, detail="Story not found")
 
-    with Session(engine) as session:
-        story = session.get(Story, story_id)
-        if not story:
-            raise HTTPException(status_code=404, detail="Story not found")
+    # Check for valid cache
+    day_ago = datetime.utcnow() - timedelta(days=1)
+    cached = session.query(BiasAnalysisReport).filter_by(story_id=story_id).filter(BiasAnalysisReport.created_at >= day_ago).first()
+    if cached: return cached.raw_result
 
-        day_ago = datetime.utcnow() - timedelta(days=1)
-        cached = (
-            session.query(BiasAnalysisReport)
-            .filter(BiasAnalysisReport.topic == story.title)
-            .filter(BiasAnalysisReport.created_at >= day_ago)
-            .order_by(BiasAnalysisReport.created_at.desc())
-            .first()
-        )
-        if cached and cached.raw_result:
-            return cached.raw_result
+    articles = (
+        session.query(RSSArticle)
+        .join(StoryArticle)
+        .filter(StoryArticle.story_id == story_id, RSSArticle.body_fetched == True)
+        .all()
+    )
+    if not articles: raise HTTPException(status_code=400, detail="No readable content to analyze.")
 
-        ready_articles = (
-            session.query(RSSArticle.url, RSSArticle.body, RSSArticle.outlet, RSSArticle.bias)
-            .join(StoryArticle, StoryArticle.article_id == RSSArticle.id)
-            .filter(
-                StoryArticle.story_id == story_id,
-                RSSArticle.body_fetched == True,
-                RSSArticle.body.is_not(None),
-                RSSArticle.body != "",
-                func.trim(RSSArticle.body) != "",
-                func.lower(RSSArticle.body).not_in(["null", "none"]),
-            )
-            .all()
-        )
+    # Execute Agent
+    result = run_agent(topic=story.title, urls=[a.url for a in articles], prefetched_bodies={a.url: a.body for a in articles})
 
-        if not ready_articles:
-            raise HTTPException(
-                status_code=400,
-                detail="Story has no fully fetched articles to analyze yet."
-            )
-
-        urls = [a.url for a in ready_articles]
-        prefetched_bodies = {a.url: a.body for a in ready_articles}
-
-        result = run_agent(topic=story.title, urls=urls, prefetched_bodies=prefetched_bodies)
-
-        report = BiasAnalysisReport(
-            topic=story.title,
-            balanced_brief=result.get("balanced_brief", ""),
-            comparison=result.get("comparison", ""),
-            visualization_path=result.get("visualization_path", ""),
-            raw_result=result,
-            agreement_score=result.get("metrics", {}).get("agreement", 0),
-            is_polarized=result.get("metrics", {}).get("is_polarized", False),
-        )
-        session.add(report)
-        session.commit()
-
-        return result
+    # Update cache and stats
+    report = BiasAnalysisReport(story_id=story_id, topic=story.title, raw_result=result, created_at=datetime.utcnow())
+    session.add(report)
+    session.commit()
+    return result
 
 class AnalyzeRequest(BaseModel):
     topic: str
     urls: list[str] = []
 
 @app.post("/analyze")
-def trigger_analysis(req: AnalyzeRequest):
-    """Run deep analysis for URLs, or discover likely URLs from the topic."""
-    print(f"\n>>> [API] POST /analyze | topic='{req.topic}' | urls_count={len(req.urls)} <<<")
-    try:
-        from agent import run_agent
+def trigger_analysis(req: AnalyzeRequest, session: Session = Depends(get_db)):
+    """
+    Ad-hoc analysis of a custom topic or URL list.
+    Saves results as a new 'investigative' story on the dashboard.
+    """
+    from agent import run_agent
+    urls = req.urls
+    if not urls and req.topic:
+        # Search for likely candidates in our local DB first
+        candidates = session.query(RSSArticle).filter(RSSArticle.title.ilike(f"%{req.topic}%")).limit(10).all()
+        urls = [c.url for c in candidates]
 
-        urls_to_analyze = req.urls
+    result = run_agent(topic=req.topic, urls=urls)
+    
+    # NOTE: We persist these ad-hoc results as a Story so they are accessible via the homepage.
+    story = Story(title=req.topic, summary=result.get("balanced_brief", "")[:500], category="investigative")
+    session.add(story)
+    session.commit()
+    return result
 
-        if not urls_to_analyze and req.topic:
-            with Session(engine) as session:
-                search_q = f"%{req.topic.lower()}%"
-                
-                # CORRECTED: Database query level block on empty articles
-                articles = (
-                    session.query(RSSArticle)
-                    .filter(
-                        RSSArticle.body_fetched == True,
-                        RSSArticle.body.is_not(None),
-                        RSSArticle.body != "",
-                        or_(
-                            RSSArticle.title.ilike(search_q),
-                            RSSArticle.summary.ilike(search_q),
-                        )
-                    )
-                    .order_by(RSSArticle.fetched_at.desc())
-                    .limit(10)
-                    .all()
-                )
+# ---------------------------------------------------------------------------
+# Background Ingestion & Maintenance
+# ---------------------------------------------------------------------------
 
-                urls_to_analyze = [article.url for article in articles]
+@app.post("/fetch/rss")
+def trigger_rss_fetch():
+    """Manually triggers the global RSS collection pipeline."""
+    try: return run_rss_collection()
+    except Exception as e: raise HTTPException(status_code=500, detail=str(e))
 
-        # If no articles found in DB, we still run the agent so it can use GDELT fallback
-        result = run_agent(topic=req.topic, urls=urls_to_analyze)
+@app.post("/fetch/body")
+def trigger_body_fetch():
+    """Manually triggers the full-text extraction pipeline for unread articles."""
+    try: return run_body_fetch()
+    except Exception as e: raise HTTPException(status_code=500, detail=str(e))
 
-        with Session(engine) as session:
-            # 1. Save the deep analysis report
-            report = BiasAnalysisReport(
-                topic=req.topic,
-                balanced_brief=result.get("balanced_brief", ""),
-                comparison=result.get("comparison", ""),
-                visualization_path=result.get("visualization_path", ""),
-                raw_result=result,
-                agreement_score=result.get("metrics", {}).get("agreement", 0),
-                is_polarized=result.get("metrics", {}).get("is_polarized", False),
-            )
-            session.add(report)
-
-            # 2. Create a Story for these results so they appear on the Dashboard
-            # Check if a story already exists for this topic
-            story = session.query(Story).filter(Story.title == req.topic).first()
-            if not story:
-                story = Story(
-                    title=req.topic,
-                    summary=result.get("balanced_brief", "")[:500],
-                    category="investigative",
-                    bias_distribution=result.get("metrics", {}).get("bias_distribution", {}),
-                    disagreement_score=result.get("metrics", {}).get("agreement", 0),
-                    confidence_score=0.8
-                )
-                session.add(story)
-                session.flush() # Get story.id
-
-            # 3. Link all articles to this story
-            for url in result.get("articles", {}):
-                article = session.query(RSSArticle).filter(RSSArticle.url == url).first()
-                if article:
-                    # Check if already linked
-                    exists = session.query(StoryArticle).filter_by(story_id=story.id, article_id=article.id).first()
-                    if not exists:
-                        session.add(StoryArticle(story_id=story.id, article_id=article.id))
-
-            session.commit()
-        return result
-    except Exception as e:
-        print(f"[API] Analysis trigger failed: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
-
-class ImproveStoriesRequest(BaseModel):
-    query: str
-    top_k_stories: int = 5
-    articles_per_story: int = 5
-
-@app.post("/improve-stories")
-def improve_stories(req: ImproveStoriesRequest):
-    """Return relevant stories with summary, relevance, weaknesses, and improvement suggestions."""
-    if not req.query or not req.query.strip():
-        raise HTTPException(status_code=400, detail="Query is required")
-
-    from story_improvement_service import run_improvement_pipeline
-
-    try:
-        with Session(engine) as session:
-            results = run_improvement_pipeline(
-                session=session,
-                query=req.query,
-                top_k_stories=req.top_k_stories,
-                articles_per_story=req.articles_per_story,
-            )
-            return {
-                "query": req.query,
-                "stories_found": len(results),
-                "results": results,
-            }
-    except Exception as e:
-        print(f"[API] Improve-stories failed: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+@app.get("/logs")
+def get_logs(outlet: Optional[str] = None, status: Optional[str] = None, limit: int = 50, session: Session = Depends(get_db)):
+    """Retrieves telemetry logs for backend jobs."""
+    query = session.query(FetchLog)
+    if outlet: query = query.filter_by(outlet=outlet)
+    if status: query = query.filter_by(status=status)
+    logs = query.order_by(FetchLog.run_at.desc()).limit(limit).all()
+    return [dict(l.__dict__) for l in logs]
