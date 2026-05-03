@@ -53,9 +53,9 @@ This is a personal project built to experiment with **LangGraph agent architectu
 
 >
 > **Pages include:**
-> - **Dashboard** — ![Home to the application](home.png)
-> - **Story Detail** — ![Full article list, AI-generated neutral brief, and deep analysis](StoryDetail.png)
-> - **Analyze** — ![Trigger deep bias analysis on any topic](Analyze.png)
+> - **Dashboard** — ![Home to the application](HomePage.png)
+> - **Story Detail** — ![Full article list, AI-generated neutral brief, and deep analysis](Story_Detail.png)
+> - **Analyze** — ![Trigger deep bias analysis on any topic](Analysis.png)
 > - **Browse Articles** — ![Filter by outlet, bias, country, and date](Browse_Articles.png)
 
 ---
