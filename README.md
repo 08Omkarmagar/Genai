@@ -236,4 +236,7 @@ The dashboard will be available at `http://localhost:5173`.
 > curl http://localhost:8000/stories
 > ```
 
+## 📄 License
 
+This project is licensed under the Apache License 2.0.  
+You are free to use, modify, and distribute this software in accordance with the license terms.
