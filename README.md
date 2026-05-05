@@ -235,8 +235,8 @@ The dashboard will be available at `http://localhost:5173`.
 > # 4. Check stories were clustered
 > curl http://localhost:8000/stories
 > ```
-
+---
 ## 📄 License
 
-This project is licensed under the Apache License 2.0.  
-You are free to use, modify, and distribute this software in accordance with the license terms.
+> This project is licensed under the Apache License 2.0.  
+> You are free to use, modify, and distribute this software in accordance with the license terms.
