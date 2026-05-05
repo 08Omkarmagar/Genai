@@ -32,3 +32,4 @@ frontend/react/public/charts/*.png
 # OS
 .DS_Store
 Thumbs.db
+*.zip
