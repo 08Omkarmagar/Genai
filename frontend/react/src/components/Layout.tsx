@@ -13,8 +13,7 @@ export default function Layout() {
       </main>
       <footer className="border-t py-6 mt-12">
         <div className="container mx-auto px-4 text-center text-sm" style={{ color: "var(--muted-foreground)" }}>
-          <p className="font-medium">NewsHere — Story-Centric Intelligence Platform</p>
-          <p className="mt-1 text-xs">Analyzing global news through multiple perspectives</p>
+          <p className="font-medium">NewsHere </p>
         </div>
       </footer>
     </div>

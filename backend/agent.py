@@ -15,6 +15,23 @@ Key functionalities:
 """
 
 from __future__ import annotations
+from schemas import (
+    BiasReport, BatchArticleAnalysis, BatchAnalysisResult,
+    RelationshipLink, CrossExaminationResult
+)
+from utils import parse_robust_json, merge_dicts, add_lists
+from models import RSSArticle
+from database import engine
+from body_fetcher import _fetch_body
+from sqlalchemy.orm import Session
+from pydantic import BaseModel
+from langgraph.graph import StateGraph, START, END
+from google.genai import types
+from google import genai
+from dotenv import load_dotenv
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
 
 # Standard library imports
 import json
@@ -25,30 +42,16 @@ import time
 import uuid
 import random
 import httpx
+import math
+from collections import Counter
 from typing import TypedDict, Annotated, List, Dict, Any, Literal
 
 # Third-party library imports
 import matplotlib
-matplotlib.use("Agg")  # Non-interactive backend for server-side chart generation
-import matplotlib.pyplot as plt
-import pandas as pd
-import seaborn as sns
-from dotenv import load_dotenv
-from google import genai
-from google.genai import types
-from langgraph.graph import StateGraph, START, END
-from pydantic import BaseModel
-from sqlalchemy.orm import Session
+# Non-interactive backend for server-side chart generation
+matplotlib.use("Agg")
 
 # Local project imports
-from body_fetcher import _fetch_body
-from database import engine
-from models import RSSArticle
-from utils import parse_robust_json, merge_dicts, add_lists
-from schemas import (
-    BiasReport, BatchArticleAnalysis, BatchAnalysisResult,
-    RelationshipLink, CrossExaminationResult
-)
 
 # Initialize environment and logging
 load_dotenv("../.env")
@@ -60,7 +63,9 @@ logger = logging.getLogger("agent")
 # ---------------------------------------------------------------------------
 
 client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
-MODEL_NAME = "models/gemma-3-27b-it"  
+# MODEL_NAME = "models/gemma-3-27b-it"
+MODEL_NAME = "models/gemma-4-31b-it"
+
 
 class _RateLimiter:
     """
@@ -100,8 +105,10 @@ class _RateLimiter:
 
         raise RuntimeError("Max Gemini retries exceeded.")
 
+
 # Singleton rate limiter instance
 _limiter = _RateLimiter()
+
 
 def call_gemini(prompt: str, retries: int = 5) -> str:
     """Convenience wrapper for rate-limited Gemini calls."""
@@ -111,6 +118,7 @@ def call_gemini(prompt: str, retries: int = 5) -> str:
 # Agent State Definition
 # ---------------------------------------------------------------------------
 
+
 class AgentState(TypedDict):
     """
     The internal state managed by the LangGraph workflow.
@@ -119,10 +127,14 @@ class AgentState(TypedDict):
     topic: str
     urls: Annotated[List[str], add_lists]
     articles: Annotated[Dict[str, str], merge_dicts]      # Raw content
-    summaries: Annotated[Dict[str, str], merge_dicts]     # AI-generated summaries
-    bias_reports: Annotated[Dict[str, dict], merge_dicts] # Per-article bias analysis
-    intent: Dict[str, Any]                                # Analysis of the user's query
-    retry_count: Annotated[Dict[str, int], merge_dicts]   # Tracks attempts per node
+    # AI-generated summaries
+    summaries: Annotated[Dict[str, str], merge_dicts]
+    bias_reports: Annotated[Dict[str, dict],
+                            merge_dicts]  # Per-article bias analysis
+    # Analysis of the user's query
+    intent: Dict[str, Any]
+    # Tracks attempts per node
+    retry_count: Annotated[Dict[str, int], merge_dicts]
 
     # Results populated after the parallel branches (evaluate & cross_examine) merge
     comparison: str
@@ -130,15 +142,18 @@ class AgentState(TypedDict):
     visualization_path: str
     diversity_score: float
     confidence_score: float
-    agreement_score: float
     is_polarized: bool
-    relationships: Annotated[List[dict], add_lists]       # Source-to-source relationships
+    skew: dict
+    # Source-to-source relationships
+    relationships: Annotated[List[dict], add_lists]
     errors: Annotated[List[str], add_lists]
-    readability_ratio: float                             # Successfully parsed articles vs total
+    # Successfully parsed articles vs total
+    readability_ratio: float
 
 # ---------------------------------------------------------------------------
 # Workflow Nodes (Processing Steps)
 # ---------------------------------------------------------------------------
+
 
 def analyze_query_node(state: AgentState) -> dict:
     """
@@ -165,12 +180,15 @@ Output exactly as a JSON object:
     try:
         raw = call_gemini(prompt)
         data = parse_robust_json(raw)
-        res = data if data else {"category": "informational", "core_questions": [], "reasoning": "Fallback"}
-        logger.info(f"--- [NODE: analyze_query] Intent categorized as: {res.get('category')} ---")
+        res = data if data else {"category": "informational",
+                                 "core_questions": [], "reasoning": "Fallback"}
+        logger.info(
+            f"--- [NODE: analyze_query] Intent categorized as: {res.get('category')} ---")
         return {"intent": res}
     except Exception as exc:
         logger.error(f"--- [NODE: analyze_query] Error: {exc} ---")
         return {"intent": {"category": "informational", "core_questions": [], "reasoning": "Error"}}
+
 
 def fetch_bodies_node(state: AgentState) -> dict:
     """
@@ -178,14 +196,17 @@ def fetch_bodies_node(state: AgentState) -> dict:
     Prioritizes the local DB; if missing, triggers a fresh scrape with quality scoring.
     """
     new_urls = [u for u in state["urls"] if u not in state["articles"]]
-    logger.info(f"--- [NODE: fetch_bodies] Fetching content for {len(new_urls)} new URLs ---")
+    logger.info(
+        f"--- [NODE: fetch_bodies] Fetching content for {len(new_urls)} new URLs ---")
     articles_text: Dict[str, str] = {}
 
     with Session(engine) as session:
         for url in new_urls:
-            row = session.query(RSSArticle).filter(RSSArticle.url == url).first()
+            row = session.query(RSSArticle).filter(
+                RSSArticle.url == url).first()
             if row and row.body:
-                articles_text[url] = row.body[:8_000] # Cap length to avoid context window issues
+                # Cap length to avoid context window issues
+                articles_text[url] = row.body[:8_000]
             else:
                 # Prepare metadata for GDELT-sourced articles
                 meta = {"title": state["topic"], "source": "GDELT"}
@@ -193,7 +214,8 @@ def fetch_bodies_node(state: AgentState) -> dict:
                 if existing_meta and existing_meta.startswith("{"):
                     try:
                         meta = json.loads(existing_meta)
-                    except: pass
+                    except:
+                        pass
 
                 body, score, _ = _fetch_body(url)
                 if body:
@@ -223,13 +245,16 @@ def fetch_bodies_node(state: AgentState) -> dict:
     ratio = total_valid / total_requested if total_requested > 0 else 1.0
 
     retries = state.get("retry_count", {}).get("fetch", 0)
-    logger.info(f"--- [NODE: fetch_bodies] DONE. Valid bodies: {len(articles_text)} (Ratio: {ratio:.2f}) ---")
-    print(f"\n>>> [NODE: fetch_bodies] Valid: {len(articles_text)} articles | Ratio: {ratio:.2f} <<<")
+    logger.info(
+        f"--- [NODE: fetch_bodies] DONE. Valid bodies: {len(articles_text)} (Ratio: {ratio:.2f}) ---")
+    print(
+        f"\n>>> [NODE: fetch_bodies] Valid: {len(articles_text)} articles | Ratio: {ratio:.2f} <<<")
     return {
-        "articles": articles_text, 
+        "articles": articles_text,
         "readability_ratio": ratio,
         "retry_count": {"fetch": retries + 1}
     }
+
 
 def gdelt_fetch_node(state: AgentState) -> dict:
     """
@@ -237,7 +262,8 @@ def gdelt_fetch_node(state: AgentState) -> dict:
     when the initial source list is insufficient or of low quality.
     """
     topic = state["topic"]
-    logger.info(f"--- [NODE: gdelt_fetch] Falling back to GDELT for topic: '{topic}' ---")
+    logger.info(
+        f"--- [NODE: gdelt_fetch] Falling back to GDELT for topic: '{topic}' ---")
 
     # URL encode topic for API request
     query = topic.replace(" ", "%20")
@@ -256,22 +282,24 @@ def gdelt_fetch_node(state: AgentState) -> dict:
                     art_url = item.get("url")
                     if not art_url:
                         continue
-                    
+
                     new_urls.append(art_url)
-                    
+
                     # Persist metadata even before the body is fetched
-                    row = session.query(RSSArticle).filter_by(url=art_url).first()
+                    row = session.query(RSSArticle).filter_by(
+                        url=art_url).first()
                     if not row:
                         row = RSSArticle(
                             url=art_url,
                             outlet=item.get("sourcecountry", "GDELT"),
-                            country=item.get("sourcecountry", "Unknown")[:2].upper(),
+                            country=item.get("sourcecountry", "Unknown")[
+                                :2].upper(),
                             bias="Unknown",
                             title=item.get("title", topic),
                             published=item.get("seoname", ""),
                         )
                         session.add(row)
-                    
+
                     # Store structured metadata to pass to the fetch node
                     new_articles[art_url] = json.dumps({
                         "title": item.get("title", topic),
@@ -279,7 +307,7 @@ def gdelt_fetch_node(state: AgentState) -> dict:
                         "published": item.get("seoname", ""),
                         "is_gdelt": True
                     })
-                
+
                 session.commit()
         else:
             logger.warning(f"GDELT API returned status {resp.status_code}")
@@ -287,13 +315,16 @@ def gdelt_fetch_node(state: AgentState) -> dict:
         logger.error(f"gdelt_fetch_node error: {exc}")
 
     retries = state.get("retry_count", {}).get("fallback", 0)
-    logger.info(f"--- [NODE: gdelt_fetch] Found {len(new_urls)} URLs on GDELT ---")
-    print(f">>> [NODE: gdelt_fetch] Success: Found {len(new_urls)} URLs on GDELT <<<")
+    logger.info(
+        f"--- [NODE: gdelt_fetch] Found {len(new_urls)} URLs on GDELT ---")
+    print(
+        f">>> [NODE: gdelt_fetch] Success: Found {len(new_urls)} URLs on GDELT <<<")
     return {
         "articles": new_articles,
         "urls": new_urls,
         "retry_count": {"fallback": retries + 1}
     }
+
 
 def batch_analyze_node(state: AgentState) -> dict:
     """
@@ -302,7 +333,8 @@ def batch_analyze_node(state: AgentState) -> dict:
     """
     topic = state["topic"]
     pending = [u for u in state["articles"] if u not in state["summaries"]]
-    logger.info(f"--- [NODE: batch_analyze] Processing {len(pending)} articles for topic: '{topic}' ---")
+    logger.info(
+        f"--- [NODE: batch_analyze] Processing {len(pending)} articles for topic: '{topic}' ---")
 
     new_summaries: Dict[str, str] = {}
     new_bias: Dict[str, dict] = {}
@@ -357,42 +389,123 @@ ARTICLES:
         except Exception as exc:
             logger.error(f"batch_analyze_node error: {exc}")
 
-    print(f">>> [NODE: batch_analyze] Batch Complete. Summaries: {len(new_summaries)} <<<")
+    print(
+        f">>> [NODE: batch_analyze] Batch Complete. Summaries: {len(new_summaries)} <<<")
     return {"summaries": new_summaries, "bias_reports": new_bias}
+
+
+# ---------------------------------------------------------------------------
+# Metric Calculation Helpers
+# ---------------------------------------------------------------------------
+
+def compute_diversity(alignments: List[str]) -> float:
+    """
+    Calculates Shannon Entropy to measure the balance of ideological distribution.
+    A score of 1.0 indicates a perfectly equal split between Left, Center, and Right.
+    """
+    if not alignments:
+        return 0.0
+
+    counts = Counter(alignments)
+    total = len(alignments)
+
+    entropy = 0.0
+    for count in counts.values():
+        p = count / total
+        entropy -= p * math.log2(p)
+
+    # Normalize by log2(3) so score is typically 0.0 - 1.0 for the three standard alignments
+    max_entropy = math.log2(3)
+    return round(min(1.0, entropy / max_entropy), 2)
+
+
+def compute_skew(alignments: List[str]) -> dict:
+    """Identifies the dominant ideological lean and its prevalence."""
+    if not alignments:
+        return {"dominant": "None", "skew_ratio": 0.0}
+
+    counts = Counter(alignments)
+    total = len(alignments)
+    dominant, count = counts.most_common(1)[0]
+
+    return {
+        "dominant": dominant,
+        "skew_ratio": round(count / total, 2)
+    }
+
+
+def compute_confidence(reports: List[dict], articles: Dict[str, str]) -> float:
+    """
+    Derives a confidence score from objective signals: body length, 
+    consensus among sources, and AI-detected ambiguity.
+    """
+    if not reports:
+        return 0.0
+
+    scores = []
+    alignments = [r["political_alignment"] for r in reports]
+
+    # Consensus signal: high agreement among outlets on the story's facts increases confidence
+    top_count = Counter(alignments).most_common(1)[0][1]
+    consensus_ratio = top_count / len(alignments)
+
+    for r in reports:
+        url = r.get("url", "")
+        body = articles.get(url, "")
+
+        # Signal 1: Body length (longer bodies provide more context for analysis)
+        length_score = min(len(body) / 4000, 1.0)
+
+        # Signal 2: AI Ambiguity flag
+        ambiguity_penalty = 0.2 if r.get("ambiguity_detected") else 0.0
+
+        # Composite calculation
+        article_conf = (length_score * 0.5 +
+                        consensus_ratio * 0.5) - ambiguity_penalty
+        scores.append(max(0.0, article_conf))
+
+    return round(sum(scores) / len(scores), 2)
+
+# ---------------------------------------------------------------------------
+# Aggregation Nodes
+# ---------------------------------------------------------------------------
+
 
 def evaluate_metrics_node(state: AgentState) -> dict:
     """
-    Computes aggregate metrics (diversity, agreement, polarization) for the story.
+    Computes aggregate metrics (diversity, skew, polarization) for the story.
     These scores drive the visualization and high-level story cards.
     """
     print("[NODE: evaluate] Computing bias metrics...")
     reports = list(state["bias_reports"].values())
+
     if not reports:
         return {
             "diversity_score": 0.0,
-            "agreement_score": 0.0,
             "confidence_score": 0.0,
             "is_polarized": False,
+            "skew": {"dominant": "None", "skew_ratio": 0.0}
         }
 
     alignments = [r["political_alignment"] for r in reports]
     unique = set(alignments)
-    
-    # NOTE: Scoring logic is heuristic. Diversity 1.0 means all 3 alignments (L/C/R) are present.
-    diversity = len(unique) / 3.0
-    top = max(unique, key=alignments.count)
-    agreement = alignments.count(top) / len(alignments)
-    avg_conf = sum(r.get("confidence", 0.0) for r in reports) / len(reports)
-    
-    # Polarized if both ideological extremes are present
-    is_split = "Left" in unique and "Right" in unique
+
+    # Statistical & Signal-based metrics
+    diversity = compute_diversity(alignments)
+    skew = compute_skew(alignments)
+    confidence = compute_confidence(reports, state["articles"])
+
+    # Polarization is defined as having both ideological extremes present in a balanced way
+    is_polarized = "Left" in unique and "Right" in unique and diversity > 0.5
 
     return {
         "diversity_score": diversity,
-        "agreement_score": agreement,
-        "confidence_score": avg_conf,
-        "is_polarized": is_split,
+        "confidence_score": confidence,
+        "is_polarized": is_polarized,
+        "skew": skew,
+        # agreement_score is now replaced by skew ratio in the frontend
     }
+
 
 def cross_examine_node(state: AgentState) -> dict:
     """
@@ -400,7 +513,8 @@ def cross_examine_node(state: AgentState) -> dict:
     Helps identify when outlets are framing the same facts in divergent ways.
     """
     summaries = state["summaries"]
-    print(f"[NODE: cross_examine] Comparing {len(summaries)} source summaries...")
+    print(
+        f"[NODE: cross_examine] Comparing {len(summaries)} source summaries...")
     if len(summaries) < 2:
         return {"relationships": []}
 
@@ -422,22 +536,25 @@ SUMMARIES:
         raw = call_gemini(prompt)
         data = parse_robust_json(raw)
         if not data:
-            raise ValueError("Could not parse JSON from cross-examine response.")
+            raise ValueError(
+                "Could not parse JSON from cross-examine response.")
         result = CrossExaminationResult.model_validate(data)
         return {"relationships": [link.model_dump() for link in result.links]}
     except Exception as exc:
         logger.error(f"cross_examine_node error: {exc}")
         return {"relationships": [], "errors": [f"Cross-exam failed: {exc}"]}
 
+
 def merge_parallel_node(state: AgentState) -> dict:
     """
     Critical Fan-In Node.
-    
+
     LangGraph requires an explicit merge point when two parallel branches finish.
     This ensures both 'evaluate' and 'cross_examine' results are committed to 
     the state before 'synthesize' starts, preventing data race conditions.
     """
     return {}   # State is automatically merged by LangGraph reducers
+
 
 def synthesize_node(state: AgentState) -> dict:
     """
@@ -485,7 +602,7 @@ RULES:
         # Sanitization: Ensure the model didn't just repeat the prompt instructions
         if any(p in content.lower() for p in ("paste the summaries", "please provide")):
             content = "Reliable synthesis could not be generated from the available source text."
-        
+
         # Strip any markdown headers that might have snuck in
         content = re.sub(r"^#+.*$", "", content, flags=re.MULTILINE).strip()
     except Exception as exc:
@@ -498,6 +615,7 @@ RULES:
         "comparison": "Consolidated perspectives analysed.",
         "retry_count": {"synthesize": retries + 1}
     }
+
 
 def visualize_node(state: AgentState) -> dict:
     """
@@ -521,7 +639,7 @@ def visualize_node(state: AgentState) -> dict:
 
     df = pd.DataFrame(data)
     plt.figure(figsize=(10, 6))
-    
+
     # Custom color palette matching the project's design system
     sns.barplot(
         x="Source",
@@ -538,7 +656,7 @@ def visualize_node(state: AgentState) -> dict:
     out_path = os.path.join(
         os.getcwd(), "..", "frontend", "react", "public", "charts", filename
     )
-    
+
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     plt.savefig(out_path)
     plt.close()
@@ -549,6 +667,7 @@ def visualize_node(state: AgentState) -> dict:
 # Routing Logic (Conditional Edges)
 # ---------------------------------------------------------------------------
 
+
 def route_after_fetch(state: AgentState) -> Literal["retry", "gdelt", "continue"]:
     """
     Decides whether to retry fetching, fall back to GDELT research, or proceed.
@@ -558,7 +677,8 @@ def route_after_fetch(state: AgentState) -> Literal["retry", "gdelt", "continue"
     fallback_count = state.get("retry_count", {}).get("fallback", 0)
     fetch_count = state.get("retry_count", {}).get("fetch", 0)
 
-    print(f"[EDGE: route_after_fetch] Ratio: {ratio:.2f}, Fallback: {fallback_count}, Fetch: {fetch_count}")
+    print(
+        f"[EDGE: route_after_fetch] Ratio: {ratio:.2f}, Fallback: {fallback_count}, Fetch: {fetch_count}")
 
     # Case A: Starting with 0 URLs (e.g. custom search query) -> Go to GDELT research
     if len(state.get("urls", [])) == 0 and fallback_count == 0:
@@ -577,11 +697,12 @@ def route_after_fetch(state: AgentState) -> Literal["retry", "gdelt", "continue"
 
     # Case D: Hard failure on fetch -> Single retry before moving on
     if ratio == 0 and fetch_count < 2:
-         print("  -> No articles found. Retrying basic fetch.")
-         return "retry"
+        print("  -> No articles found. Retrying basic fetch.")
+        return "retry"
 
     print("  -> Continuing with available content.")
     return "continue"
+
 
 def route_post_synthesis(state: AgentState) -> Literal["retry", "visualize", "end"]:
     """
@@ -592,7 +713,8 @@ def route_post_synthesis(state: AgentState) -> Literal["retry", "visualize", "en
     if not answer or len(answer.strip()) < 60:
         count = state.get("retry_count", {}).get("synthesize", 0)
         if count <= 1:
-            print(f"[EDGE: post_synthesis] Synthesis too short ({len(answer)} chars). Retrying (Attempt 1/1)...")
+            print(
+                f"[EDGE: post_synthesis] Synthesis too short ({len(answer)} chars). Retrying (Attempt 1/1)...")
             return "retry"
         print(f"[EDGE: post_synthesis] Synthesis still short but max retries reached.")
 
@@ -604,13 +726,16 @@ def route_post_synthesis(state: AgentState) -> Literal["retry", "visualize", "en
     print("[EDGE: post_synthesis] Quality OK. No bias reports. Ending.")
     return "end"
 
+
 def should_cross_examine(state: AgentState) -> Literal["cross_examine", "merge"]:
     """Skip relationship detection if there is only one source to analyze."""
     if len(state.get("summaries", {})) > 1:
-        print("[EDGE: cross_examine_gate] Multiple sources found. Routing to cross_examine.")
+        print(
+            "[EDGE: cross_examine_gate] Multiple sources found. Routing to cross_examine.")
         return "cross_examine"
     print("[EDGE: cross_examine_gate] Single or no source. Skipping cross_examine.")
     return "merge"
+
 
 def route_analysis_depth(state: AgentState) -> Literal["quick", "deep"]:
     """
@@ -618,12 +743,14 @@ def route_analysis_depth(state: AgentState) -> Literal["quick", "deep"]:
     Informational/Fact-check intents always prioritize fresh research (fetch).
     """
     if len(state.get("articles", {})) == 0:
-        print("[EDGE: route_depth] No article content available. Routing to fetch/research.")
+        print(
+            "[EDGE: route_depth] No article content available. Routing to fetch/research.")
         return "quick"
 
     intent = state.get("intent", {}).get("category", "informational")
-    print(f"[EDGE: route_depth] Intent: {intent} -> Routing to: {'fetch' if intent in ['fact-check', 'informational'] else 'analyze'}")
-    
+    print(
+        f"[EDGE: route_depth] Intent: {intent} -> Routing to: {'fetch' if intent in ['fact-check', 'informational'] else 'analyze'}")
+
     if intent in ["fact-check", "informational"]:
         return "quick"
     return "deep"
@@ -631,6 +758,7 @@ def route_analysis_depth(state: AgentState) -> Literal["quick", "deep"]:
 # ---------------------------------------------------------------------------
 # Graph Construction (LangGraph)
 # ---------------------------------------------------------------------------
+
 
 def build_agent():
     """Compiles the state machine orchestration logic."""
@@ -686,6 +814,7 @@ def build_agent():
 
     return builder.compile()
 
+
 # Global compiled agent instance
 agent_executor = build_agent()
 
@@ -693,10 +822,11 @@ agent_executor = build_agent()
 # Public API Entry Point
 # ---------------------------------------------------------------------------
 
+
 def run_agent(topic: str, urls: List[str], prefetched_bodies: Dict[str, str] | None = None) -> dict:
     """
     Orchestrates the execution of the bias analysis agent for a given story.
-    
+
     Args:
         topic: The headline or research topic.
         urls: A list of article URLs to analyze.
@@ -713,8 +843,8 @@ def run_agent(topic: str, urls: List[str], prefetched_bodies: Dict[str, str] | N
         "visualization_path": "",
         "diversity_score": 0.0,
         "confidence_score": 0.0,
-        "agreement_score": 0.0,
         "is_polarized": False,
+        "skew": {"dominant": "None", "skew_ratio": 0.0},
         "relationships": [],
         "errors": [],
         "readability_ratio": 0.0,
@@ -723,7 +853,7 @@ def run_agent(topic: str, urls: List[str], prefetched_bodies: Dict[str, str] | N
     try:
         # NOTE: LangGraph's .invoke is synchronous in this context but can be async if needed.
         out = agent_executor.invoke(initial_state)
-        
+
         # Flatten the internal state into a clean dictionary for the FastAPI frontend
         return {
             "summaries": out["summaries"],
@@ -734,7 +864,7 @@ def run_agent(topic: str, urls: List[str], prefetched_bodies: Dict[str, str] | N
             "metrics": {
                 "diversity": out["diversity_score"],
                 "confidence": out["confidence_score"],
-                "agreement": out["agreement_score"],
+                "skew": out["skew"],
                 "is_polarized": out["is_polarized"],
             },
             "relationships": out.get("relationships", []),

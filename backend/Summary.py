@@ -93,7 +93,7 @@ def call_model(prompt: str, retries: int = 3) -> str:
     """Executes a model call with exponential backoff and randomized jitter."""
     for attempt in range(retries):
         try:
-            response = client.models.generate_content(model="models/gemma-3-27b-it", contents=prompt)
+            response = client.models.generate_content(model="models/gemma-4-31b-it", contents=prompt)
             return response.text
         except Exception as exc:
             if attempt == retries - 1: raise
